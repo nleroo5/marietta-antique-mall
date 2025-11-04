@@ -68,13 +68,13 @@ export default function HeroBanner() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up">
             <Button
-              size="lg"
+              size="md"
               variant="primary"
               onClick={() => window.location.href = `tel:${CONTACT_INFO.phone}`}
-              className="w-full sm:w-auto shadow-2xl transition-all hover:scale-105 hover:shadow-2xl"
+              className="w-full sm:w-auto shadow-2xl transition-all hover:scale-105 hover:shadow-2xl sm:text-lg sm:px-8 sm:py-3"
             >
               <svg
-                className="w-5 h-5 mr-2"
+                className="w-4 h-4 sm:w-5 sm:h-5 mr-2"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -89,10 +89,10 @@ export default function HeroBanner() {
               Call Us Now
             </Button>
             <Button
-              size="lg"
+              size="md"
               variant="outline"
               onClick={handleScrollToVisit}
-              className="w-full sm:w-auto bg-white/10 backdrop-blur-sm border-white text-white hover:bg-white hover:text-text-primary shadow-2xl transition-all hover:scale-105 hover:shadow-2xl"
+              className="w-full sm:w-auto bg-white/10 backdrop-blur-sm border-white text-white hover:bg-white hover:text-text-primary shadow-2xl transition-all hover:scale-105 hover:shadow-2xl sm:text-lg sm:px-8 sm:py-3"
             >
               Plan Your Visit
             </Button>
