@@ -27,9 +27,9 @@ const config: Config = {
           light: '#CD8C52',
           dark: '#975C29',
         },
-        // Background Colors
-        'bg-primary': '#FAF8F5',
-        'bg-secondary': '#F5F2ED',
+        // Background Colors - using transparent to let body gradient show through
+        'bg-primary': 'transparent',
+        'bg-secondary': 'rgba(255, 255, 255, 0.3)',
         'bg-dark': '#1F1F1F',
         // Text Colors
         'text-primary': '#2C2416',
@@ -37,8 +37,9 @@ const config: Config = {
         'text-light': '#8B8378',
       },
       fontFamily: {
-        display: ['Playfair Display', 'Georgia', 'serif'],
-        body: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        display: ['var(--font-display)', 'Georgia', 'serif'],
+        body: ['var(--font-body)', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        nav: ['var(--font-nav)', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
         accent: ['Bebas Neue', 'Impact', 'sans-serif'],
       },
       fontSize: {

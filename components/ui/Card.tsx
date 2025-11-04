@@ -31,7 +31,7 @@ export function CardHeader({ children, className, ...props }: React.HTMLAttribut
 
 export function CardBody({ children, className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={cn('p-6', className)} {...props}>
+    <div className={cn('p-4 sm:p-6', className)} {...props}>
       {children}
     </div>
   )
@@ -39,7 +39,7 @@ export function CardBody({ children, className, ...props }: React.HTMLAttributes
 
 export function CardFooter({ children, className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <div className={cn('p-6 bg-gray-50 border-t border-gray-200', className)} {...props}>
+    <div className={cn('p-4 sm:p-6 bg-gray-50 border-t border-gray-200', className)} {...props}>
       {children}
     </div>
   )

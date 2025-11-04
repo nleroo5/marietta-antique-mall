@@ -37,7 +37,7 @@ export default function Navigation() {
             href={item.href}
             onClick={(e) => handleScrollTo(e, item.href)}
             className={cn(
-              'px-4 py-2 rounded-lg text-sm font-medium transition-colors',
+              'px-4 py-2 rounded-lg text-sm font-nav font-semibold tracking-wide transition-colors',
               'hover:bg-primary/10 hover:text-primary',
               isActive ? 'bg-primary/10 text-primary' : 'text-text-secondary'
             )}

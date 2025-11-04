@@ -13,45 +13,45 @@ export default function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
           {/* Image Gallery */}
           <div className="relative">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="relative h-64 rounded-lg overflow-hidden shadow-lg">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+              <div className="relative h-48 sm:h-56 md:h-64 lg:h-72 rounded-lg overflow-hidden shadow-lg hover-lift cursor-pointer">
                 <Image
-                  src="/images/about-1.jpg"
-                  alt="Antique mall interior"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="relative h-64 rounded-lg overflow-hidden shadow-lg mt-8">
-                <Image
-                  src="/images/about-2.jpg"
-                  alt="Vintage furniture display"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="relative h-64 rounded-lg overflow-hidden shadow-lg -mt-8">
-                <Image
-                  src="/images/about-3.jpg"
-                  alt="Collectibles and treasures"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="relative h-64 rounded-lg overflow-hidden shadow-lg">
-                <Image
-                  src="/images/about-4.jpg"
+                  src="/images/vendors/jewelery.png"
                   alt="Jewelry display"
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-300 hover:scale-110"
+                />
+              </div>
+              <div className="relative h-48 sm:h-56 md:h-64 lg:h-72 rounded-lg overflow-hidden shadow-lg sm:mt-8 hover-lift cursor-pointer">
+                <Image
+                  src="/images/vendors/inside.png"
+                  alt="Antique mall interior"
+                  fill
+                  className="object-cover transition-transform duration-300 hover:scale-110"
+                />
+              </div>
+              <div className="relative h-48 sm:h-56 md:h-64 lg:h-72 rounded-lg overflow-hidden shadow-lg sm:-mt-8 hover-lift cursor-pointer">
+                <Image
+                  src="/images/vendors/furniture.png"
+                  alt="Vintage furniture display"
+                  fill
+                  className="object-cover transition-transform duration-300 hover:scale-110"
+                />
+              </div>
+              <div className="relative h-48 sm:h-56 md:h-64 lg:h-72 rounded-lg overflow-hidden shadow-lg hover-lift cursor-pointer">
+                <Image
+                  src="/images/vendors/vintage.png"
+                  alt="Vintage collectibles and treasures"
+                  fill
+                  className="object-cover transition-transform duration-300 hover:scale-110"
                 />
               </div>
             </div>
 
             {/* Floating Badge */}
-            <div className="absolute -top-4 -right-4 bg-accent text-white rounded-full w-32 h-32 flex flex-col items-center justify-center shadow-xl">
-              <div className="text-4xl font-bold">100+</div>
-              <div className="text-sm font-medium">Vendors</div>
+            <div className="hidden sm:flex absolute -top-4 -right-4 bg-accent text-white rounded-full w-24 h-24 sm:w-32 sm:h-32 flex-col items-center justify-center shadow-xl">
+              <div className="text-3xl sm:text-4xl font-bold">100+</div>
+              <div className="text-xs sm:text-sm font-medium">Vendors</div>
             </div>
           </div>
 
@@ -113,7 +113,7 @@ export default function AboutSection() {
           {HIGHLIGHTS.map((highlight, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg p-6 shadow-md hover:shadow-xl transition-shadow"
+              className="bg-white rounded-lg p-6 shadow-md hover-glow cursor-pointer"
             >
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
@@ -149,7 +149,7 @@ export default function AboutSection() {
               <Badge
                 key={category}
                 variant="default"
-                className="text-base px-4 py-2 bg-white shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+                className="text-base px-4 py-2 bg-white shadow-sm hover-scale cursor-pointer"
               >
                 {category}
               </Badge>

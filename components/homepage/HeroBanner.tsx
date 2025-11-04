@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Button from '@/components/ui/Button'
-import { BUSINESS_NAME } from '@/lib/constants'
+import { BUSINESS_NAME, CONTACT_INFO } from '@/lib/constants'
 
 export default function HeroBanner() {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false)
@@ -35,7 +35,7 @@ export default function HeroBanner() {
   }
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative min-h-screen w-full overflow-hidden">
       {/* Video Background - Only on desktop */}
       {!isMobile ? (
         <video
@@ -64,7 +64,7 @@ export default function HeroBanner() {
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-white px-4">
         <div className="text-center max-w-4xl mx-auto animate-fade-in">
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 md:mb-6 drop-shadow-2xl">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 md:mb-6 drop-shadow-2xl text-white">
             {BUSINESS_NAME}
           </h1>
 
@@ -72,46 +72,38 @@ export default function HeroBanner() {
             <p className="text-xl sm:text-2xl md:text-3xl font-semibold drop-shadow-lg">
               30,000 sq ft of Treasures • 100+ Vendors
             </p>
-            <p className="text-lg sm:text-xl md:text-2xl text-gray-200 drop-shadow-lg">
-              Near the Famous Big Chicken
-            </p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up">
             <Button
               size="lg"
               variant="primary"
-              onClick={handleScrollToMarketplace}
-              className="w-full sm:w-auto shadow-2xl"
+              onClick={() => window.location.href = `tel:${CONTACT_INFO.phone}`}
+              className="w-full sm:w-auto shadow-2xl transition-all hover:scale-105 hover:shadow-2xl"
             >
-              Follow Us on Facebook
+              <svg
+                className="w-5 h-5 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                />
+              </svg>
+              Call Us Now
             </Button>
             <Button
               size="lg"
               variant="outline"
               onClick={handleScrollToVisit}
-              className="w-full sm:w-auto bg-white/10 backdrop-blur-sm border-white text-white hover:bg-white hover:text-text-primary shadow-2xl"
+              className="w-full sm:w-auto bg-white/10 backdrop-blur-sm border-white text-white hover:bg-white hover:text-text-primary shadow-2xl transition-all hover:scale-105 hover:shadow-2xl"
             >
               Plan Your Visit
             </Button>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="flex flex-col items-center gap-2">
-            <span className="text-sm font-medium uppercase tracking-wider">Scroll Down</span>
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
           </div>
         </div>
       </div>

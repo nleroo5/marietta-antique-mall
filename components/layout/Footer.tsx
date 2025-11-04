@@ -18,7 +18,7 @@ export default function Footer() {
     <footer className="bg-secondary text-white">
       {/* Main Footer Content */}
       <div className="container-custom py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About Section */}
           <div>
             <h3 className="font-display text-2xl font-bold mb-4 text-accent">
@@ -33,7 +33,7 @@ export default function Footer() {
                 href={CONTACT_INFO.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-white/10 rounded-lg hover:bg-accent transition-colors"
+                className="p-3 bg-white/10 rounded-lg hover:bg-accent transition-colors"
                 aria-label="Facebook"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -45,7 +45,7 @@ export default function Footer() {
                   href={CONTACT_INFO.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 bg-white/10 rounded-lg hover:bg-accent transition-colors"
+                  className="p-3 bg-white/10 rounded-lg hover:bg-accent transition-colors"
                   aria-label="Instagram"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

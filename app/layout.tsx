@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, Inter } from 'next/font/google'
+import { Playfair_Display, Inter, Montserrat } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import NewsletterModal from '@/components/ui/NewsletterModal'
 import { BUSINESS_NAME, LOCATION, SEO_KEYWORDS } from '@/lib/constants'
 
 const playfair = Playfair_Display({
@@ -16,6 +17,13 @@ const inter = Inter({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700', '800'],
   variable: '--font-body',
+  display: 'swap',
+})
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-nav',
   display: 'swap',
 })
 
@@ -82,7 +90,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`scroll-smooth ${playfair.variable} ${inter.variable}`}>
+    <html lang="en" className={`scroll-smooth ${playfair.variable} ${inter.variable} ${montserrat.variable}`}>
       <head>
         {/* Structured Data */}
         <script
@@ -142,6 +150,7 @@ export default function RootLayout({
         <Header />
         <main id="main-content">{children}</main>
         <Footer />
+        <NewsletterModal delayMs={3000} daysUntilReshow={7} />
       </body>
     </html>
   )

@@ -27,7 +27,8 @@
   }
 
   body {
-    background-color: #FAF8F5;
+    background: linear-gradient(135deg, #FAF8F5 0%, #F2EDE3 50%, #E8E0D3 100%);
+    background-attachment: fixed;
     color: #2C2416;
     font-family: var(--font-body), -apple-system, BlinkMacSystemFont, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -148,6 +149,33 @@
 
   .animate-bounce {
     animation: bounce 2s infinite;
+  }
+
+  /* Enhanced hover effects */
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .hover-scale {
+    transition: transform 0.2s ease;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+
+  .hover-glow {
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 20px rgba(139, 111, 71, 0.3);
+    transform: translateY(-2px);
   }
 }
 
