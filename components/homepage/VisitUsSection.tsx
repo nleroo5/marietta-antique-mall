@@ -7,7 +7,8 @@ import Badge from '@/components/ui/Badge'
 
 export default function VisitUsSection() {
   const { isOpen, nextChange } = isBusinessOpen(BUSINESS_HOURS)
-  const directionsUrl = getDirectionsUrl(LOCATION.lat, LOCATION.lng)
+  const fullAddress = `${LOCATION.address}, ${LOCATION.city}, ${LOCATION.state} ${LOCATION.zip}`
+  const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(fullAddress)}`
   const today = new Date().toLocaleDateString('en-US', { weekday: 'long' })
   const todayHours = BUSINESS_HOURS.find((h) => h.day === today)
 

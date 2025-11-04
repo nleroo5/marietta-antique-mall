@@ -62,13 +62,13 @@ export default function HeroBanner() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-white px-4">
+      <div className="relative z-10 flex flex-col items-center justify-center h-full text-white px-4 pt-40 md:pt-48 lg:pt-56">
         <div className="text-center max-w-4xl mx-auto animate-fade-in">
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 md:mb-6 drop-shadow-2xl text-white">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 md:mb-6 drop-shadow-2xl text-white whitespace-nowrap">
             {BUSINESS_NAME}
           </h1>
 
-          <div className="space-y-2 md:space-y-3 mb-6 md:mb-8">
+          <div className="space-y-2 md:space-y-3 mb-16 md:mb-20 lg:mb-24 xl:mb-32">
             <p className="text-xl sm:text-2xl md:text-3xl font-semibold drop-shadow-lg">
               30,000 sq ft of Treasures • 100+ Vendors
             </p>
