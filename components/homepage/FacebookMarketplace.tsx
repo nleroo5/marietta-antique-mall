@@ -284,14 +284,14 @@ export default function FacebookMarketplace() {
             )}
 
             {/* Facebook Page Plugin */}
-            <div className={`flex justify-center ${!isLoaded || hasError ? 'hidden' : ''}`}>
-              <div className="w-full flex justify-center">
-                <div className="border-2 border-primary rounded-xl shadow-lg lg:border-0 lg:shadow-none overflow-hidden">
+            <div className={`flex justify-center overflow-hidden ${!isLoaded || hasError ? 'hidden' : ''}`}>
+              <div className="w-full max-w-full flex justify-center px-4 lg:px-0">
+                <div className="w-full max-w-[500px] border-2 border-primary rounded-xl shadow-lg lg:border-0 lg:shadow-none overflow-hidden">
                   <div
                     className="fb-page"
                     data-href={`https://www.facebook.com/${FACEBOOK_PAGE_ID}/`}
                     data-tabs="timeline"
-                    data-width="500"
+                    data-width="340"
                     data-height="600"
                     data-small-header="false"
                     data-adapt-container-width="true"
