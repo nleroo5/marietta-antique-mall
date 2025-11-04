@@ -26,6 +26,10 @@
     --color-text-light: #8B8378;
   }
 
+  html, body {
+    overflow-x: hidden;
+  }
+
   body {
     background: linear-gradient(135deg, #FAF8F5 0%, #F2EDE3 50%, #E8E0D3 100%);
     background-attachment: fixed;

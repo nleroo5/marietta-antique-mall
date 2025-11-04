@@ -13,7 +13,7 @@ export default function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
           {/* Image Gallery */}
           <div className="relative">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div className="relative h-48 sm:h-56 md:h-64 lg:h-72 rounded-lg overflow-hidden shadow-lg hover-lift cursor-pointer">
                 <Image
                   src="/images/vendors/jewelery.png"

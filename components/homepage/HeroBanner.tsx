@@ -36,27 +36,19 @@ export default function HeroBanner() {
 
   return (
     <section className="relative min-h-screen w-full overflow-hidden">
-      {/* Video Background - Only on desktop */}
-      {!isMobile ? (
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          poster="/images/hero-poster.jpg"
-          onLoadedData={() => setIsVideoLoaded(true)}
-        >
-          <source src="/videos/drone-optimized.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      ) : (
-        // Fallback image for mobile
-        <div
-          className="absolute inset-0 w-full h-full bg-cover bg-center"
-          style={{ backgroundImage: 'url(/images/hero-poster.jpg)' }}
-        />
-      )}
+      {/* Video Background - Works on all devices */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+        poster="/images/hero-poster.jpg"
+        onLoadedData={() => setIsVideoLoaded(true)}
+      >
+        <source src="/videos/drone-optimized.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
@@ -64,7 +56,7 @@ export default function HeroBanner() {
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-white px-4 pt-40 md:pt-48 lg:pt-56">
         <div className="text-center max-w-4xl mx-auto animate-fade-in">
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 md:mb-6 drop-shadow-2xl text-white whitespace-nowrap">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 drop-shadow-2xl text-white whitespace-nowrap">
             {BUSINESS_NAME}
           </h1>
 
