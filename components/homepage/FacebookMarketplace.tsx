@@ -220,7 +220,7 @@ export default function FacebookMarketplace() {
 
           {/* LEFT COLUMN - Facebook Feed */}
           <div>
-            <h3 className="font-display text-2xl font-bold text-primary-dark mb-6 text-center">
+            <h3 className="font-display text-2xl font-bold text-primary-dark mb-6 text-center lg:text-center">
               Follow Us on Facebook
             </h3>
 
@@ -236,8 +236,8 @@ export default function FacebookMarketplace() {
             {/* Loading State */}
             {!isLoaded && !hasError && (
               <div className="flex justify-center">
-                <div className="animate-pulse space-y-4 w-full max-w-[500px]">
-                  <div className="bg-gray-300 h-[600px] rounded-lg" />
+                <div className="animate-pulse space-y-4 w-full max-w-[500px] lg:max-w-[600px]">
+                  <div className="bg-gray-300 h-[600px] lg:h-[700px] rounded-lg" />
                   <div className="flex justify-center">
                     <div className="text-text-secondary text-sm">Loading Facebook feed...</div>
                   </div>
@@ -248,7 +248,7 @@ export default function FacebookMarketplace() {
             {/* Error State */}
             {hasError && (
               <div className="flex justify-center">
-                <div className="bg-white rounded-lg shadow-md p-8 max-w-[500px] w-full">
+                <div className="bg-white rounded-lg shadow-md p-8 max-w-[500px] lg:max-w-[600px] w-full">
                   <svg
                     className="w-12 h-12 text-accent mx-auto mb-4"
                     fill="none"
@@ -286,7 +286,7 @@ export default function FacebookMarketplace() {
             {/* Facebook Page Plugin */}
             <div className={`flex justify-center overflow-hidden ${!isLoaded || hasError ? 'hidden' : ''}`}>
               <div className="w-full max-w-full flex justify-center px-4 lg:px-0">
-                <div className="w-full max-w-[500px] border-2 border-primary rounded-xl shadow-lg lg:border-0 lg:shadow-none overflow-hidden">
+                <div className="w-full max-w-[500px] lg:max-w-[600px] border-2 border-primary rounded-xl shadow-lg lg:border-0 lg:shadow-none overflow-hidden">
                   <div
                     className="fb-page"
                     data-href={`https://www.facebook.com/${FACEBOOK_PAGE_ID}/`}
