@@ -107,8 +107,8 @@ export default function AboutSection() {
               </div>
               <div className="relative h-48 sm:h-56 md:h-64 lg:h-72 rounded-lg overflow-hidden shadow-lg hover-lift cursor-pointer">
                 <Image
-                  src="/images/vendors/vintage.png"
-                  alt="Vintage collectibles and treasures"
+                  src="/images/vendors/marietta-antique-mall-vintage-collectibles-treasures.png"
+                  alt="Marietta antique mall vintage collectibles and treasures display"
                   fill
                   className="object-cover transition-transform duration-300 hover:scale-110"
                 />
