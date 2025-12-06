@@ -2,6 +2,7 @@
 
 import { BUSINESS_NAME, CONTACT_INFO, LOCATION } from '@/lib/constants'
 import Card, { CardBody } from '@/components/ui/Card'
+import Badge from '@/components/ui/Badge'
 
 export default function PrivacyPage() {
   return (

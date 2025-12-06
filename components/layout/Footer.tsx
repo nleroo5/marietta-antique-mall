@@ -19,109 +19,223 @@ export default function Footer() {
     <footer className="bg-secondary text-black">
       {/* Main Footer Content */}
       <div className="container-custom py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* About Section */}
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <Image
-                src="/images/new-logo.png"
-                alt={BUSINESS_NAME}
-                width={50}
-                height={50}
-                className="w-12 h-12"
-              />
-              <h3 className="font-display text-lg md:text-xl font-bold text-black">
-                {BUSINESS_NAME}
-              </h3>
-            </div>
-            <p className="text-black mb-4">
-              Discover 30,000 sq ft of unique antiques, vintage treasures, and collectibles from
-              100+ vendors in the heart of Marietta, GA.
-            </p>
-            <div className="flex gap-3">
+        {/* Mobile: Logo & Social - Full Width */}
+        <div className="text-center mb-8 pb-6 border-b border-black/10 lg:hidden">
+          <div className="flex items-center justify-center gap-3 mb-3">
+            <Image
+              src="/images/new-logo.png"
+              alt={BUSINESS_NAME}
+              width={40}
+              height={40}
+              className="w-10 h-10"
+            />
+            <h3 className="font-display text-base font-bold text-black">
+              {BUSINESS_NAME}
+            </h3>
+          </div>
+          <div className="flex gap-3 justify-center">
+            <a
+              href={CONTACT_INFO.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-1 hover:text-[#1877F2] hover:scale-110 transition-all"
+              aria-label="Facebook"
+            >
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg>
+            </a>
+            {CONTACT_INFO.instagram && (
               <a
-                href={CONTACT_INFO.facebook}
+                href={CONTACT_INFO.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-1 hover:text-[#1877F2] hover:scale-110 transition-all"
-                aria-label="Facebook"
+                className="p-1 hover:text-[#E4405F] hover:scale-110 transition-all"
+                aria-label="Instagram"
               >
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
                 </svg>
               </a>
-              {CONTACT_INFO.instagram && (
+            )}
+          </div>
+        </div>
+
+        {/* Desktop: 4 Column Grid / Mobile: 3 Column Compact */}
+        <div className="grid grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-8">
+          {/* Column 1: Hours - Desktop: About Section */}
+          <div>
+            {/* Desktop Only: Logo & About */}
+            <div className="hidden lg:block">
+              <div className="flex items-center gap-3 mb-4">
+                <Image
+                  src="/images/new-logo.png"
+                  alt={BUSINESS_NAME}
+                  width={50}
+                  height={50}
+                  className="w-12 h-12"
+                />
+                <h3 className="font-display text-lg md:text-xl font-bold text-black">
+                  {BUSINESS_NAME}
+                </h3>
+              </div>
+              <p className="text-black mb-4">
+                Discover 30,000 sq ft of unique antiques, vintage treasures, and collectibles from
+                100+ vendors in the heart of Marietta, GA.
+              </p>
+              <div className="flex gap-3">
                 <a
-                  href={CONTACT_INFO.instagram}
+                  href={CONTACT_INFO.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-1 hover:text-[#E4405F] hover:scale-110 transition-all"
-                  aria-label="Instagram"
+                  className="p-1 hover:text-[#1877F2] hover:scale-110 transition-all"
+                  aria-label="Facebook"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                   </svg>
                 </a>
-              )}
+                {CONTACT_INFO.instagram && (
+                  <a
+                    href={CONTACT_INFO.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-1 hover:text-[#E4405F] hover:scale-110 transition-all"
+                    aria-label="Instagram"
+                  >
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                    </svg>
+                  </a>
+                )}
+              </div>
+            </div>
+
+            {/* Mobile: Hours */}
+            <div className="lg:hidden">
+              <h4 className="font-display text-xs font-bold mb-2 text-black">Hours</h4>
+              <div className="space-y-1 text-[10px] leading-tight text-black">
+                <p className="font-semibold">M-Th</p>
+                <p>10-6</p>
+                <p className="font-semibold mt-1">Fri-Sat</p>
+                <p>10-7</p>
+                <p className="font-semibold mt-1">Sun</p>
+                <p>12-6</p>
+              </div>
             </div>
           </div>
 
-          {/* Hours Section */}
+          {/* Column 2: Quick Links - Desktop: Hours Section */}
           <div>
-            <h4 className="font-display text-lg font-bold mb-4 text-black">Hours</h4>
-            <ul className="space-y-2 text-black">
-              {BUSINESS_HOURS.map((hours) => (
-                <li key={hours.day} className="flex justify-between text-sm">
-                  <span className="font-medium">{hours.day}:</span>
-                  <span>
-                    {hours.open} - {hours.close}
-                  </span>
+            {/* Desktop: Hours */}
+            <div className="hidden lg:block">
+              <h4 className="font-display text-lg font-bold mb-4 text-black">Hours</h4>
+              <ul className="space-y-2 text-black">
+                {BUSINESS_HOURS.map((hours) => (
+                  <li key={hours.day} className="flex justify-between text-sm">
+                    <span className="font-medium">{hours.day}:</span>
+                    <span>
+                      {hours.open} - {hours.close}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Mobile: Links */}
+            <div className="lg:hidden">
+              <h4 className="font-display text-xs font-bold mb-2 text-black">Links</h4>
+              <ul className="space-y-1 text-[10px] text-black">
+                <li>
+                  <Link href="/vendors" className="hover:underline">
+                    Vendors
+                  </Link>
                 </li>
-              ))}
-            </ul>
+                <li>
+                  <Link href="/visit" className="hover:underline">
+                    Visit
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="hover:underline">
+                    Contact
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/privacy" className="hover:underline">
+                    Privacy
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Column 3: Info - Desktop: Quick Links */}
           <div>
-            <h4 className="font-display text-lg font-bold mb-4 text-black">Quick Links</h4>
-            <ul className="space-y-2 text-black">
-              <li>
-                <Link href="/" className="hover:text-black transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/vendors" className="hover:text-black transition-colors">
-                  Our Vendors
-                </Link>
-              </li>
-              <li>
-                <Link href="/visit" className="hover:text-black transition-colors">
-                  Plan Your Visit
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-black transition-colors">
-                  Contact Us
-                </Link>
-              </li>
-              <li>
-                <a
-                  href="#facebook-marketplace"
-                  className="hover:text-black transition-colors"
-                  onClick={(e) => {
-                    e.preventDefault()
-                    document.querySelector('#facebook-marketplace')?.scrollIntoView({ behavior: 'smooth' })
-                  }}
-                >
-                  Follow Us on Facebook
-                </a>
-              </li>
-            </ul>
+            {/* Desktop: Quick Links */}
+            <div className="hidden lg:block">
+              <h4 className="font-display text-lg font-bold mb-4 text-black">Quick Links</h4>
+              <ul className="space-y-2 text-black">
+                <li>
+                  <Link href="/" className="hover:text-black transition-colors">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/vendors" className="hover:text-black transition-colors">
+                    Our Vendors
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/visit" className="hover:text-black transition-colors">
+                    Plan Your Visit
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="hover:text-black transition-colors">
+                    Contact Us
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    href="#facebook-marketplace"
+                    className="hover:text-black transition-colors"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      document.querySelector('#facebook-marketplace')?.scrollIntoView({ behavior: 'smooth' })
+                    }}
+                  >
+                    Follow Us on Facebook
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Mobile: Info */}
+            <div className="lg:hidden">
+              <h4 className="font-display text-xs font-bold mb-2 text-black">Info</h4>
+              <ul className="space-y-1 text-[10px] text-black">
+                <li>
+                  <Link href="/terms" className="hover:underline">
+                    Terms
+                  </Link>
+                </li>
+                <li>
+                  <a href="#facebook-marketplace" className="hover:underline">
+                    Facebook
+                  </a>
+                </li>
+                <li>
+                  <a href={`tel:${formatPhoneLink(CONTACT_INFO.phone)}`} className="hover:underline">
+                    Call
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
 
-          {/* Contact Info */}
-          <div>
+          {/* Column 4: Contact Info (Desktop Only) */}
+          <div className="hidden lg:block">
             <h4 className="font-display text-lg font-bold mb-4 text-black">Visit Us</h4>
             <ul className="space-y-3 text-black">
               <li>
@@ -192,10 +306,13 @@ export default function Footer() {
                 </li>
               )}
             </ul>
-            <p className="mt-4 text-sm text-black">
-              Near the famous Big Chicken landmark
-            </p>
           </div>
+        </div>
+
+        {/* Mobile: Contact Info - Full Width */}
+        <div className="text-center mt-6 pt-6 border-t border-black/10 lg:hidden text-[10px] text-black">
+          <p className="mb-1">{LOCATION.address}, {LOCATION.city}, {LOCATION.state} {LOCATION.zip}</p>
+          <p className="font-semibold">{CONTACT_INFO.phone}</p>
         </div>
       </div>
 
@@ -203,10 +320,10 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="container-custom py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-black">
-            <p>
+            <p className="text-[10px] lg:text-sm">
               &copy; {currentYear} {BUSINESS_NAME}. All rights reserved.
             </p>
-            <div className="flex gap-4">
+            <div className="hidden md:flex gap-4">
               <Link href="/privacy" className="hover:text-black transition-colors">
                 Privacy Policy
               </Link>

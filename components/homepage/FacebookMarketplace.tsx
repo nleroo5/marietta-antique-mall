@@ -27,8 +27,10 @@ export default function FacebookMarketplace() {
       // Wait for DOM to be ready
       const timeoutId = setTimeout(() => {
         try {
-          window.FB.XFBML.parse()
-          setIsWidgetRendered(true)
+          if (window.FB) {
+            window.FB.XFBML.parse()
+            setIsWidgetRendered(true)
+          }
         } catch (error) {
           console.error('Error parsing Facebook widgets:', error)
           // Retry once more after a delay if parsing fails

@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import Image from 'next/image'
 import Button from '@/components/ui/Button'
 
 export default function NewsletterSignup() {
@@ -27,26 +28,29 @@ export default function NewsletterSignup() {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col h-full">
       <div className="text-center mb-8">
         <h2 className="font-display text-2xl md:text-3xl font-bold text-black mb-3">
           Join the Treasure Hunter&apos;s Club
         </h2>
+        <p className="text-base text-charcoal">
+          Subscribe to our newsletter
+        </p>
       </div>
 
       {/* Wood Grain Card */}
       <motion.div
         ref={ref}
-        initial={{ flexGrow: 0 }}
+        initial={{ height: 'auto' }}
         animate={{
-          flexGrow: isInView ? 1 : 0
+          height: isInView ? '50%' : 'auto'
         }}
         transition={{
           duration: 1.2,
           ease: [0.4, 0.0, 0.2, 1],
           delay: 0.2
         }}
-        className="rounded-2xl shadow-2xl p-6 md:p-8 relative overflow-hidden flex flex-col"
+        className="sticky top-24 rounded-2xl shadow-lg p-6 md:p-8 overflow-hidden flex flex-col border-2 border-mauve"
             style={{
               backgroundColor: '#FAF8F5',
               backgroundImage: `
@@ -54,12 +58,6 @@ export default function NewsletterSignup() {
                 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='600'%3E%3Cdefs%3E%3Cpattern id='woodsketch2' x='0' y='0' width='400' height='600' patternUnits='userSpaceOnUse'%3E%3Cpath d='M50,0 Q48,150 50,300 T50,600' stroke='%23B89968' stroke-width='1' fill='none' opacity='0.25'/%3E%3Cpath d='M55,0 Q53,150 55,300 T55,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.17'/%3E%3Cpath d='M100,0 Q102,150 100,300 T100,600' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.22'/%3E%3Cpath d='M150,0 Q148,150 150,300 T150,600' stroke='%23B89968' stroke-width='1' fill='none' opacity='0.24'/%3E%3Cpath d='M155,0 Q157,150 155,300 T155,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.16'/%3E%3Cpath d='M200,0 Q198,150 200,300 T200,600' stroke='%238B6F47' stroke-width='1.1' fill='none' opacity='0.27'/%3E%3Cpath d='M205,0 Q207,150 205,300 T205,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.19'/%3E%3Cpath d='M250,0 Q252,150 250,300 T250,600' stroke='%23B89968' stroke-width='0.9' fill='none' opacity='0.22'/%3E%3Cpath d='M300,0 Q298,150 300,300 T300,600' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cpath d='M350,0 Q352,150 350,300 T350,600' stroke='%23B89968' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cellipse cx='200' cy='200' rx='40' ry='35' stroke='%238B6F47' stroke-width='1' fill='none' opacity='0.22'/%3E%3Cellipse cx='200' cy='200' rx='32' ry='28' stroke='%238B6F47' stroke-width='0.8' fill='none' opacity='0.19'/%3E%3Cellipse cx='200' cy='200' rx='24' ry='20' stroke='%23B89968' stroke-width='0.7' fill='none' opacity='0.16'/%3E%3Cellipse cx='100' cy='400' rx='35' ry='30' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cellipse cx='100' cy='400' rx='26' ry='22' stroke='%23B89968' stroke-width='0.8' fill='none' opacity='0.17'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23woodsketch2)'/%3E%3C/svg%3E")
               `,
               backgroundSize: '400px 600px',
-              border: '2px solid #D4C4B0',
-              boxShadow: `
-                inset 0 1px 2px rgba(255, 255, 255, 0.4),
-                0 8px 16px rgba(0, 0, 0, 0.1),
-                0 16px 32px rgba(139, 111, 71, 0.2)
-              `,
             }}
           >
             {/* Decorative top accent */}
@@ -71,34 +69,16 @@ export default function NewsletterSignup() {
             />
 
             <div className="text-center mb-6 relative z-10">
-              {/* Vintage Key Icon */}
+              {/* Treasure Chest Icon */}
               <div className="flex justify-center mb-4">
-                <svg className="w-20 h-20 text-black" viewBox="0 0 100 100" fill="none" stroke="currentColor">
-                  {/* Ornate key bow (handle) with sketch style */}
-                  <circle cx="25" cy="50" r="12" strokeWidth="2.5" opacity="0.9"/>
-                  <circle cx="25" cy="50" r="8" strokeWidth="2" opacity="0.8"/>
-                  <circle cx="25" cy="50" r="4" strokeWidth="2" opacity="0.7"/>
-
-                  {/* Key shaft with slight irregularity for hand-drawn look */}
-                  <path d="M 37 50 L 75 50" strokeWidth="3" strokeLinecap="round" opacity="0.9"/>
-                  <path d="M 37 48 L 75 48" strokeWidth="1.5" opacity="0.5"/>
-                  <path d="M 37 52 L 75 52" strokeWidth="1.5" opacity="0.5"/>
-
-                  {/* Key teeth (bits) - ornate vintage style */}
-                  <path d="M 75 50 L 75 58" strokeWidth="2.5" strokeLinecap="round" opacity="0.9"/>
-                  <path d="M 70 50 L 70 55" strokeWidth="2.5" strokeLinecap="round" opacity="0.85"/>
-                  <path d="M 65 50 L 65 58" strokeWidth="2.5" strokeLinecap="round" opacity="0.9"/>
-                  <path d="M 60 50 L 60 54" strokeWidth="2.5" strokeLinecap="round" opacity="0.85"/>
-
-                  {/* Decorative detail on bow */}
-                  <path d="M 20 50 L 30 50" strokeWidth="1.5" opacity="0.6"/>
-                  <path d="M 25 45 L 25 55" strokeWidth="1.5" opacity="0.6"/>
-                </svg>
+                <Image
+                  src="/images/treasure.jpg"
+                  alt="Treasure chest"
+                  width={96}
+                  height={96}
+                  className="w-24 h-24 object-contain"
+                />
               </div>
-
-              <p className="text-base text-charcoal">
-                Be the first to discover newly arrived antiques, upcoming estate sales, and vendor spotlights. Get updates delivered to your inbox every Monday.
-              </p>
             </div>
 
             {isSuccess ? (
@@ -176,25 +156,6 @@ export default function NewsletterSignup() {
 
             {/* Trust Indicators */}
             <div className="grid grid-cols-2 gap-3 mt-6 pt-6 border-t border-accent/30 relative z-10">
-              <div className="flex items-start gap-3 text-charcoal">
-                <svg className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                </svg>
-                <div>
-                  <p className="text-sm font-semibold">Monday Updates</p>
-                  <p className="text-xs text-charcoal/80">New arrivals & events</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3 text-charcoal">
-                <svg className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <div>
-                  <p className="text-sm font-semibold">First Access</p>
-                  <p className="text-xs text-charcoal/80">Estate sale notifications</p>
-                </div>
-              </div>
               <div className="flex items-start gap-3 text-charcoal">
                 <svg className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
