@@ -1,0 +1,41 @@
+# SEO-Optimized Filename Mapping
+# Format: old-name.jpg -> new-name.jpg
+
+DSC01490.jpg -> marietta-antique-mall-vintage-store-interior-01.jpg
+DSC01492.jpg -> atlanta-vintage-finds-antique-mall-marietta-02.jpg
+DSC01495.jpg -> marietta-antiques-vintage-collectibles-store-03.jpg
+DSC01498.jpg -> antique-store-marietta-georgia-vintage-mall-04.jpg
+DSC01499.jpg -> marietta-antique-mall-vintage-furniture-display-05.jpg
+DSC01500.jpg -> atlanta-antique-store-marietta-vintage-treasures-06.jpg
+DSC01503.jpg -> vintage-finds-marietta-antique-mall-interior-07.jpg
+DSC01505.jpg -> marietta-vintage-store-antique-collectibles-08.jpg
+DSC01508.jpg -> antique-mall-marietta-atlanta-vintage-store-09.jpg
+DSC01510.jpg -> marietta-antiques-vintage-furniture-showcase-10.jpg
+DSC01512.jpg -> atlanta-vintage-mall-marietta-antique-store-11.jpg
+DSC01513.jpg -> marietta-antique-store-vintage-decor-display-12.jpg
+DSC01514.jpg -> vintage-antique-mall-marietta-georgia-finds-13.jpg
+DSC01516.jpg -> marietta-vintage-finds-antique-store-atlanta-14.jpg
+DSC01519.jpg -> antique-store-marietta-vintage-collectibles-mall-15.jpg
+DSC01522.jpg -> marietta-antique-mall-vintage-home-decor-16.jpg
+DSC01527.jpg -> atlanta-marietta-antiques-vintage-store-interior-17.jpg
+DSC01534.jpg -> vintage-mall-marietta-antique-finds-atlanta-18.jpg
+DSC01539.jpg -> marietta-antique-store-vintage-treasures-display-19.jpg
+DSC01540.jpg -> antique-mall-marietta-vintage-furniture-finds-20.jpg
+DSC01543.jpg -> marietta-vintage-antiques-store-atlanta-mall-21.jpg
+DSC01545.jpg -> atlanta-antique-mall-marietta-vintage-store-22.jpg
+DSC01547.jpg -> marietta-antiques-vintage-collectibles-display-23.jpg
+DSC01559.jpg -> vintage-finds-antique-store-marietta-atlanta-24.jpg
+DSC01565.jpg -> marietta-antique-mall-vintage-decor-treasures-25.jpg
+DSC01580.jpg -> atlanta-vintage-store-marietta-antique-mall-26.jpg
+DSC01584.jpg -> marietta-antique-store-vintage-finds-interior-27.jpg
+DSC01591.jpg -> antique-mall-marietta-vintage-collectibles-atlanta-28.jpg
+DSC01593.jpg -> marietta-vintage-antiques-store-showcase-29.jpg
+DSC01599.jpg -> atlanta-marietta-antique-mall-vintage-finds-30.jpg
+DSC01604.jpg -> marietta-antique-store-vintage-furniture-mall-31.jpg
+DSC01607.jpg -> vintage-antique-mall-marietta-atlanta-store-32.jpg
+DSC01618.jpg -> marietta-antiques-vintage-store-display-atlanta-33.jpg
+DSC01619.jpg -> antique-store-marietta-vintage-mall-treasures-34.jpg
+DSC01620.jpg -> marietta-vintage-finds-antique-store-interior-35.jpg
+DSC01622.jpg -> atlanta-antique-mall-marietta-vintage-decor-36.jpg
+DSC01623.jpg -> marietta-antique-store-vintage-collectibles-finds-37.jpg
+DSC01626.jpg -> vintage-mall-marietta-antiques-atlanta-store-38.jpg

@@ -83,24 +83,24 @@ export default function AboutSection() {
             <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div className="relative h-48 sm:h-56 md:h-64 lg:h-72 rounded-lg overflow-hidden shadow-lg hover-lift cursor-pointer">
                 <Image
-                  src="/images/vendors/jewelry.png"
-                  alt="Jewelry display"
+                  src="/images/vendors/marietta-antique-mall-vintage-store-interior-01.jpg"
+                  alt="Marietta antique mall vintage store interior display"
                   fill
                   className="object-cover transition-transform duration-300 hover:scale-110"
                 />
               </div>
               <div className="relative h-48 sm:h-56 md:h-64 lg:h-72 rounded-lg overflow-hidden shadow-lg sm:mt-8 hover-lift cursor-pointer">
                 <Image
-                  src="/images/vendors/inside.png"
-                  alt="Antique mall interior"
+                  src="/images/vendors/atlanta-vintage-finds-antique-mall-marietta-02.jpg"
+                  alt="Atlanta vintage finds antique mall Marietta interior"
                   fill
                   className="object-cover transition-transform duration-300 hover:scale-110"
                 />
               </div>
               <div className="relative h-48 sm:h-56 md:h-64 lg:h-72 rounded-lg overflow-hidden shadow-lg sm:-mt-8 hover-lift cursor-pointer">
                 <Image
-                  src="/images/vendors/furniture.png"
-                  alt="Vintage furniture display"
+                  src="/images/vendors/marietta-antiques-vintage-furniture-showcase-10.jpg"
+                  alt="Marietta antiques vintage furniture showcase display"
                   fill
                   className="object-cover transition-transform duration-300 hover:scale-110"
                 />

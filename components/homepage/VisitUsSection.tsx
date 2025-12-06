@@ -95,17 +95,31 @@ export default function VisitUsSection() {
           <div className="order-1 lg:order-2">
             {/* Status */}
             <div className="mb-8">
-              <div
-                className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${
-                  isOpen ? 'bg-green-100 text-black' : 'bg-red-100 text-black'
-                }`}
-              >
+              <div className="inline-flex items-center gap-2">
                 <span
                   className={`h-3 w-3 rounded-full ${isOpen ? 'bg-green-500' : 'bg-red-500'}`}
                 />
-                <span className="font-semibold">{isOpen ? 'Open Now' : 'Closed'}</span>
+                <span
+                  className="font-semibold"
+                  style={{
+                    color: 'black',
+                    textShadow: isOpen
+                      ? '0 0 8px rgba(34, 197, 94, 0.8), 0 0 12px rgba(34, 197, 94, 0.6)'
+                      : '0 0 8px rgba(239, 68, 68, 0.8), 0 0 12px rgba(239, 68, 68, 0.6)'
+                  }}
+                >
+                  {isOpen ? 'Open Now' : 'Closed'}
+                </span>
                 {todayHours && (
-                  <span className="text-sm">
+                  <span
+                    className="text-sm"
+                    style={{
+                      color: 'black',
+                      textShadow: isOpen
+                        ? '0 0 8px rgba(34, 197, 94, 0.8), 0 0 12px rgba(34, 197, 94, 0.6)'
+                        : '0 0 8px rgba(239, 68, 68, 0.8), 0 0 12px rgba(239, 68, 68, 0.6)'
+                    }}
+                  >
                     • {nextChange}
                   </span>
                 )}
