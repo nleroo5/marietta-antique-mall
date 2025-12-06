@@ -185,8 +185,7 @@ export default function VendorsPage() {
             {/* Standard Booth */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0, duration: 0.5 }}
             >
               <div
@@ -277,8 +276,7 @@ export default function VendorsPage() {
             {/* Medium Booth */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0, duration: 0.5 }}
             >
               <div
@@ -369,8 +367,7 @@ export default function VendorsPage() {
             {/* Large Booth */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0, duration: 0.5 }}
             >
               <div

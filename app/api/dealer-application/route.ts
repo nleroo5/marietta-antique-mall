@@ -213,7 +213,7 @@ export async function POST(request: NextRequest) {
                       Phone Number
                     </td>
                     <td style="padding: 12px 16px; font-size: 15px; color: #2A2A2A; border-bottom: 1px solid #E5E5E5;">
-                      ${phone} <span style="display: inline-block; background-color: #D4C4B0; color: #2A2A2A; padding: 4px 12px; border-radius: 4px; font-weight: 600; font-size: 14px;">${phoneType}</span>
+                      ${phone} (${phoneType})
                     </td>
                   </tr>
                   ${businessName ? `
@@ -240,8 +240,8 @@ export async function POST(request: NextRequest) {
                     <td style="padding: 12px 16px; font-size: 13px; font-weight: 600; color: #666; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #E5E5E5;">
                       New to Resale Business
                     </td>
-                    <td style="padding: 12px 16px; font-size: 15px; border-bottom: 1px solid #E5E5E5;">
-                      <span style="display: inline-block; background-color: #D4C4B0; color: #2A2A2A; padding: 4px 12px; border-radius: 4px; font-weight: 600; font-size: 14px;">${newToResale}</span>
+                    <td style="padding: 12px 16px; font-size: 15px; color: #2A2A2A; border-bottom: 1px solid #E5E5E5;">
+                      ${newToResale}
                     </td>
                   </tr>
                   ${yearsInIndustry ? `
@@ -270,8 +270,8 @@ export async function POST(request: NextRequest) {
                     <td style="padding: 12px 16px; font-size: 13px; font-weight: 600; color: #666; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #E5E5E5;">
                       Space Size/Type Needed
                     </td>
-                    <td style="padding: 12px 16px; font-size: 15px; border-bottom: 1px solid #E5E5E5;">
-                      <span style="display: inline-block; background-color: #D4C4B0; color: #2A2A2A; padding: 4px 12px; border-radius: 4px; font-weight: 600; font-size: 14px;">${spaceNeeded}</span>
+                    <td style="padding: 12px 16px; font-size: 15px; color: #2A2A2A; border-bottom: 1px solid #E5E5E5;">
+                      ${spaceNeeded}
                     </td>
                   </tr>
                   <tr>
@@ -321,7 +321,7 @@ export async function POST(request: NextRequest) {
     `
 
     // Send email via Resend
-    const data = await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: 'Marietta Antique Mall <applications@resend.dev>', // Will use onboarding@resend.dev until domain verified
       to: 'contactus@mariettaantiquemall.com',
       replyTo: email,
@@ -329,11 +329,15 @@ export async function POST(request: NextRequest) {
       html: emailHtml,
     })
 
+    if (error) {
+      throw new Error(error.message)
+    }
+
     return NextResponse.json(
       {
         success: true,
         message: 'Application submitted successfully',
-        emailId: data.id
+        emailId: data?.id
       },
       { status: 200 }
     )
