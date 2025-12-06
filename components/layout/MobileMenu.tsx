@@ -51,10 +51,10 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         <div className="flex flex-col h-full">
           {/* Header */}
           <div className="flex items-center justify-between p-6 border-b">
-            <h2 className="font-display text-xl font-bold text-primary">Menu</h2>
+            <h2 className="font-display text-xl font-bold text-black">Menu</h2>
             <button
               onClick={onClose}
-              className="p-2 text-text-secondary hover:text-primary focus-ring rounded-lg"
+              className="p-2 text-black hover:text-black focus-ring rounded-lg"
               aria-label="Close menu"
             >
               <svg
@@ -84,8 +84,8 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                       onClick={(e) => handleNavClick(e, item.href)}
                       className={cn(
                         'block px-4 py-3 rounded-lg text-base font-medium transition-colors',
-                        'hover:bg-primary/10 hover:text-primary',
-                        isActive ? 'bg-primary/10 text-primary' : 'text-text-secondary'
+                        'hover:bg-primary/10 hover:text-black',
+                        isActive ? 'bg-primary/10 text-black' : 'text-black'
                       )}
                     >
                       {item.label}
@@ -97,11 +97,11 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
             {/* Contact Info */}
             <div className="mt-8 pt-8 border-t">
-              <h3 className="font-semibold text-text-primary mb-4">Contact Us</h3>
+              <h3 className="font-semibold text-black mb-4">Contact Us</h3>
               <div className="space-y-3">
                 <a
                   href={`tel:${formatPhoneLink(CONTACT_INFO.phone)}`}
-                  className="flex items-center gap-3 text-text-secondary hover:text-primary transition-colors"
+                  className="flex items-center gap-3 text-black hover:text-green-700 transition-colors"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path
@@ -117,7 +117,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   href={CONTACT_INFO.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-text-secondary hover:text-primary transition-colors"
+                  className="flex items-center gap-3 text-black hover:text-black transition-colors"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />

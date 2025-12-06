@@ -34,7 +34,7 @@ const NEWS_ITEMS: NewsItem[] = [
     id: '3',
     title: 'New Mid-Century Modern Collection',
     excerpt:
-      'Just in! A stunning collection of authenticated MCM furniture from estate sales across the Southeast.',
+      'Just in! A stunning collection of MCM furniture from estate sales across the Southeast.',
     date: new Date('2024-03-10'),
     category: 'news',
     image: '/images/news/mcm-collection.jpg',
@@ -63,10 +63,10 @@ export default function NewsEvents() {
           <Badge variant="primary" className="mb-4">
             News & Events
           </Badge>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-primary-dark mb-4">
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-black mb-4">
             What&apos;s Happening
           </h2>
-          <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+          <p className="text-lg text-black max-w-2xl mx-auto">
             Stay updated with our latest events, vendor spotlights, and new arrivals.
           </p>
         </div>
@@ -82,7 +82,7 @@ export default function NewsEvents() {
                     {categoryLabels[item.category]}
                   </Badge>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-text-light mb-3">
+                <div className="flex items-center gap-2 text-sm text-black mb-3">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path
                       strokeLinecap="round"
@@ -94,11 +94,11 @@ export default function NewsEvents() {
                   <time dateTime={item.date.toISOString()}>{formatDate(item.date)}</time>
                 </div>
 
-                <h3 className="font-display text-xl font-bold text-text-primary mb-3 line-clamp-2">
+                <h3 className="font-display text-xl font-bold text-black mb-3 line-clamp-2">
                   {item.title}
                 </h3>
 
-                <p className="text-text-secondary line-clamp-3">{item.excerpt}</p>
+                <p className="text-black line-clamp-3">{item.excerpt}</p>
               </CardBody>
 
               {/* Footer */}
@@ -106,7 +106,7 @@ export default function NewsEvents() {
                 <CardFooter>
                   <Link
                     href={item.link}
-                    className="text-primary hover:text-primary-dark font-semibold flex items-center gap-2 group"
+                    className="text-black hover:text-black font-semibold flex items-center gap-2 group"
                   >
                     Read More
                     <svg
@@ -131,10 +131,10 @@ export default function NewsEvents() {
 
         {/* CTA Section */}
         <div className="bg-white rounded-lg shadow-md p-8 md:p-12 text-center">
-          <h3 className="font-display text-3xl font-bold text-primary-dark mb-4">
+          <h3 className="font-display text-3xl font-bold text-black mb-4">
             Never Miss an Update
           </h3>
-          <p className="text-lg text-text-secondary mb-6 max-w-2xl mx-auto">
+          <p className="text-lg text-black mb-6 max-w-2xl mx-auto">
             Follow us on Facebook for the latest news, events, and newly listed treasures from our
             vendors.
           </p>

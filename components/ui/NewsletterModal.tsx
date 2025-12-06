@@ -102,7 +102,7 @@ export default function NewsletterModal({
             {/* Close Button */}
             <button
               onClick={() => handleDismiss(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors p-2 rounded-lg hover:bg-gray-100"
+              className="absolute top-4 right-4 text-white hover:text-black transition-colors p-2 rounded-lg hover:bg-gray-100"
               aria-label="Close modal"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -113,7 +113,7 @@ export default function NewsletterModal({
             {/* Icon */}
             <div className="flex justify-center mb-4">
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
-                <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
@@ -121,10 +121,10 @@ export default function NewsletterModal({
 
             {/* Content */}
             <div className="text-center mb-6">
-              <h2 className="font-display text-2xl md:text-3xl font-bold text-primary-dark mb-3">
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-black mb-3">
                 Discover Hidden Treasures
               </h2>
-              <p className="text-text-secondary">
+              <p className="text-black">
                 Join our newsletter and be the first to know about new arrivals, exclusive events, and special promotions!
               </p>
             </div>
@@ -132,7 +132,7 @@ export default function NewsletterModal({
             {isSuccess ? (
               <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center animate-fade-in">
                 <svg
-                  className="w-12 h-12 text-green-500 mx-auto mb-3"
+                  className="w-12 h-12 text-black mx-auto mb-3"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -144,10 +144,10 @@ export default function NewsletterModal({
                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <h3 className="font-semibold text-green-800 text-lg mb-1">
+                <h3 className="font-semibold text-black text-lg mb-1">
                   Welcome Aboard!
                 </h3>
-                <p className="text-green-700 text-sm">Check your inbox for a special welcome offer.</p>
+                <p className="text-black text-sm">Check your inbox for a special welcome offer.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -198,7 +198,7 @@ export default function NewsletterModal({
                   )}
                 </Button>
 
-                <p className="text-xs text-center text-text-light">
+                <p className="text-xs text-center text-black">
                   We respect your privacy. Unsubscribe at any time.
                 </p>
               </form>
@@ -209,7 +209,7 @@ export default function NewsletterModal({
               <div className="mt-6 pt-6 border-t border-gray-200">
                 <button
                   onClick={() => handleDismiss(true)}
-                  className="text-sm text-text-light hover:text-primary transition-colors w-full text-center"
+                  className="text-sm text-black hover:text-black transition-colors w-full text-center"
                 >
                   Don't show this again
                 </button>

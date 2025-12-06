@@ -7,8 +7,7 @@ import { cn } from '@/lib/utils'
 const navItems = [
   { label: 'Home', href: '/' },
   { label: 'Vendors', href: '/vendors' },
-  { label: 'Events', href: '/events' },
-  { label: 'Visit Us', href: '#visit-us' },
+  { label: 'Visit', href: '/visit' },
   { label: 'Contact', href: '/contact' },
 ]
 
@@ -37,9 +36,9 @@ export default function Navigation() {
             href={item.href}
             onClick={(e) => handleScrollTo(e, item.href)}
             className={cn(
-              'px-4 py-2 rounded-lg text-sm font-nav font-semibold tracking-wide transition-colors',
-              'hover:bg-primary/10 hover:text-primary',
-              isActive ? 'bg-primary/10 text-primary' : 'text-text-secondary'
+              'px-4 py-2 rounded-lg text-sm font-nav font-semibold tracking-wide transition-all',
+              'hover:bg-primary/10 hover:text-black hover:ring-1 hover:ring-[#2A2A2A]',
+              isActive ? 'text-black ring-1 ring-[#2A2A2A]' : 'text-black'
             )}
           >
             {item.label}

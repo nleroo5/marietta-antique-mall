@@ -9,32 +9,77 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Primary - Sophisticated Antique Bronze/Gold
+        // Brand Colors - Palette 5: Soft Saturated Luxury (adjusted mint)
+        mint: {
+          DEFAULT: '#c2dfc9', // Primary brand (softer mint)
+          dark: '#A8CDB1',    // Darker mint for hover states
+          light: '#D5F4E6',   // Pale Mint for subtle backgrounds
+        },
+        charcoal: {
+          DEFAULT: '#2A2A2A', // Premium typography
+          light: '#4A4A4A',   // Secondary text
+          lighter: '#6B6B6B', // Tertiary text
+        },
+        slate: {
+          DEFAULT: '#A5B8C8', // Secondary elements & cards
+          dark: '#8296A8',
+          light: '#C8D5E0',
+        },
+        mauve: {
+          DEFAULT: '#efc393', // Golden tan - Accent borders & decorative
+          dark: '#d4a875',
+          light: '#f5ddc0',
+        },
+        champagne: {
+          DEFAULT: '#F7F0E8', // Main background
+          dark: '#E8DDD0',
+        },
+        // Legacy color names (mapped to new palette for backward compatibility)
         primary: {
-          DEFAULT: '#8B6F47',
-          light: '#A4865C',
-          dark: '#6B5436',
+          DEFAULT: '#c2dfc9', // Mint
+          light: '#D5F4E6',
+          dark: '#A8CDB1',
         },
-        // Secondary - Deep Vintage Blue
         secondary: {
-          DEFAULT: '#2C3E50',
-          light: '#34495E',
-          dark: '#1A252F',
+          DEFAULT: '#A5B8C8', // Slate
+          light: '#C8D5E0',
+          dark: '#8296A8',
         },
-        // Accent - Warm Copper
         accent: {
-          DEFAULT: '#B87333',
-          light: '#CD8C52',
-          dark: '#975C29',
+          DEFAULT: '#efc393', // Golden tan
+          light: '#f5ddc0',
+          dark: '#d4a875',
         },
-        // Background Colors - using transparent to let body gradient show through
-        'bg-primary': 'transparent',
-        'bg-secondary': 'rgba(255, 255, 255, 0.3)',
-        'bg-dark': '#1F1F1F',
+        magenta: {
+          DEFAULT: '#efc393', // Mapped to golden tan for smooth transition
+          dark: '#d4a875',
+          light: '#f5ddc0',
+        },
+        // Background Colors
+        background: {
+          DEFAULT: '#F7F0E8', // Champagne
+          secondary: '#D5F4E6', // Pale Mint
+        },
+        'bg-primary': '#F7F0E8',
+        'bg-secondary': '#D5F4E6',
+        'bg-dark': '#2A2A2A',
         // Text Colors
-        'text-primary': '#2C2416',
-        'text-secondary': '#5A5247',
-        'text-light': '#8B8378',
+        text: {
+          primary: '#2A2A2A',   // Charcoal
+          secondary: '#4A4A4A', // Charcoal light
+          light: '#6B6B6B',     // Charcoal lighter
+        },
+        'text-primary': '#2A2A2A',
+        'text-secondary': '#4A4A4A',
+        'text-light': '#6B6B6B',
+        // Semantic color aliases for consistency
+        'mint-dark': '#A8CDB1',
+        'mint-light': '#D5F4E6',
+        // Status Colors
+        success: '#A8CDB1',   // Using dark mint
+        info: '#A5B8C8',      // Using slate
+        warning: '#efc393',   // Using golden tan
+        error: '#d4a875',     // Using dark golden tan
       },
       fontFamily: {
         display: ['var(--font-display)', 'Georgia', 'serif'],

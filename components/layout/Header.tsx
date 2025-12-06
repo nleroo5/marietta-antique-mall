@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { BUSINESS_NAME, CONTACT_INFO, BUSINESS_HOURS } from '@/lib/constants'
 import { isBusinessOpen, formatPhoneLink } from '@/lib/utils'
 import Navigation from './Navigation'
@@ -24,7 +25,7 @@ export default function Header() {
   return (
     <>
       {/* Top Bar */}
-      <div className="bg-secondary text-white py-2 text-sm">
+      <div className="bg-secondary/80 backdrop-blur-sm text-black py-2 text-sm">
         <div className="container-custom flex flex-col sm:flex-row justify-between items-center gap-2">
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-2">
@@ -32,23 +33,23 @@ export default function Header() {
                 className={`h-2 w-2 rounded-full ${isOpen ? 'bg-green-400' : 'bg-red-400'}`}
               />
               <span className="font-medium">{isOpen ? 'Open Now' : 'Closed'}</span>
-              <span className="text-gray-300">• {nextChange}</span>
+              <span className="text-black">• {nextChange}</span>
             </span>
           </div>
           <div className="flex items-center gap-4">
             <a
               href={`tel:${formatPhoneLink(CONTACT_INFO.phone)}`}
-              className="hover:text-accent transition-colors"
+              className="hover:text-green-700 transition-colors"
             >
               {CONTACT_INFO.phone}
             </a>
-            <span className="hidden sm:inline text-gray-300">|</span>
+            <span className="hidden sm:inline text-black">|</span>
             <div className="flex gap-3">
               <a
                 href={CONTACT_INFO.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-accent transition-colors p-1"
+                className="hover:text-[#1877F2] hover:scale-110 transition-all p-1"
                 aria-label="Facebook"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -60,7 +61,7 @@ export default function Header() {
                   href={CONTACT_INFO.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-accent transition-colors p-1"
+                  className="hover:text-[#E4405F] hover:scale-110 transition-all p-1"
                   aria-label="Instagram"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -73,17 +74,25 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Main Header */}
+      {/* Main Header - Navigation Bar */}
       <header
         className={`sticky top-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-white shadow-lg' : 'bg-white/95 backdrop-blur-sm'
+          isScrolled ? 'bg-secondary/80 shadow-lg backdrop-blur-sm' : 'bg-secondary/80 backdrop-blur-sm'
         }`}
       >
         <div className="container-custom">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center">
-              <h1 className="font-display text-2xl md:text-3xl font-bold text-primary">
+            <Link href="/" className="flex items-center gap-3">
+              <Image
+                src="/images/new-logo.png"
+                alt={BUSINESS_NAME}
+                width={60}
+                height={60}
+                className="w-10 h-10 md:w-12 md:h-12"
+                priority
+              />
+              <h1 className="font-display text-xl md:text-2xl font-bold text-black">
                 {BUSINESS_NAME}
               </h1>
             </Link>
@@ -95,7 +104,7 @@ export default function Header() {
 
             {/* Mobile Menu Button */}
             <button
-              className="lg:hidden p-3 text-primary focus-ring rounded-lg"
+              className="lg:hidden p-3 text-black focus-ring rounded-lg"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
             >

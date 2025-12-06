@@ -1,26 +1,31 @@
+'use client'
+
 import React from 'react'
 import { cn } from '@/lib/utils'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost'
+  variant?: 'primary' | 'secondary' | 'accent' | 'outline' | 'ghost'
   size?: 'sm' | 'md' | 'lg'
+  fullWidth?: boolean
   children: React.ReactNode
 }
 
 export default function Button({
   variant = 'primary',
   size = 'md',
+  fullWidth = false,
   className,
   children,
   ...props
 }: ButtonProps) {
-  const baseStyles = 'inline-flex items-center justify-center rounded-lg font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed'
+  const baseStyles = 'inline-flex items-center justify-center rounded-lg font-semibold transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed border-2'
 
   const variants = {
-    primary: 'bg-primary text-white hover:bg-primary-dark focus:ring-primary',
-    secondary: 'bg-secondary text-white hover:bg-secondary-dark focus:ring-secondary',
-    outline: 'border-2 border-primary text-primary hover:bg-primary hover:text-white focus:ring-primary',
-    ghost: 'text-primary hover:bg-primary/10 focus:ring-primary',
+    primary: 'border-mauve text-black bg-transparent hover:bg-mauve hover:text-black focus:ring-mauve',
+    secondary: 'border-secondary text-black bg-transparent hover:bg-secondary hover:text-white focus:ring-secondary',
+    accent: 'border-mauve text-black bg-transparent hover:bg-mauve hover:text-white focus:ring-mauve',
+    outline: 'border-mauve text-black bg-transparent hover:bg-mauve hover:text-black focus:ring-mauve',
+    ghost: 'border-transparent text-black bg-transparent hover:bg-mauve/10 focus:ring-mauve',
   }
 
   const sizes = {
@@ -31,7 +36,13 @@ export default function Button({
 
   return (
     <button
-      className={cn(baseStyles, variants[variant], sizes[size], className)}
+      className={cn(
+        baseStyles,
+        variants[variant],
+        sizes[size],
+        fullWidth && 'w-full',
+        className
+      )}
       {...props}
     >
       {children}

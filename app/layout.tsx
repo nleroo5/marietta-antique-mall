@@ -1,14 +1,13 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, Inter, Montserrat } from 'next/font/google'
+import { Crete_Round, Inter, Montserrat } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
-import NewsletterModal from '@/components/ui/NewsletterModal'
 import { BUSINESS_NAME, LOCATION, SEO_KEYWORDS } from '@/lib/constants'
 
-const playfair = Playfair_Display({
+const creteRound = Crete_Round({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800', '900'],
+  weight: ['400'],
   variable: '--font-display',
   display: 'swap',
 })
@@ -90,7 +89,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`scroll-smooth ${playfair.variable} ${inter.variable} ${montserrat.variable}`}>
+    <html lang="en" className={`scroll-smooth ${creteRound.variable} ${inter.variable} ${montserrat.variable}`}>
       <head>
         {/* Structured Data */}
         <script
@@ -146,11 +145,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased">
+      <body className={`${creteRound.variable} ${inter.variable} ${montserrat.variable} antialiased`}>
         <Header />
         <main id="main-content">{children}</main>
         <Footer />
-        <NewsletterModal delayMs={3000} daysUntilReshow={7} />
       </body>
     </html>
   )

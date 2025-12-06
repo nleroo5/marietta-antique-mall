@@ -36,6 +36,31 @@ export default function HeroBanner() {
 
   return (
     <section className="relative min-h-screen w-full overflow-hidden">
+      <style jsx global>{`
+        @keyframes shimmer {
+          0% {
+            background-position: -200% center;
+          }
+          100% {
+            background-position: 200% center;
+          }
+        }
+        .shimmer-text {
+          background: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 1) 40%,
+            rgba(239, 195, 147, 1) 50%,
+            rgba(255, 255, 255, 1) 60%,
+            rgba(255, 255, 255, 1) 100%
+          );
+          background-size: 200% auto;
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: shimmer 4s linear infinite;
+        }
+      `}</style>
       {/* Video Background - Works on all devices */}
       <video
         autoPlay
@@ -56,25 +81,25 @@ export default function HeroBanner() {
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-white px-4 pt-40 md:pt-48 lg:pt-56">
         <div className="text-center max-w-4xl mx-auto animate-fade-in">
-          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 drop-shadow-2xl text-white whitespace-nowrap">
-            {BUSINESS_NAME}
+          <h1 className="shimmer-text font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 drop-shadow-2xl">
+            Your Next Find Awaits
           </h1>
 
           <div className="space-y-2 md:space-y-3 mb-16 md:mb-20 lg:mb-24 xl:mb-32">
             <p className="text-xl sm:text-2xl md:text-3xl font-semibold drop-shadow-lg">
-              30,000 sq ft of Treasures • 100+ Vendors
+              100+ Vendors • 30,000 sq ft • New Arrivals Daily
             </p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center animate-slide-up">
             <Button
-              size="sm"
+              size="lg"
               variant="primary"
               onClick={() => window.location.href = `tel:${CONTACT_INFO.phone}`}
-              className="w-auto bg-primary/70 hover:bg-primary backdrop-blur-sm shadow-2xl transition-all hover:scale-105 hover:shadow-2xl text-lg sm:text-lg sm:px-8 sm:py-3 px-5 py-3"
+              className="backdrop-blur-sm transition-all hover:scale-105 !border-2 !border-mint !text-white hover:!bg-mint hover:!text-black"
             >
               <svg
-                className="w-5 h-5 sm:w-5 sm:h-5 mr-2 sm:mr-2"
+                className="w-5 h-5 mr-2"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -89,10 +114,10 @@ export default function HeroBanner() {
               Call Us Now
             </Button>
             <Button
-              size="sm"
-              variant="outline"
+              size="lg"
+              variant="accent"
               onClick={handleScrollToVisit}
-              className="w-auto bg-white/20 backdrop-blur-sm border-white text-white hover:bg-white hover:text-text-primary shadow-2xl transition-all hover:scale-105 hover:shadow-2xl text-lg sm:text-lg sm:px-8 sm:py-3 px-5 py-3"
+              className="backdrop-blur-sm transition-all hover:scale-105 !text-white hover:!text-black"
             >
               Plan Your Visit
             </Button>
@@ -103,7 +128,7 @@ export default function HeroBanner() {
       {/* Accessibility: Skip to content link */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-primary focus:rounded-lg focus-ring"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded-lg focus-ring"
       >
         Skip to main content
       </a>

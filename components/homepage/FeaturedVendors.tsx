@@ -15,7 +15,7 @@ const FEATURED_VENDORS: Vendor[] = [
     boothNumber: '42',
     specialty: 'Mid-Century Modern Furniture',
     description:
-      'Curated collection of authentic MCM pieces from the 1950s-1970s. Specializing in Eames, Knoll, and Danish modern designs.',
+      'Curated collection of MCM pieces from the 1950s-1970s. Specializing in Eames, Knoll, and Danish modern designs.',
     featuredImage: '/images/vendors/vendor-1.jpg',
   },
   {
@@ -33,7 +33,7 @@ const FEATURED_VENDORS: Vendor[] = [
     boothNumber: '67',
     specialty: 'Farmhouse & Primitives',
     description:
-      'Authentic farmhouse decor, primitives, and rustic finds. Perfect for creating that cozy, lived-in look.',
+      'Farmhouse decor, primitives, and rustic finds. Perfect for creating that cozy, lived-in look.',
     featuredImage: '/images/vendors/vendor-3.jpg',
   },
   {
@@ -73,10 +73,10 @@ export default function FeaturedVendors() {
           <Badge variant="primary" className="mb-4">
             Featured Vendors
           </Badge>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-primary-dark mb-4">
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-black mb-4">
             Meet Our Vendors
           </h2>
-          <p className="text-lg text-text-secondary max-w-2xl mx-auto">
+          <p className="text-lg text-black max-w-2xl mx-auto">
             Discover unique treasures from our carefully curated selection of 100+ independent
             dealers and artisans.
           </p>
@@ -98,7 +98,7 @@ export default function FeaturedVendors() {
             ) : (
               <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
                 <svg
-                  className="w-24 h-24 text-primary/40"
+                  className="w-24 h-24 text-black/40"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -121,13 +121,13 @@ export default function FeaturedVendors() {
 
           {/* Vendor Info */}
           <div className="flex flex-col justify-center">
-            <h3 className="font-display text-3xl md:text-4xl font-bold text-primary-dark mb-2">
+            <h3 className="font-display text-3xl md:text-4xl font-bold text-black mb-2">
               {FEATURED_VENDORS[activeIndex].name}
             </h3>
-            <p className="text-xl text-accent font-semibold mb-4">
+            <p className="text-xl text-black font-semibold mb-4">
               {FEATURED_VENDORS[activeIndex].specialty}
             </p>
-            <p className="text-lg text-text-secondary mb-6 leading-relaxed">
+            <p className="text-lg text-black mb-6 leading-relaxed">
               {FEATURED_VENDORS[activeIndex].description}
             </p>
             <div>
@@ -167,7 +167,7 @@ export default function FeaturedVendors() {
                 ) : (
                   <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
                     <svg
-                      className="w-16 h-16 text-primary/40"
+                      className="w-16 h-16 text-black/40"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -188,10 +188,10 @@ export default function FeaturedVendors() {
                 </div>
               </div>
               <CardBody>
-                <h4 className="font-display text-lg font-bold text-text-primary mb-1">
+                <h4 className="font-display text-lg font-bold text-black mb-1">
                   {vendor.name}
                 </h4>
-                <p className="text-sm text-accent font-medium">{vendor.specialty}</p>
+                <p className="text-sm text-black font-medium">{vendor.specialty}</p>
               </CardBody>
             </Card>
           ))}
