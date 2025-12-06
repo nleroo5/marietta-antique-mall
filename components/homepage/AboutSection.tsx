@@ -99,8 +99,8 @@ export default function AboutSection() {
               </div>
               <div className="relative h-48 sm:h-56 md:h-64 lg:h-72 rounded-lg overflow-hidden shadow-lg sm:-mt-8 hover-lift cursor-pointer">
                 <Image
-                  src="/images/vendors/marietta-antiques-vintage-store-display-atlanta-33.jpg"
-                  alt="Marietta antiques vintage store display in Atlanta"
+                  src="/images/vendors/vintage-finds-antique-store-marietta-atlanta-24.jpg"
+                  alt="Vintage finds antique store Marietta Atlanta display"
                   fill
                   className="object-cover transition-transform duration-300 hover:scale-110"
                 />
