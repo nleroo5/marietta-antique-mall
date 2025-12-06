@@ -279,7 +279,7 @@ export default function VendorsPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1, duration: 0.5 }}
+              transition={{ delay: 0, duration: 0.5 }}
             >
               <div
                 className="relative rounded-2xl shadow-lg p-6 border-2 border-accent h-full"
@@ -371,7 +371,7 @@ export default function VendorsPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 0.5 }}
+              transition={{ delay: 0, duration: 0.5 }}
             >
               <div
                 className="relative rounded-2xl shadow-lg p-6 border-2 border-mauve h-full"
