@@ -62,9 +62,6 @@ export default function VendorsPage() {
       <section className="bg-gradient-to-b from-slate-light/50 to-white py-16 md:py-24">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto">
-            <Badge variant="accent" className="mb-4">
-              Dealer Opportunities
-            </Badge>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6">
               Become a Vendor at {BUSINESS_NAME}
             </h1>
@@ -206,7 +203,7 @@ export default function VendorsPage() {
                 <div className="absolute top-0 left-0 right-0 h-[4px] opacity-60" style={{ background: 'linear-gradient(to right, transparent 0%, rgba(201, 168, 106, 0.5) 50%, transparent 100%)' }} />
                 <div className="text-center mb-4">
                   <h3 className="font-display text-2xl font-bold text-black mb-2">Standard Booth</h3>
-                  <p className="text-4xl font-bold text-accent">$200<span className="text-lg text-black">/mo</span></p>
+                  <p className="text-4xl font-bold text-black">$200<span className="text-lg text-black">/mo</span></p>
                 </div>
                 <div className="text-center mb-4">
                   <p className="text-xl font-semibold text-black">8&apos; × 8&apos;</p>
@@ -214,21 +211,60 @@ export default function VendorsPage() {
                 </div>
                 <ul className="space-y-2 text-black mb-6">
                   <li className="flex items-start gap-2">
-                    <svg className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <motion.svg
+                      className="w-5 h-5 text-accent flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{
+                        delay: 0,
+                        duration: 0.3,
+                        repeat: Infinity,
+                        repeatDelay: 6,
+                        repeatType: "loop"
+                      }}
+                    >
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
+                    </motion.svg>
                     <span>Perfect for starting out</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <svg className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <motion.svg
+                      className="w-5 h-5 text-accent flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{
+                        delay: 1.5,
+                        duration: 0.3,
+                        repeat: Infinity,
+                        repeatDelay: 6,
+                        repeatType: "loop"
+                      }}
+                    >
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
+                    </motion.svg>
                     <span>Standard booth location</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <svg className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <motion.svg
+                      className="w-5 h-5 text-accent flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{
+                        delay: 3,
+                        duration: 0.3,
+                        repeat: Infinity,
+                        repeatDelay: 6,
+                        repeatType: "loop"
+                      }}
+                    >
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
+                    </motion.svg>
                     <span>Best for focused collections</span>
                   </li>
                 </ul>
@@ -254,12 +290,9 @@ export default function VendorsPage() {
                 }}
               >
                 <div className="absolute top-0 left-0 right-0 h-[4px] opacity-60" style={{ background: 'linear-gradient(to right, transparent 0%, rgba(201, 168, 106, 0.5) 50%, transparent 100%)' }} />
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <Badge variant="accent">Popular</Badge>
-                </div>
-                <div className="text-center mb-4 mt-2">
+                <div className="text-center mb-4">
                   <h3 className="font-display text-2xl font-bold text-black mb-2">Medium Booth</h3>
-                  <p className="text-4xl font-bold text-accent">$225-$300<span className="text-lg text-black">/mo</span></p>
+                  <p className="text-4xl font-bold text-black">$225-$300<span className="text-lg text-black">/mo</span></p>
                 </div>
                 <div className="text-center mb-4">
                   <p className="text-xl font-semibold text-black">8&apos; × 9&apos;</p>
@@ -267,21 +300,60 @@ export default function VendorsPage() {
                 </div>
                 <ul className="space-y-2 text-black mb-6">
                   <li className="flex items-start gap-2">
-                    <svg className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <motion.svg
+                      className="w-5 h-5 text-accent flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{
+                        delay: 0,
+                        duration: 0.3,
+                        repeat: Infinity,
+                        repeatDelay: 6,
+                        repeatType: "loop"
+                      }}
+                    >
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
+                    </motion.svg>
                     <span>Price varies by location</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <svg className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <motion.svg
+                      className="w-5 h-5 text-accent flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{
+                        delay: 1.5,
+                        duration: 0.3,
+                        repeat: Infinity,
+                        repeatDelay: 6,
+                        repeatType: "loop"
+                      }}
+                    >
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
+                    </motion.svg>
                     <span>Better visibility options</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <svg className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <motion.svg
+                      className="w-5 h-5 text-accent flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{
+                        delay: 3,
+                        duration: 0.3,
+                        repeat: Infinity,
+                        repeatDelay: 6,
+                        repeatType: "loop"
+                      }}
+                    >
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
+                    </motion.svg>
                     <span>Great for growing inventory</span>
                   </li>
                 </ul>
@@ -309,7 +381,7 @@ export default function VendorsPage() {
                 <div className="absolute top-0 left-0 right-0 h-[4px] opacity-60" style={{ background: 'linear-gradient(to right, transparent 0%, rgba(201, 168, 106, 0.5) 50%, transparent 100%)' }} />
                 <div className="text-center mb-4">
                   <h3 className="font-display text-2xl font-bold text-black mb-2">Large Booth</h3>
-                  <p className="text-4xl font-bold text-accent">$275-$325<span className="text-lg text-black">/mo</span></p>
+                  <p className="text-4xl font-bold text-black">$275-$325<span className="text-lg text-black">/mo</span></p>
                 </div>
                 <div className="text-center mb-4">
                   <p className="text-xl font-semibold text-black">8&apos; × 13&apos;</p>
@@ -317,21 +389,60 @@ export default function VendorsPage() {
                 </div>
                 <ul className="space-y-2 text-black mb-6">
                   <li className="flex items-start gap-2">
-                    <svg className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <motion.svg
+                      className="w-5 h-5 text-accent flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{
+                        delay: 0,
+                        duration: 0.3,
+                        repeat: Infinity,
+                        repeatDelay: 6,
+                        repeatType: "loop"
+                      }}
+                    >
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
+                    </motion.svg>
                     <span>Price varies by location</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <svg className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <motion.svg
+                      className="w-5 h-5 text-accent flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{
+                        delay: 1.5,
+                        duration: 0.3,
+                        repeat: Infinity,
+                        repeatDelay: 6,
+                        repeatType: "loop"
+                      }}
+                    >
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
+                    </motion.svg>
                     <span>Premium locations available</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <svg className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <motion.svg
+                      className="w-5 h-5 text-accent flex-shrink-0 mt-0.5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{
+                        delay: 3,
+                        duration: 0.3,
+                        repeat: Infinity,
+                        repeatDelay: 6,
+                        repeatType: "loop"
+                      }}
+                    >
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
+                    </motion.svg>
                     <span>Best for furniture & large items</span>
                   </li>
                 </ul>
@@ -464,9 +575,6 @@ export default function VendorsPage() {
             transition={{ duration: 0.6 }}
           >
             <div className="text-center mb-8">
-              <Badge variant="accent" className="mb-4">
-                Step 1: Apply Online
-              </Badge>
               <h2 className="font-display text-3xl md:text-4xl font-bold text-black mb-4">
                 Dealer Space Request Form
               </h2>
