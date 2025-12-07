@@ -7,107 +7,8 @@ import {
   BUSINESS_HOURS,
 } from '@/lib/constants'
 import { getGoogleMapsUrl } from '@/lib/utils'
-import Accordion from '@/components/ui/Accordion'
 import Button from '@/components/ui/Button'
 import Card, { CardBody } from '@/components/ui/Card'
-
-const faqItems = [
-  {
-    id: 'hours',
-    title: 'What are your hours of operation?',
-    content: (
-      <div>
-        <p className="mb-3">We're open 7 days a week:</p>
-        <ul className="space-y-1">
-          {BUSINESS_HOURS.map((hours) => (
-            <li key={hours.day}>
-              <strong>{hours.day}:</strong> {hours.open} - {hours.close}
-            </li>
-          ))}
-        </ul>
-      </div>
-    ),
-  },
-  {
-    id: 'parking',
-    title: 'Where can I park?',
-    content: (
-      <p>
-        We offer ample free parking in our lot with designated wheelchair-accessible spaces near
-        the main entrance. Our parking lot can accommodate large vehicles and there's plenty of
-        room for everyone.
-      </p>
-    ),
-  },
-  {
-    id: 'buying',
-    title: 'Do you buy items or accept consignments?',
-    content: (
-      <p>
-        We operate as an antique mall with independent vendors who rent booth space. If you're
-        interested in becoming a vendor and selling your items, please contact us at{' '}
-        <a href={`tel:${CONTACT_INFO.phone}`} className="text-black hover:text-black underline">
-          {CONTACT_INFO.phone}
-        </a>{' '}
-        to learn about available booth spaces and rental terms.
-      </p>
-    ),
-  },
-  {
-    id: 'pets',
-    title: 'Are pets allowed?',
-    content: (
-      <p>
-        Service animals are always welcome. Due to the nature of our antiques and the comfort of all
-        guests, we ask that other pets remain at home. Thank you for understanding!
-      </p>
-    ),
-  },
-  {
-    id: 'negotiation',
-    title: 'Can I negotiate prices?',
-    content: (
-      <p>
-        Many of our vendors are open to reasonable offers, especially on higher-priced items. Our
-        staff can help contact vendors to discuss pricing. Keep in mind that each booth is
-        independently operated, so policies may vary.
-      </p>
-    ),
-  },
-  {
-    id: 'dining',
-    title: 'Are there restaurants nearby?',
-    content: (
-      <p>
-        Yes! We're located in a vibrant area with numerous dining options within walking distance.
-        The famous Big Chicken landmark is nearby, and the Marietta Square (about 10 minutes away)
-        has dozens of restaurants, cafes, and eateries to choose from.
-      </p>
-    ),
-  },
-  {
-    id: 'inventory',
-    title: 'How often does your inventory change?',
-    content: (
-      <p>
-        With over 100+ independent vendors, our inventory is constantly changing! New items arrive
-        weekly, and some vendors refresh their booths several times a month. We recommend visiting
-        regularly to discover new treasures.
-      </p>
-    ),
-  },
-  {
-    id: 'reserve',
-    title: 'Can I reserve or hold items?',
-    content: (
-      <p>
-        Hold policies vary by vendor. Our staff at the front desk can help coordinate with
-        individual vendors regarding holds or special arrangements for items you're interested in.
-        We recommend calling ahead if you have questions about a specific item.
-      </p>
-    ),
-  },
-]
 
 export default function VisitPage() {
   const mapUrl = getGoogleMapsUrl(LOCATION.address, LOCATION.city, LOCATION.state, LOCATION.zip)
@@ -332,22 +233,6 @@ export default function VisitPage() {
               </CardBody>
             </Card>
           </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom max-w-4xl">
-          <div className="text-center mb-12">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-black mb-4">
-              Got Questions? We've Got Answers!
-            </h2>
-            <p className="text-lg text-black">
-              Find answers to common questions about visiting our antique mall
-            </p>
-          </div>
-
-          <Accordion items={faqItems} defaultOpenIds={['hours']} />
         </div>
       </section>
 
