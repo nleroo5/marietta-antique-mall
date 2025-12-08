@@ -35,4 +35,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# large video files (stored in Vercel)
 public/videos/drone.mp4
+public/videos/drone-visit-original.mp4

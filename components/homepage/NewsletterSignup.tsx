@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
 import Button from '@/components/ui/Button'
@@ -9,8 +9,20 @@ export default function NewsletterSignup() {
   const [email, setEmail] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -38,28 +50,20 @@ export default function NewsletterSignup() {
         </p>
       </div>
 
-      {/* Wood Grain Card */}
+      {/* Newsletter Card */}
       <motion.div
         ref={ref}
         initial={{ height: 'auto' }}
         animate={{
-          height: isInView ? '50%' : 'auto'
+          height: !isMobile && isInView ? '50%' : 'auto'
         }}
         transition={{
           duration: 1.2,
           ease: [0.4, 0.0, 0.2, 1],
           delay: 0.2
         }}
-        className="sticky top-24 rounded-2xl shadow-lg p-6 md:p-8 overflow-hidden flex flex-col border-2 border-mauve"
-            style={{
-              backgroundColor: '#FAF8F5',
-              backgroundImage: `
-                linear-gradient(180deg, rgba(255, 255, 255, 0.60) 0%, rgba(255, 255, 255, 0.55) 100%),
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='600'%3E%3Cdefs%3E%3Cpattern id='woodsketch2' x='0' y='0' width='400' height='600' patternUnits='userSpaceOnUse'%3E%3Cpath d='M50,0 Q48,150 50,300 T50,600' stroke='%23B89968' stroke-width='1' fill='none' opacity='0.25'/%3E%3Cpath d='M55,0 Q53,150 55,300 T55,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.17'/%3E%3Cpath d='M100,0 Q102,150 100,300 T100,600' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.22'/%3E%3Cpath d='M150,0 Q148,150 150,300 T150,600' stroke='%23B89968' stroke-width='1' fill='none' opacity='0.24'/%3E%3Cpath d='M155,0 Q157,150 155,300 T155,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.16'/%3E%3Cpath d='M200,0 Q198,150 200,300 T200,600' stroke='%238B6F47' stroke-width='1.1' fill='none' opacity='0.27'/%3E%3Cpath d='M205,0 Q207,150 205,300 T205,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.19'/%3E%3Cpath d='M250,0 Q252,150 250,300 T250,600' stroke='%23B89968' stroke-width='0.9' fill='none' opacity='0.22'/%3E%3Cpath d='M300,0 Q298,150 300,300 T300,600' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cpath d='M350,0 Q352,150 350,300 T350,600' stroke='%23B89968' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cellipse cx='200' cy='200' rx='40' ry='35' stroke='%238B6F47' stroke-width='1' fill='none' opacity='0.22'/%3E%3Cellipse cx='200' cy='200' rx='32' ry='28' stroke='%238B6F47' stroke-width='0.8' fill='none' opacity='0.19'/%3E%3Cellipse cx='200' cy='200' rx='24' ry='20' stroke='%23B89968' stroke-width='0.7' fill='none' opacity='0.16'/%3E%3Cellipse cx='100' cy='400' rx='35' ry='30' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cellipse cx='100' cy='400' rx='26' ry='22' stroke='%23B89968' stroke-width='0.8' fill='none' opacity='0.17'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23woodsketch2)'/%3E%3C/svg%3E")
-              `,
-              backgroundSize: '400px 600px',
-            }}
-          >
+        className="sticky top-24 rounded-2xl shadow-lg p-6 md:p-8 overflow-hidden flex flex-col border-2 border-mauve bg-white"
+      >
             {/* Decorative top accent */}
             <div
               className="absolute top-0 left-0 right-0 h-[4px] opacity-60 pointer-events-none"

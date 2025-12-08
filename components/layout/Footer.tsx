@@ -114,7 +114,7 @@ export default function Footer() {
             {/* Mobile: Hours */}
             <div className="lg:hidden">
               <h4 className="font-display text-xs font-bold mb-2 text-black">Hours</h4>
-              <div className="space-y-1 text-[10px] leading-tight text-black">
+              <div className="space-y-1 text-xs leading-tight text-black">
                 <p className="font-semibold">M-Th</p>
                 <p>10-6</p>
                 <p className="font-semibold mt-1">Fri-Sat</p>
@@ -145,24 +145,24 @@ export default function Footer() {
             {/* Mobile: Links */}
             <div className="lg:hidden">
               <h4 className="font-display text-xs font-bold mb-2 text-black">Links</h4>
-              <ul className="space-y-1 text-[10px] text-black">
+              <ul className="space-y-1 text-xs text-black">
                 <li>
-                  <Link href="/vendors" className="hover:underline">
+                  <Link href="/vendors" className="hover:text-[#cd7f32] hover:underline transition-colors">
                     Vendors
                   </Link>
                 </li>
                 <li>
-                  <Link href="/visit" className="hover:underline">
+                  <Link href="/visit" className="hover:text-[#cd7f32] hover:underline transition-colors">
                     Visit
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="hover:underline">
+                  <Link href="/contact" className="hover:text-[#cd7f32] hover:underline transition-colors">
                     Contact
                   </Link>
                 </li>
                 <li>
-                  <Link href="/privacy" className="hover:underline">
+                  <Link href="/privacy" className="hover:text-[#cd7f32] hover:underline transition-colors">
                     Privacy
                   </Link>
                 </li>
@@ -177,36 +177,29 @@ export default function Footer() {
               <h4 className="font-display text-lg font-bold mb-4 text-black">Quick Links</h4>
               <ul className="space-y-2 text-black">
                 <li>
-                  <Link href="/" className="hover:text-black transition-colors">
+                  <Link href="/" className="hover:text-[#cd7f32] transition-colors">
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link href="/vendors" className="hover:text-black transition-colors">
+                  <Link href="/vendors" className="hover:text-[#cd7f32] transition-colors">
                     Our Vendors
                   </Link>
                 </li>
                 <li>
-                  <Link href="/visit" className="hover:text-black transition-colors">
+                  <Link href="/gallery" className="hover:text-[#cd7f32] transition-colors">
+                    Gallery
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/visit" className="hover:text-[#cd7f32] transition-colors">
                     Plan Your Visit
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="hover:text-black transition-colors">
+                  <Link href="/contact" className="hover:text-[#cd7f32] transition-colors">
                     Contact Us
                   </Link>
-                </li>
-                <li>
-                  <a
-                    href="#facebook-marketplace"
-                    className="hover:text-black transition-colors"
-                    onClick={(e) => {
-                      e.preventDefault()
-                      document.querySelector('#facebook-marketplace')?.scrollIntoView({ behavior: 'smooth' })
-                    }}
-                  >
-                    Follow Us on Facebook
-                  </a>
                 </li>
               </ul>
             </div>
@@ -214,19 +207,19 @@ export default function Footer() {
             {/* Mobile: Info */}
             <div className="lg:hidden">
               <h4 className="font-display text-xs font-bold mb-2 text-black">Info</h4>
-              <ul className="space-y-1 text-[10px] text-black">
+              <ul className="space-y-1 text-xs text-black">
                 <li>
-                  <Link href="/terms" className="hover:underline">
+                  <Link href="/terms" className="hover:text-[#cd7f32] hover:underline transition-colors">
                     Terms
                   </Link>
                 </li>
                 <li>
-                  <a href="#facebook-marketplace" className="hover:underline">
+                  <a href="#facebook-marketplace" className="hover:text-[#1877F2] hover:underline transition-colors">
                     Facebook
                   </a>
                 </li>
                 <li>
-                  <a href={`tel:${formatPhoneLink(CONTACT_INFO.phone)}`} className="hover:underline">
+                  <a href={`tel:${formatPhoneLink(CONTACT_INFO.phone)}`} className="hover:text-green-600 hover:underline transition-colors">
                     Call
                   </a>
                 </li>
@@ -243,7 +236,7 @@ export default function Footer() {
                   href={mapUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-black transition-colors flex items-start gap-2"
+                  className="hover:text-[#cd7f32] transition-colors flex items-start gap-2"
                 >
                   <svg
                     className="w-5 h-5 mt-0.5 flex-shrink-0"
@@ -274,7 +267,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`tel:${formatPhoneLink(CONTACT_INFO.phone)}`}
-                  className="hover:text-green-700 transition-colors flex items-center gap-2"
+                  className="hover:text-green-600 transition-colors flex items-center gap-2"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path
@@ -291,7 +284,7 @@ export default function Footer() {
                 <li>
                   <a
                     href={`mailto:${CONTACT_INFO.email}`}
-                    className="hover:text-black transition-colors flex items-center gap-2"
+                    className="hover:text-[#cd7f32] transition-colors flex items-center gap-2"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
@@ -310,7 +303,7 @@ export default function Footer() {
         </div>
 
         {/* Mobile: Contact Info - Full Width */}
-        <div className="text-center mt-6 pt-6 border-t border-black/10 lg:hidden text-[10px] text-black">
+        <div className="text-center mt-6 pt-6 border-t border-black/10 lg:hidden text-xs text-black">
           <p className="mb-1">{LOCATION.address}, {LOCATION.city}, {LOCATION.state} {LOCATION.zip}</p>
           <p className="font-semibold">{CONTACT_INFO.phone}</p>
         </div>
@@ -320,14 +313,28 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="container-custom py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-black">
-            <p className="text-[10px] lg:text-sm">
-              &copy; {currentYear} {BUSINESS_NAME}. All rights reserved.
-            </p>
+            <div className="flex flex-col items-center md:items-start gap-2">
+              <p className="text-xs lg:text-sm">
+                &copy; {currentYear} {BUSINESS_NAME}. All rights reserved.
+              </p>
+              <p className="text-xs text-black/70">
+                Website by{' '}
+                <a
+                  href="https://www.driveleadmedia.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold hover:text-[#cd7f32] transition-colors"
+                  title="Drive Lead Media - Professional Web Design & Digital Marketing Agency"
+                >
+                  Drive Lead Media
+                </a>
+              </p>
+            </div>
             <div className="hidden md:flex gap-4">
-              <Link href="/privacy" className="hover:text-black transition-colors">
+              <Link href="/privacy" className="hover:text-[#cd7f32] transition-colors">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="hover:text-black transition-colors">
+              <Link href="/terms" className="hover:text-[#cd7f32] transition-colors">
                 Terms of Service
               </Link>
             </div>

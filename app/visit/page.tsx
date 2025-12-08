@@ -1,17 +1,19 @@
 'use client'
 
 import {
-  BUSINESS_NAME,
   LOCATION,
   CONTACT_INFO,
   BUSINESS_HOURS,
+  GOOGLE_MAPS_URL,
+  GOOGLE_PLACE_ID,
+  GOOGLE_REVIEWS_URL,
 } from '@/lib/constants'
-import { getGoogleMapsUrl } from '@/lib/utils'
 import Button from '@/components/ui/Button'
 import Card, { CardBody } from '@/components/ui/Card'
 
 export default function VisitPage() {
-  const mapUrl = getGoogleMapsUrl(LOCATION.address, LOCATION.city, LOCATION.state, LOCATION.zip)
+  const mapUrl = GOOGLE_MAPS_URL
+  const embedUrl = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=place_id:${GOOGLE_PLACE_ID}`
 
   // Get current day and time to show if open/closed
   const now = new Date()
@@ -22,23 +24,36 @@ export default function VisitPage() {
     <main className="min-h-screen">
       {/* Small Page Hero */}
       <section className="bg-gradient-to-b from-slate-light/50 to-white py-12 md:py-16">
+        <style jsx global>{`
+          @keyframes shimmer {
+            0% {
+              background-position: -200% center;
+            }
+            100% {
+              background-position: 200% center;
+            }
+          }
+          .shimmer-text {
+            background: linear-gradient(
+              90deg,
+              rgba(0, 0, 0, 1) 0%,
+              rgba(0, 0, 0, 1) 40%,
+              rgba(239, 195, 147, 1) 50%,
+              rgba(0, 0, 0, 1) 60%,
+              rgba(0, 0, 0, 1) 100%
+            );
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 4s linear infinite;
+          }
+        `}</style>
         <div className="container-custom">
-          <div className="max-w-4xl">
-            {/* Breadcrumb */}
-            <div className="flex items-center gap-2 text-sm text-black mb-4">
-              <a href="/" className="hover:text-black transition-colors">
-                Home
-              </a>
-              <span>/</span>
-              <span className="text-black">Visit</span>
-            </div>
-
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-black mb-4">
+          <div className="max-w-4xl mx-auto">
+            <h1 className="shimmer-text font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-center">
               Plan Your Visit
             </h1>
-            <p className="text-lg text-black">
-              Located near the famous Big Chicken in Marietta, GA. Open 7 days a week with free parking.
-            </p>
           </div>
         </div>
       </section>
@@ -48,9 +63,9 @@ export default function VisitPage() {
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* LEFT: Map */}
-            <div className="h-[400px] lg:h-[500px] rounded-lg overflow-hidden shadow-lg">
+            <div className="h-[300px] md:h-[400px] lg:h-[500px] rounded-lg overflow-hidden shadow-lg border-2 border-mauve">
               <iframe
-                src={`https://maps.google.com/maps?q=${encodeURIComponent(`${LOCATION.address}, ${LOCATION.city}, ${LOCATION.state} ${LOCATION.zip}`)}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
+                src={embedUrl}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -63,7 +78,7 @@ export default function VisitPage() {
 
             {/* RIGHT: Info Card */}
             <div>
-              <Card>
+              <Card className="!border-2 !border-mauve">
                 <CardBody>
                   {/* Current Status */}
                   <div className="mb-6 pb-6 border-b border-gray-200">
@@ -122,29 +137,47 @@ export default function VisitPage() {
                     </a>
                   </div>
 
-                  {/* Get Directions Button */}
-                  <Button
-                    variant="primary"
-                    size="lg"
-                    fullWidth
-                    onClick={() => window.open(mapUrl, '_blank')}
-                  >
-                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                      />
-                    </svg>
-                    Get Directions
-                  </Button>
+                  {/* Action Buttons */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <Button
+                      variant="primary"
+                      size="lg"
+                      onClick={() => window.open(mapUrl, '_blank')}
+                    >
+                      <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
+                      Get Directions
+                    </Button>
+
+                    <Button
+                      variant="secondary"
+                      size="lg"
+                      className="!bg-mauve !border-mauve !text-white hover:!bg-mauve-dark"
+                      onClick={() => window.open(GOOGLE_REVIEWS_URL, '_blank')}
+                    >
+                      <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+                        />
+                      </svg>
+                      Leave a Review
+                    </Button>
+                  </div>
                 </CardBody>
               </Card>
             </div>
@@ -164,74 +197,97 @@ export default function VisitPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Free Parking */}
-            <Card hover>
-              <CardBody className="text-center">
-                <div className="w-16 h-16 bg-mauve-light rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
-                  </svg>
+          {/* Two-column layout: Video + Amenities Cards */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            {/* LEFT: Video Frame */}
+            <div className="flex justify-center lg:justify-start">
+              <div className="relative w-full max-w-[375px] mx-auto lg:mx-0">
+                <div
+                  className="relative w-full rounded-lg overflow-hidden shadow-lg border-2 border-mauve"
+                  style={{ aspectRatio: '9/16' }}
+                >
+                  <video
+                    className="w-full h-full object-cover"
+                    controls
+                    playsInline
+                  >
+                    <source src="/videos/drone-visit.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
                 </div>
-                <h3 className="font-display text-xl font-bold text-black mb-2">
-                  Free Parking
-                </h3>
-                <p className="text-black">
-                  Ample parking lot with spaces for large vehicles
-                </p>
-              </CardBody>
-            </Card>
+              </div>
+            </div>
 
-            {/* Wheelchair Access */}
-            <Card hover>
-              <CardBody className="text-center">
-                <div className="w-16 h-16 bg-mauve-light/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                </div>
-                <h3 className="font-display text-xl font-bold text-black mb-2">
-                  Wheelchair Accessible
-                </h3>
-                <p className="text-black">
-                  Accessible entrance, wide aisles, and designated parking
-                </p>
-              </CardBody>
-            </Card>
+            {/* RIGHT: Amenities Cards (2x2 grid) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {/* Free Parking */}
+              <Card hover className="!border-2 !border-mauve">
+                <CardBody className="text-center">
+                  <div className="w-16 h-16 bg-mauve-light rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+                    </svg>
+                  </div>
+                  <h3 className="font-display text-xl font-bold text-black mb-2">
+                    Free Parking
+                  </h3>
+                  <p className="text-black">
+                    Ample parking lot with spaces for large vehicles
+                  </p>
+                </CardBody>
+              </Card>
 
-            {/* Shopping Carts */}
-            <Card hover>
-              <CardBody className="text-center">
-                <div className="w-16 h-16 bg-mauve-light rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                </div>
-                <h3 className="font-display text-xl font-bold text-black mb-2">
-                  Shopping Carts
-                </h3>
-                <p className="text-black">
-                  Carts available for your convenience while browsing
-                </p>
-              </CardBody>
-            </Card>
+              {/* Wheelchair Access */}
+              <Card hover className="!border-2 !border-mauve">
+                <CardBody className="text-center">
+                  <div className="w-16 h-16 bg-mauve-light/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                  </div>
+                  <h3 className="font-display text-xl font-bold text-black mb-2">
+                    Wheelchair Accessible
+                  </h3>
+                  <p className="text-black">
+                    Accessible entrance, wide aisles, and designated parking
+                  </p>
+                </CardBody>
+              </Card>
 
-            {/* Restrooms */}
-            <Card hover>
-              <CardBody className="text-center">
-                <div className="w-16 h-16 bg-mauve-light/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                  </svg>
-                </div>
-                <h3 className="font-display text-xl font-bold text-black mb-2">
-                  Clean Restrooms
-                </h3>
-                <p className="text-black">
-                  Well-maintained facilities for our visitors
-                </p>
-              </CardBody>
-            </Card>
+              {/* Shopping Carts */}
+              <Card hover className="!border-2 !border-mauve">
+                <CardBody className="text-center">
+                  <div className="w-16 h-16 bg-mauve-light rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="font-display text-xl font-bold text-black mb-2">
+                    Shopping Carts
+                  </h3>
+                  <p className="text-black">
+                    Carts available for your convenience while browsing
+                  </p>
+                </CardBody>
+              </Card>
+
+              {/* Restrooms */}
+              <Card hover className="!border-2 !border-mauve">
+                <CardBody className="text-center">
+                  <div className="w-16 h-16 bg-mauve-light/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    </svg>
+                  </div>
+                  <h3 className="font-display text-xl font-bold text-black mb-2">
+                    Clean Restrooms
+                  </h3>
+                  <p className="text-black">
+                    Well-maintained facilities for our visitors
+                  </p>
+                </CardBody>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
@@ -250,7 +306,7 @@ export default function VisitPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {/* Big Chicken */}
-            <Card hover>
+            <Card hover className="!border-2 !border-mauve">
               <CardBody>
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 w-12 h-12 bg-mauve-light/20 rounded-lg flex items-center justify-center">
@@ -273,7 +329,7 @@ export default function VisitPage() {
             </Card>
 
             {/* Marietta Square */}
-            <Card hover>
+            <Card hover className="!border-2 !border-mauve">
               <CardBody>
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 w-12 h-12 bg-mauve-light rounded-lg flex items-center justify-center">
@@ -295,7 +351,7 @@ export default function VisitPage() {
             </Card>
 
             {/* Dining */}
-            <Card hover>
+            <Card hover className="!border-2 !border-mauve">
               <CardBody>
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 w-12 h-12 bg-mauve-light/20 rounded-lg flex items-center justify-center">
@@ -322,18 +378,18 @@ export default function VisitPage() {
       {/* Contact CTA */}
       <section className="section-padding bg-white">
         <div className="container-custom max-w-3xl">
-          <div className="text-center p-8 bg-gradient-to-r from-slate-light/20 to-mauve-light/20 rounded-lg">
+          <div className="text-center p-8 bg-gradient-to-r from-slate-light/20 to-mauve-light/20 rounded-lg border-2 border-mauve">
             <h3 className="font-display text-2xl font-bold text-black mb-3">
               Still Have Questions?
             </h3>
             <p className="text-black mb-6">
               Our friendly staff is here to help! Give us a call or stop by during business hours.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex justify-center">
               <Button
                 variant="primary"
                 size="lg"
-                className="!border-2 !border-mint !text-white hover:!bg-mint hover:!text-black"
+                className="!border-2 !border-mint !text-black hover:!bg-mint hover:!text-black"
                 onClick={() => (window.location.href = `tel:${CONTACT_INFO.phone}`)}
               >
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -345,9 +401,6 @@ export default function VisitPage() {
                   />
                 </svg>
                 Call Us
-              </Button>
-              <Button variant="accent" size="lg" onClick={() => (window.location.href = '/contact')}>
-                Contact Us Online
               </Button>
             </div>
           </div>

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import Script from 'next/script'
 import { CONTACT_INFO } from '@/lib/constants'
 import Button from '@/components/ui/Button'
@@ -9,6 +9,70 @@ export default function FacebookMarketplace() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [hasError, setHasError] = useState(false)
   const [isWidgetRendered, setIsWidgetRendered] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const parseAttemptRef = useRef(0)
+  const mountTimeRef = useRef(Date.now())
+
+  // Intersection Observer for lazy loading
+  useEffect(() => {
+    if (!containerRef.current) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true)
+          }
+        })
+      },
+      { rootMargin: '50px' }
+    )
+
+    observer.observe(containerRef.current)
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current)
+      }
+    }
+  }, [])
+
+  // Reset state when component mounts (important for navigation)
+  useEffect(() => {
+    // Update mount time on each mount
+    mountTimeRef.current = Date.now()
+
+    // Reset states for fresh render on each mount
+    setIsLoaded(false)
+    setHasError(false)
+    setIsWidgetRendered(false)
+    parseAttemptRef.current = 0
+
+    // Check if FB SDK is already loaded from previous page visit
+    if (window.FB && isVisible) {
+      setIsLoaded(true)
+      // Force immediate parse since SDK is already available
+      setTimeout(() => {
+        if (window.FB && containerRef.current) {
+          try {
+            window.FB.XFBML.parse(containerRef.current)
+            setIsWidgetRendered(true)
+          } catch (error) {
+            console.error('Error parsing Facebook widget on remount:', error)
+          }
+        }
+      }, 100)
+    }
+
+    // Cleanup function when component unmounts
+    return () => {
+      // Clear any pending timers
+      setIsLoaded(false)
+      setHasError(false)
+      setIsWidgetRendered(false)
+    }
+  }, [isVisible]) // Re-run when visibility changes
 
   useEffect(() => {
     // Set a timeout to show error state if Facebook SDK doesn't load
@@ -16,34 +80,41 @@ export default function FacebookMarketplace() {
       if (!isLoaded) {
         setHasError(true)
       }
-    }, 15000) // Increased to 15 seconds for slower connections
+    }, 15000)
 
     return () => clearTimeout(timer)
   }, [isLoaded])
 
   useEffect(() => {
-    // Only parse once when SDK is loaded and widget is visible
-    if (isLoaded && window.FB && !hasError && !isWidgetRendered) {
+    // Parse Facebook widgets when SDK loads
+    if (isLoaded && window.FB && !hasError && !isWidgetRendered && containerRef.current) {
+      parseAttemptRef.current++
+
       // Wait for DOM to be ready
       const timeoutId = setTimeout(() => {
         try {
-          if (window.FB) {
-            window.FB.XFBML.parse()
+          if (window.FB && containerRef.current) {
+            // Parse only this container, not entire page
+            window.FB.XFBML.parse(containerRef.current)
             setIsWidgetRendered(true)
           }
         } catch (error) {
           console.error('Error parsing Facebook widgets:', error)
-          // Retry once more after a delay if parsing fails
-          setTimeout(() => {
-            try {
-              if (window.FB) {
-                window.FB.XFBML.parse()
-                setIsWidgetRendered(true)
+
+          // Retry once more if first attempt fails
+          if (parseAttemptRef.current === 1) {
+            setTimeout(() => {
+              try {
+                if (window.FB && containerRef.current) {
+                  window.FB.XFBML.parse(containerRef.current)
+                  setIsWidgetRendered(true)
+                }
+              } catch (retryError) {
+                console.error('Retry parse failed:', retryError)
+                setHasError(true)
               }
-            } catch (retryError) {
-              console.error('Retry parse failed:', retryError)
-            }
-          }, 2000)
+            }, 2000)
+          }
         }
       }, 500)
 
@@ -71,7 +142,7 @@ export default function FacebookMarketplace() {
   }
 
   return (
-    <div id="facebook-marketplace" className="h-full flex flex-col">
+    <div id="facebook-marketplace" className="h-full flex flex-col" ref={containerRef}>
       <div className="text-center mb-8">
         <h2 className="font-display text-2xl md:text-3xl font-bold text-black mb-3">
           Follow Us on Facebook
@@ -81,24 +152,30 @@ export default function FacebookMarketplace() {
         </p>
       </div>
 
-      {/* Facebook SDK */}
-            <div id="fb-root" />
-            <Script
-              src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"
-              strategy="afterInteractive"
-              onLoad={handleScriptLoad}
-              onError={handleScriptError}
-            />
+      {/* Facebook SDK - Only load when visible */}
+      {isVisible && (
+        <>
+          <div id="fb-root" />
+          <Script
+            src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"
+            strategy="lazyOnload"
+            onLoad={handleScriptLoad}
+            onError={handleScriptError}
+          />
+        </>
+      )}
 
             {/* Loading State */}
-            {!isLoaded && !hasError && (
+            {(!isLoaded || !isVisible) && !hasError && (
               <div className="flex justify-center">
                 <div className="w-full max-w-[500px]">
                   <div className="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-mauve animate-pulse">
                     <div className="bg-gray-200 h-[700px]" />
                   </div>
                   <div className="flex justify-center mt-4">
-                    <div className="text-black text-sm">Loading Facebook feed...</div>
+                    <div className="text-black text-sm">
+                      {isVisible ? 'Loading Facebook feed...' : 'Scroll down to load Facebook feed...'}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -189,7 +266,7 @@ declare global {
   interface Window {
     FB?: {
       XFBML: {
-        parse: () => void
+        parse: (element?: HTMLElement) => void
       }
     }
   }

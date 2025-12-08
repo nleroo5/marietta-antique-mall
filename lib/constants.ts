@@ -8,8 +8,8 @@ export const LOCATION: Location = {
   city: 'Marietta',
   state: 'GA',
   zip: '30062',
-  lat: 33.9893,
-  lng: -84.4617,
+  lat: 33.9518798,
+  lng: -84.5106649,
 }
 
 export const CONTACT_INFO: ContactInfo = {
@@ -69,3 +69,8 @@ export const SEO_KEYWORDS = [
 // Social Media
 export const FACEBOOK_PAGE_ID = 'Mariettaantiquemall'
 export const FACEBOOK_GROUP = 'MAM Marketplace'
+
+// Google Business Profile
+export const GOOGLE_PLACE_ID = 'ChIJ47JybOUT9YgRLhMfltpOJdw'
+export const GOOGLE_MAPS_URL = 'https://www.google.com/maps/place/Marietta+Antique+Mall/@33.9518798,-84.5132398,17z/data=!3m1!4b1!4m6!3m5!1s0x88f513e56c72b8e3:0xdc254e9a961f132e!8m2!3d33.9518798!4d-84.5106649!16s%2Fg%2F11b620zffs'
+export const GOOGLE_REVIEWS_URL = 'https://g.page/r/ChIJ47JybOUT9YgRLhMfltpOJdw/review'

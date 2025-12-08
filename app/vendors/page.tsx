@@ -56,13 +56,83 @@ export default function VendorsPage() {
     })
   }
 
+  const benefits = [
+    {
+      title: "Prime Location",
+      description: "30,000 sq ft facility on Roswell Road with high visibility and steady foot traffic"
+    },
+    {
+      title: "Hassle-Free Operations",
+      description: "We handle all sales, credit card processing, and sales tax collection for you"
+    },
+    {
+      title: "Flexible Payments",
+      description: "Receive checks twice monthly (5th & 20th) with daily email sales reports"
+    },
+    {
+      title: "Established Customer Base",
+      description: "Benefit from our loyal customer base and strong social media presence"
+    },
+    {
+      title: "Open 7 Days a Week",
+      description: "Maximum exposure for your merchandise with convenient hours for customers"
+    },
+    {
+      title: "Growth Opportunities",
+      description: "Start with one booth and expand as your business grows"
+    }
+  ]
+
   return (
+    <>
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes lever-sway {
+          0%, 100% {
+            transform: translateY(-6px) rotate(-2deg);
+          }
+          50% {
+            transform: translateY(-6px) rotate(2deg);
+          }
+        }
+        .wood-card-wrapper:hover .wood-card {
+          animation: lever-sway 1.5s ease-in-out infinite;
+        }
+        .wood-card-wrapper:hover .wood-card h3 {
+          color: #2A2A2A;
+        }
+        .wood-card-wrapper:hover .wood-card p {
+          color: #2A2A2A;
+        }
+        @keyframes shimmer {
+          0% {
+            background-position: -200% center;
+          }
+          100% {
+            background-position: 200% center;
+          }
+        }
+        .shimmer-text {
+          background: linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 1) 40%,
+            rgba(201, 168, 106, 1) 50%,
+            rgba(0, 0, 0, 1) 60%,
+            rgba(0, 0, 0, 1) 100%
+          );
+          background-size: 200% auto;
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: shimmer 4s linear infinite;
+        }
+      `}} />
     <main className="min-h-screen">
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-slate-light/50 to-white py-16 md:py-24">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6">
+            <h1 className="shimmer-text font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Become a Vendor at {BUSINESS_NAME}
             </h1>
             <p className="text-xl text-black mb-8">
@@ -94,77 +164,48 @@ export default function VendorsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {/* Benefit 1 */}
-            <Card hover>
-              <CardBody>
-                <h3 className="font-display text-xl font-bold text-black mb-2">
-                  Prime Location
-                </h3>
-                <p className="text-black">
-                  30,000 sq ft facility on Roswell Road with high visibility and steady foot traffic
-                </p>
-              </CardBody>
-            </Card>
-
-            {/* Benefit 2 */}
-            <Card hover>
-              <CardBody>
-                <h3 className="font-display text-xl font-bold text-black mb-2">
-                  Hassle-Free Operations
-                </h3>
-                <p className="text-black">
-                  We handle all sales, credit card processing, and sales tax collection for you
-                </p>
-              </CardBody>
-            </Card>
-
-            {/* Benefit 3 */}
-            <Card hover>
-              <CardBody>
-                <h3 className="font-display text-xl font-bold text-black mb-2">
-                  Flexible Payments
-                </h3>
-                <p className="text-black">
-                  Receive checks twice monthly (5th & 20th) with daily email sales reports
-                </p>
-              </CardBody>
-            </Card>
-
-            {/* Benefit 4 */}
-            <Card hover>
-              <CardBody>
-                <h3 className="font-display text-xl font-bold text-black mb-2">
-                  Established Customer Base
-                </h3>
-                <p className="text-black">
-                  Benefit from our loyal customer base and strong social media presence
-                </p>
-              </CardBody>
-            </Card>
-
-            {/* Benefit 5 */}
-            <Card hover>
-              <CardBody>
-                <h3 className="font-display text-xl font-bold text-black mb-2">
-                  Open 7 Days a Week
-                </h3>
-                <p className="text-black">
-                  Maximum exposure for your merchandise with convenient hours for customers
-                </p>
-              </CardBody>
-            </Card>
-
-            {/* Benefit 6 */}
-            <Card hover>
-              <CardBody>
-                <h3 className="font-display text-xl font-bold text-black mb-2">
-                  Growth Opportunities
-                </h3>
-                <p className="text-black">
-                  Start with one booth and expand as your business grows - multiple booth options available
-                </p>
-              </CardBody>
-            </Card>
+            {benefits.map((benefit, index) => (
+              <motion.div
+                key={benefit.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                className="wood-card-wrapper"
+              >
+                <div
+                  className="wood-card relative px-6 py-8 cursor-pointer"
+                  style={{
+                    backgroundColor: '#FAF8F5',
+                    backgroundImage: `
+                      linear-gradient(180deg, rgba(255, 255, 255, 0.60) 0%, rgba(255, 255, 255, 0.55) 100%),
+                      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='600'%3E%3Cdefs%3E%3Cpattern id='woodsketch2' x='0' y='0' width='400' height='600' patternUnits='userSpaceOnUse'%3E%3Cpath d='M50,0 Q48,150 50,300 T50,600' stroke='%23B89968' stroke-width='1' fill='none' opacity='0.25'/%3E%3Cpath d='M55,0 Q53,150 55,300 T55,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.17'/%3E%3Cpath d='M100,0 Q102,150 100,300 T100,600' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.22'/%3E%3Cpath d='M150,0 Q148,150 150,300 T150,600' stroke='%23B89968' stroke-width='1' fill='none' opacity='0.24'/%3E%3Cpath d='M155,0 Q157,150 155,300 T155,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.16'/%3E%3Cpath d='M200,0 Q198,150 200,300 T200,600' stroke='%238B6F47' stroke-width='1.1' fill='none' opacity='0.27'/%3E%3Cpath d='M205,0 Q207,150 205,300 T205,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.19'/%3E%3Cpath d='M250,0 Q252,150 250,300 T250,600' stroke='%23B89968' stroke-width='0.9' fill='none' opacity='0.22'/%3E%3Cpath d='M300,0 Q298,150 300,300 T300,600' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cpath d='M350,0 Q352,150 350,300 T350,600' stroke='%23B89968' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cellipse cx='200' cy='200' rx='40' ry='35' stroke='%238B6F47' stroke-width='1' fill='none' opacity='0.22'/%3E%3Cellipse cx='200' cy='200' rx='32' ry='28' stroke='%238B6F47' stroke-width='0.8' fill='none' opacity='0.19'/%3E%3Cellipse cx='200' cy='200' rx='24' ry='20' stroke='%23B89968' stroke-width='0.7' fill='none' opacity='0.16'/%3E%3Cellipse cx='100' cy='400' rx='35' ry='30' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cellipse cx='100' cy='400' rx='26' ry='22' stroke='%23B89968' stroke-width='0.8' fill='none' opacity='0.17'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23woodsketch2)'/%3E%3C/svg%3E")
+                    `,
+                    backgroundSize: '400px 600px',
+                    border: '1.5px solid #D4C4B0',
+                    boxShadow: `
+                      inset 0 1px 2px rgba(255, 255, 255, 0.4),
+                      0 4px 6px rgba(0, 0, 0, 0.07),
+                      0 8px 16px rgba(139, 111, 71, 0.15),
+                      0 2px 4px rgba(0, 0, 0, 0.05)
+                    `,
+                    borderRadius: '4px',
+                  }}
+                >
+                  <div
+                    className="absolute top-0 left-0 right-0 h-[3px] opacity-60 pointer-events-none"
+                    style={{
+                      background: 'linear-gradient(to right, transparent 0%, rgba(201, 168, 106, 0.4) 50%, transparent 100%)',
+                    }}
+                  />
+                  <h3 className="font-display text-xl font-bold text-charcoal mb-2 relative z-10">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-charcoal relative z-10">
+                    {benefit.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -187,16 +228,13 @@ export default function VendorsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0, duration: 0.5 }}
+              whileHover={{ scale: 1.03, y: -8 }}
+              className="cursor-pointer"
             >
               <div
-                className="relative rounded-2xl shadow-lg p-6 border-2 border-mauve h-full"
+                className="relative rounded-2xl shadow-lg p-6 border-2 border-mauve h-full transition-shadow duration-300 hover:shadow-2xl"
                 style={{
-                  backgroundColor: '#FAF8F5',
-                  backgroundImage: `
-                    linear-gradient(180deg, rgba(255, 255, 255, 0.60) 0%, rgba(255, 255, 255, 0.55) 100%),
-                    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='600'%3E%3Cdefs%3E%3Cpattern id='woodsketch2' x='0' y='0' width='400' height='600' patternUnits='userSpaceOnUse'%3E%3Cpath d='M50,0 Q48,150 50,300 T50,600' stroke='%23B89968' stroke-width='1' fill='none' opacity='0.25'/%3E%3Cpath d='M55,0 Q53,150 55,300 T55,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.17'/%3E%3Cpath d='M100,0 Q102,150 100,300 T100,600' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.22'/%3E%3Cpath d='M150,0 Q148,150 150,300 T150,600' stroke='%23B89968' stroke-width='1' fill='none' opacity='0.24'/%3E%3Cpath d='M155,0 Q157,150 155,300 T155,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.16'/%3E%3Cpath d='M200,0 Q198,150 200,300 T200,600' stroke='%238B6F47' stroke-width='1.1' fill='none' opacity='0.27'/%3E%3Cpath d='M205,0 Q207,150 205,300 T205,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.19'/%3E%3Cpath d='M250,0 Q252,150 250,300 T250,600' stroke='%23B89968' stroke-width='0.9' fill='none' opacity='0.22'/%3E%3Cpath d='M300,0 Q298,150 300,300 T300,600' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cpath d='M350,0 Q352,150 350,300 T350,600' stroke='%23B89968' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cellipse cx='200' cy='200' rx='40' ry='35' stroke='%238B6F47' stroke-width='1' fill='none' opacity='0.22'/%3E%3Cellipse cx='200' cy='200' rx='32' ry='28' stroke='%238B6F47' stroke-width='0.8' fill='none' opacity='0.19'/%3E%3Cellipse cx='200' cy='200' rx='24' ry='20' stroke='%23B89968' stroke-width='0.7' fill='none' opacity='0.16'/%3E%3Cellipse cx='100' cy='400' rx='35' ry='30' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cellipse cx='100' cy='400' rx='26' ry='22' stroke='%23B89968' stroke-width='0.8' fill='none' opacity='0.17'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23woodsketch2)'/%3E%3C/svg%3E")
-                  `,
-                  backgroundSize: '400px 600px',
+                  backgroundColor: 'white',
                 }}
               >
                 <div className="absolute top-0 left-0 right-0 h-[4px] opacity-60" style={{ background: 'linear-gradient(to right, transparent 0%, rgba(201, 168, 106, 0.5) 50%, transparent 100%)' }} />
@@ -211,7 +249,7 @@ export default function VendorsPage() {
                 <ul className="space-y-2 text-black mb-6">
                   <li className="flex items-start gap-2">
                     <motion.svg
-                      className="w-5 h-5 text-accent flex-shrink-0 mt-0.5"
+                      className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       animate={{
@@ -231,7 +269,7 @@ export default function VendorsPage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <motion.svg
-                      className="w-5 h-5 text-accent flex-shrink-0 mt-0.5"
+                      className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       animate={{
@@ -251,7 +289,7 @@ export default function VendorsPage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <motion.svg
-                      className="w-5 h-5 text-accent flex-shrink-0 mt-0.5"
+                      className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       animate={{
@@ -278,16 +316,13 @@ export default function VendorsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0, duration: 0.5 }}
+              whileHover={{ scale: 1.03, y: -8 }}
+              className="cursor-pointer"
             >
               <div
-                className="relative rounded-2xl shadow-lg p-6 border-2 border-accent h-full"
+                className="relative rounded-2xl shadow-lg p-6 border-2 border-accent h-full transition-shadow duration-300 hover:shadow-2xl"
                 style={{
-                  backgroundColor: '#FAF8F5',
-                  backgroundImage: `
-                    linear-gradient(180deg, rgba(255, 255, 255, 0.60) 0%, rgba(255, 255, 255, 0.55) 100%),
-                    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='600'%3E%3Cdefs%3E%3Cpattern id='woodsketch2' x='0' y='0' width='400' height='600' patternUnits='userSpaceOnUse'%3E%3Cpath d='M50,0 Q48,150 50,300 T50,600' stroke='%23B89968' stroke-width='1' fill='none' opacity='0.25'/%3E%3Cpath d='M55,0 Q53,150 55,300 T55,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.17'/%3E%3Cpath d='M100,0 Q102,150 100,300 T100,600' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.22'/%3E%3Cpath d='M150,0 Q148,150 150,300 T150,600' stroke='%23B89968' stroke-width='1' fill='none' opacity='0.24'/%3E%3Cpath d='M155,0 Q157,150 155,300 T155,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.16'/%3E%3Cpath d='M200,0 Q198,150 200,300 T200,600' stroke='%238B6F47' stroke-width='1.1' fill='none' opacity='0.27'/%3E%3Cpath d='M205,0 Q207,150 205,300 T205,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.19'/%3E%3Cpath d='M250,0 Q252,150 250,300 T250,600' stroke='%23B89968' stroke-width='0.9' fill='none' opacity='0.22'/%3E%3Cpath d='M300,0 Q298,150 300,300 T300,600' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cpath d='M350,0 Q352,150 350,300 T350,600' stroke='%23B89968' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cellipse cx='200' cy='200' rx='40' ry='35' stroke='%238B6F47' stroke-width='1' fill='none' opacity='0.22'/%3E%3Cellipse cx='200' cy='200' rx='32' ry='28' stroke='%238B6F47' stroke-width='0.8' fill='none' opacity='0.19'/%3E%3Cellipse cx='200' cy='200' rx='24' ry='20' stroke='%23B89968' stroke-width='0.7' fill='none' opacity='0.16'/%3E%3Cellipse cx='100' cy='400' rx='35' ry='30' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cellipse cx='100' cy='400' rx='26' ry='22' stroke='%23B89968' stroke-width='0.8' fill='none' opacity='0.17'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23woodsketch2)'/%3E%3C/svg%3E")
-                  `,
-                  backgroundSize: '400px 600px',
+                  backgroundColor: 'white',
                 }}
               >
                 <div className="absolute top-0 left-0 right-0 h-[4px] opacity-60" style={{ background: 'linear-gradient(to right, transparent 0%, rgba(201, 168, 106, 0.5) 50%, transparent 100%)' }} />
@@ -302,7 +337,7 @@ export default function VendorsPage() {
                 <ul className="space-y-2 text-black mb-6">
                   <li className="flex items-start gap-2">
                     <motion.svg
-                      className="w-5 h-5 text-accent flex-shrink-0 mt-0.5"
+                      className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       animate={{
@@ -322,7 +357,7 @@ export default function VendorsPage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <motion.svg
-                      className="w-5 h-5 text-accent flex-shrink-0 mt-0.5"
+                      className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       animate={{
@@ -342,7 +377,7 @@ export default function VendorsPage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <motion.svg
-                      className="w-5 h-5 text-accent flex-shrink-0 mt-0.5"
+                      className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       animate={{
@@ -369,16 +404,13 @@ export default function VendorsPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0, duration: 0.5 }}
+              whileHover={{ scale: 1.03, y: -8 }}
+              className="cursor-pointer"
             >
               <div
-                className="relative rounded-2xl shadow-lg p-6 border-2 border-mauve h-full"
+                className="relative rounded-2xl shadow-lg p-6 border-2 border-mauve h-full transition-shadow duration-300 hover:shadow-2xl"
                 style={{
-                  backgroundColor: '#FAF8F5',
-                  backgroundImage: `
-                    linear-gradient(180deg, rgba(255, 255, 255, 0.60) 0%, rgba(255, 255, 255, 0.55) 100%),
-                    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='600'%3E%3Cdefs%3E%3Cpattern id='woodsketch2' x='0' y='0' width='400' height='600' patternUnits='userSpaceOnUse'%3E%3Cpath d='M50,0 Q48,150 50,300 T50,600' stroke='%23B89968' stroke-width='1' fill='none' opacity='0.25'/%3E%3Cpath d='M55,0 Q53,150 55,300 T55,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.17'/%3E%3Cpath d='M100,0 Q102,150 100,300 T100,600' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.22'/%3E%3Cpath d='M150,0 Q148,150 150,300 T150,600' stroke='%23B89968' stroke-width='1' fill='none' opacity='0.24'/%3E%3Cpath d='M155,0 Q157,150 155,300 T155,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.16'/%3E%3Cpath d='M200,0 Q198,150 200,300 T200,600' stroke='%238B6F47' stroke-width='1.1' fill='none' opacity='0.27'/%3E%3Cpath d='M205,0 Q207,150 205,300 T205,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.19'/%3E%3Cpath d='M250,0 Q252,150 250,300 T250,600' stroke='%23B89968' stroke-width='0.9' fill='none' opacity='0.22'/%3E%3Cpath d='M300,0 Q298,150 300,300 T300,600' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cpath d='M350,0 Q352,150 350,300 T350,600' stroke='%23B89968' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cellipse cx='200' cy='200' rx='40' ry='35' stroke='%238B6F47' stroke-width='1' fill='none' opacity='0.22'/%3E%3Cellipse cx='200' cy='200' rx='32' ry='28' stroke='%238B6F47' stroke-width='0.8' fill='none' opacity='0.19'/%3E%3Cellipse cx='200' cy='200' rx='24' ry='20' stroke='%23B89968' stroke-width='0.7' fill='none' opacity='0.16'/%3E%3Cellipse cx='100' cy='400' rx='35' ry='30' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cellipse cx='100' cy='400' rx='26' ry='22' stroke='%23B89968' stroke-width='0.8' fill='none' opacity='0.17'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23woodsketch2)'/%3E%3C/svg%3E")
-                  `,
-                  backgroundSize: '400px 600px',
+                  backgroundColor: 'white',
                 }}
               >
                 <div className="absolute top-0 left-0 right-0 h-[4px] opacity-60" style={{ background: 'linear-gradient(to right, transparent 0%, rgba(201, 168, 106, 0.5) 50%, transparent 100%)' }} />
@@ -393,7 +425,7 @@ export default function VendorsPage() {
                 <ul className="space-y-2 text-black mb-6">
                   <li className="flex items-start gap-2">
                     <motion.svg
-                      className="w-5 h-5 text-accent flex-shrink-0 mt-0.5"
+                      className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       animate={{
@@ -413,7 +445,7 @@ export default function VendorsPage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <motion.svg
-                      className="w-5 h-5 text-accent flex-shrink-0 mt-0.5"
+                      className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       animate={{
@@ -433,7 +465,7 @@ export default function VendorsPage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <motion.svg
-                      className="w-5 h-5 text-accent flex-shrink-0 mt-0.5"
+                      className="w-5 h-5 text-green-700 flex-shrink-0 mt-0.5"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       animate={{
@@ -457,7 +489,7 @@ export default function VendorsPage() {
           </div>
 
           <div className="mt-12 text-center max-w-3xl mx-auto">
-            <Card>
+            <Card className="!border-2 !border-mauve transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer">
               <CardBody>
                 <h3 className="font-display text-xl font-bold text-black mb-3">Additional Options Available</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
@@ -489,7 +521,7 @@ export default function VendorsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card>
+            <Card className="!border !border-green-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer">
               <CardBody>
                 <h3 className="font-display text-xl font-bold text-black mb-4 flex items-center gap-2">
                   <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -526,7 +558,7 @@ export default function VendorsPage() {
               </CardBody>
             </Card>
 
-            <Card>
+            <Card className="!border !border-green-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer">
               <CardBody>
                 <h3 className="font-display text-xl font-bold text-black mb-4 flex items-center gap-2">
                   <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -649,7 +681,7 @@ export default function VendorsPage() {
 
             {/* Application Form */}
             {submitStatus !== 'success' && (
-              <Card>
+              <Card className="!border !border-green-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
                 <CardBody className="p-6 md:p-8">
                   <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                     {/* Personal Information */}
@@ -957,7 +989,7 @@ export default function VendorsPage() {
           </motion.div>
 
           {/* Contact CTA */}
-          <div className="mt-12 text-center p-8 bg-gradient-to-r from-slate-light/20 to-mauve-light/20 rounded-lg">
+          <div className="mt-12 text-center p-8 bg-gradient-to-r from-slate-light/20 to-mauve-light/20 rounded-lg border-2 border-green-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer">
             <h3 className="font-display text-2xl font-bold text-black mb-3">
               Questions About Becoming a Vendor?
             </h3>
@@ -966,12 +998,12 @@ export default function VendorsPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href={`tel:${CONTACT_INFO.phone.replace(/[^\d]/g, '')}`}>
-                <Button variant="primary" size="lg">
+                <Button variant="primary" size="lg" className="!border-2 !border-green-700">
                   Call {CONTACT_INFO.phone}
                 </Button>
               </a>
               <a href="mailto:contactus@mariettaantiquemall.com">
-                <Button variant="accent" size="lg">
+                <Button variant="accent" size="lg" className="!border-2 !border-green-700">
                   Email Us
                 </Button>
               </a>
@@ -980,5 +1012,6 @@ export default function VendorsPage() {
         </div>
       </section>
     </main>
+    </>
   )
 }

@@ -40,24 +40,9 @@ export default function VisitUsSection() {
               />
             </div>
 
-            {/* Parking Info - Wood Grain Card */}
+            {/* Parking Info Card */}
             <div
-              className="mt-6 rounded-lg p-6 transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden"
-              style={{
-                backgroundColor: '#FAF8F5',
-                backgroundImage: `
-                  linear-gradient(180deg, rgba(255, 255, 255, 0.60) 0%, rgba(255, 255, 255, 0.55) 100%),
-                  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='600'%3E%3Cdefs%3E%3Cpattern id='woodsketch2' x='0' y='0' width='400' height='600' patternUnits='userSpaceOnUse'%3E%3Cpath d='M50,0 Q48,150 50,300 T50,600' stroke='%23B89968' stroke-width='1' fill='none' opacity='0.25'/%3E%3Cpath d='M55,0 Q53,150 55,300 T55,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.17'/%3E%3Cpath d='M100,0 Q102,150 100,300 T100,600' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.22'/%3E%3Cpath d='M150,0 Q148,150 150,300 T150,600' stroke='%23B89968' stroke-width='1' fill='none' opacity='0.24'/%3E%3Cpath d='M155,0 Q157,150 155,300 T155,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.16'/%3E%3Cpath d='M200,0 Q198,150 200,300 T200,600' stroke='%238B6F47' stroke-width='1.1' fill='none' opacity='0.27'/%3E%3Cpath d='M205,0 Q207,150 205,300 T205,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.19'/%3E%3Cpath d='M250,0 Q252,150 250,300 T250,600' stroke='%23B89968' stroke-width='0.9' fill='none' opacity='0.22'/%3E%3Cpath d='M300,0 Q298,150 300,300 T300,600' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cpath d='M350,0 Q352,150 350,300 T350,600' stroke='%23B89968' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cellipse cx='200' cy='200' rx='40' ry='35' stroke='%238B6F47' stroke-width='1' fill='none' opacity='0.22'/%3E%3Cellipse cx='200' cy='200' rx='32' ry='28' stroke='%238B6F47' stroke-width='0.8' fill='none' opacity='0.19'/%3E%3Cellipse cx='200' cy='200' rx='24' ry='20' stroke='%23B89968' stroke-width='0.7' fill='none' opacity='0.16'/%3E%3Cellipse cx='100' cy='400' rx='35' ry='30' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cellipse cx='100' cy='400' rx='26' ry='22' stroke='%23B89968' stroke-width='0.8' fill='none' opacity='0.17'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23woodsketch2)'/%3E%3C/svg%3E")
-                `,
-                backgroundSize: '400px 600px',
-                border: '1.5px solid #D4C4B0',
-                boxShadow: `
-                  inset 0 1px 2px rgba(255, 255, 255, 0.4),
-                  0 4px 6px rgba(0, 0, 0, 0.07),
-                  0 8px 16px rgba(139, 111, 71, 0.15),
-                  0 2px 4px rgba(0, 0, 0, 0.05)
-                `,
-              }}
+              className="mt-6 rounded-lg p-6 transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden bg-white border-2 border-[#D4C4B0] shadow-lg"
             >
               {/* Decorative top accent */}
               <div
@@ -126,24 +111,9 @@ export default function VisitUsSection() {
               </div>
             </div>
 
-            {/* Hours - Wood Grain Card */}
+            {/* Hours Card */}
             <div
-              className="rounded-lg p-6 mb-6 transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden"
-              style={{
-                backgroundColor: '#FAF8F5',
-                backgroundImage: `
-                  linear-gradient(180deg, rgba(255, 255, 255, 0.60) 0%, rgba(255, 255, 255, 0.55) 100%),
-                  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='600'%3E%3Cdefs%3E%3Cpattern id='woodsketch2' x='0' y='0' width='400' height='600' patternUnits='userSpaceOnUse'%3E%3Cpath d='M50,0 Q48,150 50,300 T50,600' stroke='%23B89968' stroke-width='1' fill='none' opacity='0.25'/%3E%3Cpath d='M55,0 Q53,150 55,300 T55,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.17'/%3E%3Cpath d='M100,0 Q102,150 100,300 T100,600' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.22'/%3E%3Cpath d='M150,0 Q148,150 150,300 T150,600' stroke='%23B89968' stroke-width='1' fill='none' opacity='0.24'/%3E%3Cpath d='M155,0 Q157,150 155,300 T155,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.16'/%3E%3Cpath d='M200,0 Q198,150 200,300 T200,600' stroke='%238B6F47' stroke-width='1.1' fill='none' opacity='0.27'/%3E%3Cpath d='M205,0 Q207,150 205,300 T205,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.19'/%3E%3Cpath d='M250,0 Q252,150 250,300 T250,600' stroke='%23B89968' stroke-width='0.9' fill='none' opacity='0.22'/%3E%3Cpath d='M300,0 Q298,150 300,300 T300,600' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cpath d='M350,0 Q352,150 350,300 T350,600' stroke='%23B89968' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cellipse cx='200' cy='200' rx='40' ry='35' stroke='%238B6F47' stroke-width='1' fill='none' opacity='0.22'/%3E%3Cellipse cx='200' cy='200' rx='32' ry='28' stroke='%238B6F47' stroke-width='0.8' fill='none' opacity='0.19'/%3E%3Cellipse cx='200' cy='200' rx='24' ry='20' stroke='%23B89968' stroke-width='0.7' fill='none' opacity='0.16'/%3E%3Cellipse cx='100' cy='400' rx='35' ry='30' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cellipse cx='100' cy='400' rx='26' ry='22' stroke='%23B89968' stroke-width='0.8' fill='none' opacity='0.17'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23woodsketch2)'/%3E%3C/svg%3E")
-                `,
-                backgroundSize: '400px 600px',
-                border: '1.5px solid #D4C4B0',
-                boxShadow: `
-                  inset 0 1px 2px rgba(255, 255, 255, 0.4),
-                  0 4px 6px rgba(0, 0, 0, 0.07),
-                  0 8px 16px rgba(139, 111, 71, 0.15),
-                  0 2px 4px rgba(0, 0, 0, 0.05)
-                `,
-              }}
+              className="rounded-lg p-6 mb-6 transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden bg-white border-2 border-[#D4C4B0] shadow-lg"
             >
               {/* Decorative top accent */}
               <div
@@ -191,24 +161,9 @@ export default function VisitUsSection() {
               </div>
             </div>
 
-            {/* Contact Info - Wood Grain Card */}
+            {/* Contact Info Card */}
             <div
-              className="rounded-lg p-6 mb-6 transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden"
-              style={{
-                backgroundColor: '#FAF8F5',
-                backgroundImage: `
-                  linear-gradient(180deg, rgba(255, 255, 255, 0.60) 0%, rgba(255, 255, 255, 0.55) 100%),
-                  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='600'%3E%3Cdefs%3E%3Cpattern id='woodsketch2' x='0' y='0' width='400' height='600' patternUnits='userSpaceOnUse'%3E%3Cpath d='M50,0 Q48,150 50,300 T50,600' stroke='%23B89968' stroke-width='1' fill='none' opacity='0.25'/%3E%3Cpath d='M55,0 Q53,150 55,300 T55,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.17'/%3E%3Cpath d='M100,0 Q102,150 100,300 T100,600' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.22'/%3E%3Cpath d='M150,0 Q148,150 150,300 T150,600' stroke='%23B89968' stroke-width='1' fill='none' opacity='0.24'/%3E%3Cpath d='M155,0 Q157,150 155,300 T155,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.16'/%3E%3Cpath d='M200,0 Q198,150 200,300 T200,600' stroke='%238B6F47' stroke-width='1.1' fill='none' opacity='0.27'/%3E%3Cpath d='M205,0 Q207,150 205,300 T205,600' stroke='%23C9A86A' stroke-width='0.7' fill='none' opacity='0.19'/%3E%3Cpath d='M250,0 Q252,150 250,300 T250,600' stroke='%23B89968' stroke-width='0.9' fill='none' opacity='0.22'/%3E%3Cpath d='M300,0 Q298,150 300,300 T300,600' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cpath d='M350,0 Q352,150 350,300 T350,600' stroke='%23B89968' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cellipse cx='200' cy='200' rx='40' ry='35' stroke='%238B6F47' stroke-width='1' fill='none' opacity='0.22'/%3E%3Cellipse cx='200' cy='200' rx='32' ry='28' stroke='%238B6F47' stroke-width='0.8' fill='none' opacity='0.19'/%3E%3Cellipse cx='200' cy='200' rx='24' ry='20' stroke='%23B89968' stroke-width='0.7' fill='none' opacity='0.16'/%3E%3Cellipse cx='100' cy='400' rx='35' ry='30' stroke='%23A0826D' stroke-width='0.9' fill='none' opacity='0.21'/%3E%3Cellipse cx='100' cy='400' rx='26' ry='22' stroke='%23B89968' stroke-width='0.8' fill='none' opacity='0.17'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23woodsketch2)'/%3E%3C/svg%3E")
-                `,
-                backgroundSize: '400px 600px',
-                border: '1.5px solid #D4C4B0',
-                boxShadow: `
-                  inset 0 1px 2px rgba(255, 255, 255, 0.4),
-                  0 4px 6px rgba(0, 0, 0, 0.07),
-                  0 8px 16px rgba(139, 111, 71, 0.15),
-                  0 2px 4px rgba(0, 0, 0, 0.05)
-                `,
-              }}
+              className="rounded-lg p-6 mb-6 transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden bg-white border-2 border-[#D4C4B0] shadow-lg"
             >
               {/* Decorative top accent */}
               <div
@@ -333,7 +288,7 @@ export default function VisitUsSection() {
             </div>
 
             {/* Landmarks */}
-            <div className="mt-6 p-4 bg-accent/10 rounded-lg border border-black">
+            <div className="mt-6 p-4 bg-white rounded-lg border-2 border-[#D4C4B0] shadow-lg">
               <p className="text-sm text-black">
                 <span className="font-semibold text-black">Nearby Landmarks:</span> Famous Big
                 Chicken (2 min), Marietta Square (10 min), Marietta Museum of History (12 min)

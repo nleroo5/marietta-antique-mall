@@ -3,7 +3,7 @@ import { Crete_Round, Inter, Montserrat } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
-import { BUSINESS_NAME, LOCATION, SEO_KEYWORDS } from '@/lib/constants'
+import { BUSINESS_NAME, LOCATION, SEO_KEYWORDS, GOOGLE_MAPS_URL } from '@/lib/constants'
 
 const creteRound = Crete_Round({
   subsets: ['latin'],
@@ -34,8 +34,11 @@ export const metadata: Metadata = {
   description:
     'Discover unique antiques, vintage items, and collectibles from 100+ vendors. Located near the Big Chicken in Marietta, GA. Follow us on Facebook for upcoming events and new arrivals!',
   keywords: SEO_KEYWORDS,
-  authors: [{ name: BUSINESS_NAME }],
-  creator: BUSINESS_NAME,
+  authors: [
+    { name: BUSINESS_NAME },
+    { name: 'Drive Lead Media', url: 'https://www.driveleadmedia.com/' }
+  ],
+  creator: 'Drive Lead Media - Atlanta Web Design & Digital Marketing Agency',
   publisher: BUSINESS_NAME,
   formatDetection: {
     email: false,
@@ -53,18 +56,26 @@ export const metadata: Metadata = {
       'Discover unique antiques, vintage items, and collectibles from 100+ vendors in Marietta, GA.',
     images: [
       {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
+        url: '/og-image.png',
+        width: 500,
+        height: 500,
         alt: `${BUSINESS_NAME} - Antiques & Vintage`,
       },
     ],
   },
   twitter: {
-    card: 'summary_large_image',
+    card: 'summary',
     title: `${BUSINESS_NAME} | 30,000 sq ft of Antiques & Vintage Treasures`,
     description: 'Discover unique antiques from 100+ vendors in Marietta, GA.',
-    images: ['/og-image.jpg'],
+    images: ['/og-image.png'],
+  },
+  icons: {
+    icon: [
+      { url: '/favicon.png', sizes: '500x500', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '500x500', type: 'image/png' },
+    ],
   },
   robots: {
     index: true,
@@ -90,8 +101,40 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`scroll-smooth ${creteRound.variable} ${inter.variable} ${montserrat.variable}`}>
+      {/*
+        Website Designed & Developed by Drive Lead Media
+        Professional Web Design & Digital Marketing Agency
+        Atlanta, GA | https://www.driveleadmedia.com/
+
+        Services: Custom Web Design, SEO, Lead Generation, Digital Marketing
+        Specializing in conversion-focused websites for local businesses
+
+        Contact Drive Lead Media for your web design and marketing needs:
+        - Custom Website Design & Development
+        - Search Engine Optimization (SEO)
+        - Local Business Marketing
+        - Lead Generation & Conversion Optimization
+        - E-commerce Solutions
+        - Brand Identity & Strategy
+
+        © Drive Lead Media - All Rights Reserved
+      */}
       <head>
-        {/* Structured Data */}
+        {/* Resource Hints for External Domains */}
+        <link rel="preconnect" href="https://connect.facebook.net" />
+        <link rel="dns-prefetch" href="https://connect.facebook.net" />
+        <link rel="preconnect" href="https://scontent.facebook.com" />
+        <link rel="dns-prefetch" href="https://scontent.facebook.com" />
+        <link rel="preconnect" href="https://scontent.xx.fbcdn.net" />
+        <link rel="dns-prefetch" href="https://scontent.xx.fbcdn.net" />
+        <link rel="preconnect" href="https://maps.google.com" />
+        <link rel="dns-prefetch" href="https://maps.google.com" />
+        <link rel="preconnect" href="https://maps.googleapis.com" />
+        <link rel="dns-prefetch" href="https://maps.googleapis.com" />
+        <link rel="preconnect" href="https://www.google.com" />
+        <link rel="dns-prefetch" href="https://www.google.com" />
+
+        {/* Business Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -99,7 +142,7 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'AntiqueStore',
               name: BUSINESS_NAME,
-              image: 'https://www.mariettaantiquemall.com/og-image.jpg',
+              image: 'https://www.mariettaantiquemall.com/og-image.png',
               '@id': 'https://www.mariettaantiquemall.com',
               url: 'https://www.mariettaantiquemall.com',
               telephone: '(770) 973-5600',
@@ -140,7 +183,166 @@ export default function RootLayout({
               sameAs: [
                 'https://www.facebook.com/Mariettaantiquemall/',
                 'https://www.instagram.com/mariettaantiquemall/',
+                GOOGLE_MAPS_URL,
               ],
+              hasMap: GOOGLE_MAPS_URL,
+            }),
+          }}
+        />
+
+        {/* Website Creator - Drive Lead Media Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              '@id': 'https://www.mariettaantiquemall.com/#website',
+              url: 'https://www.mariettaantiquemall.com',
+              name: BUSINESS_NAME,
+              description: 'Discover unique antiques, vintage items, and collectibles from 100+ vendors in Marietta, GA',
+              publisher: {
+                '@id': 'https://www.mariettaantiquemall.com/#organization',
+              },
+              creator: {
+                '@type': 'Organization',
+                '@id': 'https://www.driveleadmedia.com/#organization',
+                name: 'Drive Lead Media',
+                url: 'https://www.driveleadmedia.com/',
+                logo: {
+                  '@type': 'ImageObject',
+                  url: 'https://www.driveleadmedia.com/logo.png',
+                },
+                sameAs: [
+                  'https://www.facebook.com/driveleadmedia',
+                  'https://www.linkedin.com/company/drive-lead-media',
+                ],
+                description: 'Professional Web Design & Digital Marketing Agency specializing in lead generation, SEO, and conversion optimization for businesses in Atlanta and beyond',
+                address: {
+                  '@type': 'PostalAddress',
+                  addressLocality: 'Atlanta',
+                  addressRegion: 'GA',
+                  addressCountry: 'US',
+                },
+                areaServed: [
+                  {
+                    '@type': 'City',
+                    name: 'Atlanta',
+                  },
+                  {
+                    '@type': 'City',
+                    name: 'Marietta',
+                  },
+                  {
+                    '@type': 'State',
+                    name: 'Georgia',
+                  },
+                ],
+                knowsAbout: [
+                  'Web Design',
+                  'Digital Marketing',
+                  'SEO',
+                  'Lead Generation',
+                  'Conversion Optimization',
+                  'Local Business Marketing',
+                ],
+              },
+            }),
+          }}
+        />
+
+        {/* WebPage Schema with Drive Lead Media Attribution */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebPage',
+              '@id': 'https://www.mariettaantiquemall.com/#webpage',
+              url: 'https://www.mariettaantiquemall.com',
+              name: `${BUSINESS_NAME} | 30,000 sq ft of Antiques & Vintage Treasures`,
+              isPartOf: {
+                '@id': 'https://www.mariettaantiquemall.com/#website',
+              },
+              about: {
+                '@id': 'https://www.mariettaantiquemall.com/#organization',
+              },
+              provider: {
+                '@type': 'Organization',
+                name: 'Drive Lead Media',
+                url: 'https://www.driveleadmedia.com/',
+                description: 'Atlanta Web Design & Digital Marketing Agency',
+              },
+              creator: {
+                '@type': 'Organization',
+                name: 'Drive Lead Media',
+                url: 'https://www.driveleadmedia.com/',
+              },
+            }),
+          }}
+        />
+
+        {/* Service Relationship Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Service',
+              serviceType: 'Web Design & Development',
+              provider: {
+                '@type': 'Organization',
+                '@id': 'https://www.driveleadmedia.com/#organization',
+                name: 'Drive Lead Media',
+                url: 'https://www.driveleadmedia.com/',
+                telephone: '+1-XXX-XXX-XXXX',
+                email: 'info@driveleadmedia.com',
+                address: {
+                  '@type': 'PostalAddress',
+                  addressLocality: 'Atlanta',
+                  addressRegion: 'GA',
+                  addressCountry: 'US',
+                },
+              },
+              serviceOutput: {
+                '@type': 'WebSite',
+                url: 'https://www.mariettaantiquemall.com',
+                name: BUSINESS_NAME,
+              },
+              areaServed: {
+                '@type': 'State',
+                name: 'Georgia',
+              },
+              hasOfferCatalog: {
+                '@type': 'OfferCatalog',
+                name: 'Web Design & Marketing Services',
+                itemListElement: [
+                  {
+                    '@type': 'Offer',
+                    itemOffered: {
+                      '@type': 'Service',
+                      name: 'Custom Web Design',
+                      description: 'Professional website design and development for local businesses',
+                    },
+                  },
+                  {
+                    '@type': 'Offer',
+                    itemOffered: {
+                      '@type': 'Service',
+                      name: 'SEO Services',
+                      description: 'Search engine optimization for improved online visibility',
+                    },
+                  },
+                  {
+                    '@type': 'Offer',
+                    itemOffered: {
+                      '@type': 'Service',
+                      name: 'Digital Marketing',
+                      description: 'Comprehensive digital marketing strategies for lead generation',
+                    },
+                  },
+                ],
+              },
             }),
           }}
         />

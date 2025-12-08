@@ -68,7 +68,6 @@ export default function HeroBanner() {
         loop
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
-        poster="/images/hero-poster.jpg"
         onLoadedData={() => setIsVideoLoaded(true)}
       >
         <source src="/videos/drone-optimized.mp4" type="video/mp4" />

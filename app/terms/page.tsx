@@ -8,26 +8,48 @@ export default function TermsPage() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-slate-light/50 to-white py-16 md:py-24">
+      <section className="bg-gradient-to-b from-slate-light/50 to-white py-12 md:py-16">
+        <style jsx global>{`
+          @keyframes shimmer {
+            0% {
+              background-position: -200% center;
+            }
+            100% {
+              background-position: 200% center;
+            }
+          }
+          .shimmer-text {
+            background: linear-gradient(
+              90deg,
+              rgba(0, 0, 0, 1) 0%,
+              rgba(0, 0, 0, 1) 40%,
+              rgba(239, 195, 147, 1) 50%,
+              rgba(0, 0, 0, 1) 60%,
+              rgba(0, 0, 0, 1) 100%
+            );
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 4s linear infinite;
+          }
+        `}</style>
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto">
-            <Badge variant="mauve" className="mb-4">
-              Legal
-            </Badge>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6">
+            <h1 className="shimmer-text font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
               Terms of Service
             </h1>
-            <p className="text-xl text-black mb-8">
-              Last updated: December 5, 2025
+            <p className="text-lg text-black/70">
+              Last updated: November 2025
             </p>
           </div>
         </div>
       </section>
 
       {/* Terms Content */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-bg-primary">
         <div className="container-custom max-w-4xl">
-          <Card>
+          <Card className="!border-2 !border-mauve">
             <CardBody className="prose prose-lg max-w-none">
               <h2 className="font-display text-2xl font-bold text-black mb-4">
                 Agreement to Terms
@@ -179,7 +201,7 @@ export default function TermsPage() {
               </h2>
               <p className="text-black mb-6">
                 Your use of our website is also governed by our Privacy Policy. Please review our{' '}
-                <a href="/privacy" className="text-black hover:text-black underline">
+                <a href="/privacy" className="text-mauve-dark hover:text-mauve underline transition-colors font-semibold">
                   Privacy Policy
                 </a>{' '}
                 to understand how we collect, use, and protect your personal information.
@@ -229,7 +251,7 @@ export default function TermsPage() {
               <p className="text-black mb-4">
                 If you have questions or concerns about these Terms of Service, please contact us:
               </p>
-              <div className="bg-mauve-light/10 p-6 rounded-lg">
+              <div className="bg-mauve-light/30 p-6 rounded-lg border-2 border-mauve">
                 <p className="text-black mb-2">
                   <strong>{BUSINESS_NAME}</strong>
                 </p>
@@ -242,7 +264,7 @@ export default function TermsPage() {
                   <strong>Phone:</strong>{' '}
                   <a
                     href={`tel:${CONTACT_INFO.phone}`}
-                    className="text-black hover:text-black underline"
+                    className="text-mauve-dark hover:text-mauve underline transition-colors"
                   >
                     {CONTACT_INFO.phone}
                   </a>
@@ -251,14 +273,14 @@ export default function TermsPage() {
                   <strong>Email:</strong>{' '}
                   <a
                     href={`mailto:${CONTACT_INFO.email}`}
-                    className="text-black hover:text-black underline"
+                    className="text-mauve-dark hover:text-mauve underline transition-colors"
                   >
                     {CONTACT_INFO.email}
                   </a>
                 </p>
               </div>
 
-              <div className="mt-8 p-4 bg-mauve-light/20 rounded-lg">
+              <div className="mt-8 p-6 bg-mint-light/30 rounded-lg border-2 border-mint">
                 <p className="text-sm text-black italic">
                   By using this website or visiting {BUSINESS_NAME}, you acknowledge that you have
                   read, understood, and agree to be bound by these Terms of Service.
