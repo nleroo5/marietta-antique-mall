@@ -19,7 +19,7 @@ export default function ShopPage() {
   }
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-100/50">
       <style jsx global>{`
         @keyframes shimmer {
           0% {
