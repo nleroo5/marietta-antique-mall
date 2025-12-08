@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import Button from '@/components/ui/Button'
+import Card from '@/components/ui/Card'
 import { BUSINESS_NAME } from '@/lib/constants'
 
 const galleryImages = [
@@ -64,6 +66,19 @@ export default function GalleryPage() {
     if (selectedImage !== null) {
       setSelectedImage(selectedImage === galleryImages.length - 1 ? 0 : selectedImage + 1)
     }
+  }
+
+  const handleShopNowClick = () => {
+    // Track the click event
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'click', {
+        event_category: 'Facebook Marketplace',
+        event_label: 'Gallery Page CTA',
+        value: 1,
+      })
+    }
+
+    window.location.href = '/shop'
   }
 
   return (
@@ -139,6 +154,30 @@ export default function GalleryPage() {
               Items pictured may no longer be available.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Shop Online CTA */}
+      <section className="section-padding bg-gradient-to-b from-white to-slate-light/50">
+        <div className="container-custom">
+          <Card className="!border-2 !border-mauve max-w-3xl mx-auto text-center">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-black mb-4">
+              Want to Buy Something You See?
+            </h2>
+            <p className="text-lg text-black mb-8">
+              Many of our vendors sell items online through our Facebook Marketplace Group. Browse hundreds of available items with photos, prices, and descriptions.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                variant="primary"
+                size="lg"
+                onClick={handleShopNowClick}
+                className="w-full sm:w-auto min-w-[280px]"
+              >
+                Shop Our Facebook Marketplace
+              </Button>
+            </div>
+          </Card>
         </div>
       </section>
 

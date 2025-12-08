@@ -147,6 +147,11 @@ export default function Footer() {
               <h4 className="font-display text-xs font-bold mb-2 text-black">Links</h4>
               <ul className="space-y-1 text-xs text-black">
                 <li>
+                  <Link href="/shop" className="hover:text-[#cd7f32] hover:underline transition-colors">
+                    Shop
+                  </Link>
+                </li>
+                <li>
                   <Link href="/vendors" className="hover:text-[#cd7f32] hover:underline transition-colors">
                     Vendors
                   </Link>
@@ -179,6 +184,11 @@ export default function Footer() {
                 <li>
                   <Link href="/" className="hover:text-[#cd7f32] transition-colors">
                     Home
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/shop" className="hover:text-[#cd7f32] transition-colors">
+                    Shop Online
                   </Link>
                 </li>
                 <li>
