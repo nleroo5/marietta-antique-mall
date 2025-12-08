@@ -53,7 +53,7 @@ export default function ShopPage() {
             <h1 className="shimmer-text font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Shop Our Facebook Marketplace
             </h1>
-            <p className="text-xl text-black leading-relaxed">
+            <p className="text-base md:text-lg text-black/80 leading-relaxed max-w-3xl mx-auto">
               Browse hundreds of unique antiques, vintage finds, and collectibles from our 100+ vendors. New items added daily!
             </p>
           </div>
