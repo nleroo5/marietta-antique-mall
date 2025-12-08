@@ -64,7 +64,7 @@ export default function ShopPage() {
       <section className="section-padding">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto">
-            <Card hover className="!border-[3px] !border-slate-200 text-center !p-12">
+            <Card hover className="!border-[3px] !border-mauve text-center !p-12">
               <div className="mb-10">
                 <svg
                   className="w-20 h-20 mx-auto mb-6 text-[#1877F2] drop-shadow-[0_0_15px_rgba(24,119,242,0.5)]"
@@ -120,7 +120,7 @@ export default function ShopPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <Card hover className="!border-[3px] !border-slate-200 text-center !p-8">
+            <Card hover className="!border-[3px] !border-mauve text-center !p-8">
               <div className="flex flex-col items-center">
                 <h3 className="font-display text-xl font-bold text-black mb-3">
                   Join the Group
@@ -131,7 +131,7 @@ export default function ShopPage() {
               </div>
             </Card>
 
-            <Card hover className="!border-[3px] !border-slate-200 text-center !p-8">
+            <Card hover className="!border-[3px] !border-mauve text-center !p-8">
               <div className="flex flex-col items-center">
                 <h3 className="font-display text-xl font-bold text-black mb-3">
                   Browse & Message
@@ -142,7 +142,7 @@ export default function ShopPage() {
               </div>
             </Card>
 
-            <Card hover className="!border-[3px] !border-slate-200 text-center !p-8">
+            <Card hover className="!border-[3px] !border-mauve text-center !p-8">
               <div className="flex flex-col items-center">
                 <h3 className="font-display text-xl font-bold text-black mb-3">
                   Pick Up In-Store
