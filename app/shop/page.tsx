@@ -1,32 +1,58 @@
 'use client'
 
-import Image from 'next/image'
+import { useEffect, useState } from 'react'
+import Script from 'next/script'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
-import { BUSINESS_NAME, CONTACT_INFO, LOCATION } from '@/lib/constants'
-
-// Featured marketplace items (using existing gallery images as samples)
-const featuredItems = [
-  { src: '/images/vendors/marietta-antique-mall-vintage-furniture-display-05.jpg', alt: 'Vintage furniture available' },
-  { src: '/images/vendors/marietta-antiques-vintage-collectibles-store-03.jpg', alt: 'Vintage collectibles for sale' },
-  { src: '/images/vendors/atlanta-vintage-finds-antique-mall-marietta-02.jpg', alt: 'Antique finds in stock' },
-  { src: '/images/vendors/marietta-vintage-store-antique-collectibles-08.jpg', alt: 'Collectibles available now' },
-  { src: '/images/vendors/marietta-antique-mall-vintage-home-decor-16.jpg', alt: 'Vintage home decor items' },
-  { src: '/images/vendors/atlanta-antique-store-marietta-vintage-treasures-06.jpg', alt: 'Antique treasures for sale' },
-]
+import { BUSINESS_NAME, LOCATION } from '@/lib/constants'
 
 export default function ShopPage() {
-  const handleMarketplaceClick = () => {
-    // Track the click event (Meta Pixel event will be added later)
+  const [isFBLoaded, setIsFBLoaded] = useState(false)
+  const [hasError, setHasError] = useState(false)
+
+  useEffect(() => {
+    // Set a timeout to show error state if Facebook SDK doesn't load
+    const timer = setTimeout(() => {
+      if (!isFBLoaded) {
+        setHasError(true)
+      }
+    }, 15000)
+
+    return () => clearTimeout(timer)
+  }, [isFBLoaded])
+
+  useEffect(() => {
+    // Parse Facebook widgets when SDK loads
+    if (isFBLoaded && window.FB && !hasError) {
+      try {
+        window.FB.XFBML.parse()
+      } catch (error) {
+        console.error('Error parsing Facebook group plugin:', error)
+        setHasError(true)
+      }
+    }
+  }, [isFBLoaded, hasError])
+
+  const handleScriptLoad = () => {
+    setIsFBLoaded(true)
+    setHasError(false)
+  }
+
+  const handleScriptError = () => {
+    setHasError(true)
+    setIsFBLoaded(false)
+  }
+
+  const handleVisitGroupClick = () => {
+    // Track the click event
     if (typeof window !== 'undefined' && (window as any).gtag) {
       (window as any).gtag('event', 'click', {
         event_category: 'Facebook Marketplace',
-        event_label: 'Shop Page CTA',
+        event_label: 'Visit Group Button',
         value: 1,
       })
     }
 
-    // Open Facebook Marketplace Group
     window.open('https://www.facebook.com/groups/MAM.Marketplace/', '_blank')
   }
 
@@ -35,7 +61,7 @@ export default function ShopPage() {
     if (typeof window !== 'undefined' && (window as any).gtag) {
       (window as any).gtag('event', 'click', {
         event_category: 'Visit Store',
-        event_label: 'Shop Page Secondary CTA',
+        event_label: 'Shop Page CTA',
         value: 1,
       })
     }
@@ -45,6 +71,15 @@ export default function ShopPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-light/20 to-white">
+      {/* Facebook SDK */}
+      <div id="fb-root" />
+      <Script
+        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"
+        strategy="lazyOnload"
+        onLoad={handleScriptLoad}
+        onError={handleScriptError}
+      />
+
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-b from-slate-light/50 to-transparent">
         <div className="container-custom">
@@ -56,28 +91,8 @@ export default function ShopPage() {
               Browse hundreds of unique antiques, vintage finds, and collectibles from our 100+ vendors. New items added daily!
             </p>
 
-            {/* Primary CTA */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-              <Button
-                variant="primary"
-                size="lg"
-                onClick={handleMarketplaceClick}
-                className="w-full sm:w-auto min-w-[280px]"
-              >
-                Browse Items for Sale
-              </Button>
-              <Button
-                variant="secondary"
-                size="lg"
-                onClick={handleVisitStoreClick}
-                className="w-full sm:w-auto min-w-[280px]"
-              >
-                Visit Us In-Store
-              </Button>
-            </div>
-
             {/* Trust Indicators */}
-            <div className="flex flex-wrap justify-center gap-6 text-sm text-black">
+            <div className="flex flex-wrap justify-center gap-6 text-sm text-black mb-8">
               <div className="flex items-center gap-2">
                 <svg className="w-5 h-5 text-accent" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
@@ -101,49 +116,102 @@ export default function ShopPage() {
         </div>
       </section>
 
-      {/* Featured Items Preview */}
+      {/* Facebook Group Feed */}
       <section className="section-padding">
         <div className="container-custom">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-black mb-4">
-              What You'll Find
+              Browse Available Items
             </h2>
             <p className="text-lg text-black max-w-2xl mx-auto">
-              A constantly rotating selection of treasures from furniture to jewelry, vintage signs to collectibles
+              See what's currently available from our vendors in our Facebook Marketplace Group
             </p>
           </div>
 
-          {/* Image Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-12">
-            {featuredItems.map((item, index) => (
-              <div
-                key={index}
-                className="relative aspect-square rounded-lg overflow-hidden border-2 border-mauve hover:shadow-xl transition-all duration-300 group cursor-pointer"
-                onClick={handleMarketplaceClick}
-              >
-                <Image
-                  src={item.src}
-                  alt={item.alt}
-                  fill
-                  sizes="(max-width: 768px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-300 group-hover:scale-110"
-                  quality={75}
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
+          {/* Loading State */}
+          {!isFBLoaded && !hasError && (
+            <div className="flex justify-center">
+              <div className="w-full max-w-[500px]">
+                <div className="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-mauve animate-pulse">
+                  <div className="bg-gray-200 h-[800px]" />
+                </div>
+                <div className="flex justify-center mt-4">
+                  <div className="text-black text-sm">
+                    Loading Facebook Marketplace feed...
+                  </div>
+                </div>
               </div>
-            ))}
-          </div>
+            </div>
+          )}
 
-          {/* CTA Repeat */}
-          <div className="text-center">
-            <Button
-              variant="primary"
-              size="lg"
-              onClick={handleMarketplaceClick}
-              className="min-w-[280px]"
-            >
-              See What's Available Now
-            </Button>
+          {/* Error State */}
+          {hasError && (
+            <div className="flex justify-center">
+              <div className="w-full max-w-[500px]">
+                <div className="bg-white rounded-xl shadow-lg p-8 border-2 border-mauve">
+                  <svg
+                    className="w-12 h-12 text-black mx-auto mb-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <h4 className="font-display text-xl font-bold text-black mb-2 text-center">
+                    Unable to Load Facebook Group Feed
+                  </h4>
+                  <p className="text-black text-sm mb-6 text-center">
+                    Visit our Facebook Marketplace Group directly to see all available items.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                    <Button
+                      variant="primary"
+                      size="md"
+                      onClick={handleVisitGroupClick}
+                    >
+                      Visit Facebook Group
+                    </Button>
+                    <Button
+                      variant="secondary"
+                      size="md"
+                      onClick={handleVisitStoreClick}
+                    >
+                      Visit Us In-Store
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Facebook Group Plugin */}
+          <div className={`flex justify-center ${!isFBLoaded || hasError ? 'hidden' : ''}`}>
+            <div className="w-full max-w-[500px]">
+              <div className="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-mauve">
+                <div
+                  className="fb-group"
+                  data-href="https://www.facebook.com/groups/MAM.Marketplace/"
+                  data-width="500"
+                  data-show-metadata="true"
+                  data-show-social-context="true"
+                />
+              </div>
+              <div className="flex justify-center mt-6">
+                <Button
+                  variant="primary"
+                  size="lg"
+                  onClick={handleVisitGroupClick}
+                  className="min-w-[280px]"
+                >
+                  Join Our Marketplace Group
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -304,10 +372,10 @@ export default function ShopPage() {
               <Button
                 variant="primary"
                 size="lg"
-                onClick={handleMarketplaceClick}
+                onClick={handleVisitGroupClick}
                 className="w-full sm:w-auto min-w-[280px]"
               >
-                Browse Items for Sale
+                Join Marketplace Group
               </Button>
             </div>
           </Card>
@@ -315,4 +383,15 @@ export default function ShopPage() {
       </section>
     </main>
   )
+}
+
+// Type declaration for Facebook SDK
+declare global {
+  interface Window {
+    FB?: {
+      XFBML: {
+        parse: (element?: HTMLElement) => void
+      }
+    }
+  }
 }
