@@ -1,10 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Lazy initialization to avoid build-time errors
+let resend: Resend | null = null
+function getResendClient() {
+  if (!resend && process.env.RESEND_API_KEY) {
+    resend = new Resend(process.env.RESEND_API_KEY)
+  }
+  return resend
+}
 
 export async function POST(request: NextRequest) {
   try {
+    // Check if API key is configured
+    if (!process.env.RESEND_API_KEY) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: 'Email service is not configured. Please call (770) 973-5600 to submit your application.',
+        },
+        { status: 503 }
+      )
+    }
+
     const formData = await request.formData()
 
     // Extract form fields
@@ -321,7 +339,12 @@ export async function POST(request: NextRequest) {
     `
 
     // Send email via Resend
-    const { data, error } = await resend.emails.send({
+    const resendClient = getResendClient()
+    if (!resendClient) {
+      throw new Error('Email service is not available')
+    }
+
+    const { data, error } = await resendClient.emails.send({
       from: 'Marietta Antique Mall <applications@resend.dev>', // Will use onboarding@resend.dev until domain verified
       to: 'contactus@mariettaantiques.com',
       replyTo: email,
