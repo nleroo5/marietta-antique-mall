@@ -70,6 +70,7 @@ export default function HeroBanner() {
         className="absolute inset-0 w-full h-full object-cover"
         onLoadedData={() => setIsVideoLoaded(true)}
       >
+        <source src="/videos/drone-optimized.webm" type="video/webm" />
         <source src="/videos/drone-optimized.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>

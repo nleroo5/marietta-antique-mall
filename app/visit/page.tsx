@@ -211,6 +211,7 @@ export default function VisitPage() {
                     controls
                     playsInline
                   >
+                    <source src="/videos/drone-visit.webm" type="video/webm" />
                     <source src="/videos/drone-visit.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
