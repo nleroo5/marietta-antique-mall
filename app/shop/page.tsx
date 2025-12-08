@@ -1,46 +1,136 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import Script from 'next/script'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
-import { BUSINESS_NAME, LOCATION } from '@/lib/constants'
+import { LOCATION } from '@/lib/constants'
 
 export default function ShopPage() {
-  const [isFBLoaded, setIsFBLoaded] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
   const [hasError, setHasError] = useState(false)
+  const [isWidgetRendered, setIsWidgetRendered] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const parseAttemptRef = useRef(0)
+  const mountTimeRef = useRef(Date.now())
+
+  // Intersection Observer for lazy loading
+  useEffect(() => {
+    if (!containerRef.current) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true)
+          }
+        })
+      },
+      { rootMargin: '50px' }
+    )
+
+    observer.observe(containerRef.current)
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current)
+      }
+    }
+  }, [])
+
+  // Reset state when component mounts (important for navigation)
+  useEffect(() => {
+    // Update mount time on each mount
+    mountTimeRef.current = Date.now()
+
+    // Reset states for fresh render on each mount
+    setIsLoaded(false)
+    setHasError(false)
+    setIsWidgetRendered(false)
+    parseAttemptRef.current = 0
+
+    // Check if FB SDK is already loaded from previous page visit
+    if (window.FB && isVisible) {
+      setIsLoaded(true)
+      // Force immediate parse since SDK is already available
+      setTimeout(() => {
+        if (window.FB && containerRef.current) {
+          try {
+            window.FB.XFBML.parse(containerRef.current)
+            setIsWidgetRendered(true)
+          } catch (error) {
+            console.error('Error parsing Facebook widget on remount:', error)
+          }
+        }
+      }, 100)
+    }
+
+    // Cleanup function when component unmounts
+    return () => {
+      // Clear any pending timers
+      setIsLoaded(false)
+      setHasError(false)
+      setIsWidgetRendered(false)
+    }
+  }, [isVisible]) // Re-run when visibility changes
 
   useEffect(() => {
     // Set a timeout to show error state if Facebook SDK doesn't load
     const timer = setTimeout(() => {
-      if (!isFBLoaded) {
+      if (!isLoaded) {
         setHasError(true)
       }
     }, 15000)
 
     return () => clearTimeout(timer)
-  }, [isFBLoaded])
+  }, [isLoaded])
 
   useEffect(() => {
     // Parse Facebook widgets when SDK loads
-    if (isFBLoaded && window.FB && !hasError) {
-      try {
-        window.FB.XFBML.parse()
-      } catch (error) {
-        console.error('Error parsing Facebook group plugin:', error)
-        setHasError(true)
-      }
+    if (isLoaded && window.FB && !hasError && !isWidgetRendered && containerRef.current) {
+      parseAttemptRef.current++
+
+      // Wait for DOM to be ready
+      const timeoutId = setTimeout(() => {
+        try {
+          if (window.FB && containerRef.current) {
+            // Parse only this container, not entire page
+            window.FB.XFBML.parse(containerRef.current)
+            setIsWidgetRendered(true)
+          }
+        } catch (error) {
+          console.error('Error parsing Facebook widgets:', error)
+
+          // Retry once more if first attempt fails
+          if (parseAttemptRef.current === 1) {
+            setTimeout(() => {
+              try {
+                if (window.FB && containerRef.current) {
+                  window.FB.XFBML.parse(containerRef.current)
+                  setIsWidgetRendered(true)
+                }
+              } catch (retryError) {
+                console.error('Retry parse failed:', retryError)
+                setHasError(true)
+              }
+            }, 2000)
+          }
+        }
+      }, 500)
+
+      return () => clearTimeout(timeoutId)
     }
-  }, [isFBLoaded, hasError])
+  }, [isLoaded, hasError, isWidgetRendered])
 
   const handleScriptLoad = () => {
-    setIsFBLoaded(true)
+    setIsLoaded(true)
     setHasError(false)
   }
 
   const handleScriptError = () => {
     setHasError(true)
-    setIsFBLoaded(false)
+    setIsLoaded(false)
   }
 
   const handleVisitGroupClick = () => {
@@ -56,30 +146,17 @@ export default function ShopPage() {
     window.open('https://www.facebook.com/groups/MAM.Marketplace/', '_blank')
   }
 
-  const handleVisitStoreClick = () => {
-    // Track the click event
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'click', {
-        event_category: 'Visit Store',
-        event_label: 'Shop Page CTA',
-        value: 1,
-      })
-    }
+  const handleRetry = () => {
+    setHasError(false)
+    setIsLoaded(false)
+    setIsWidgetRendered(false)
 
-    window.location.href = '/visit'
+    // Reload the page to reset Facebook SDK
+    window.location.reload()
   }
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-light/20 to-white">
-      {/* Facebook SDK */}
-      <div id="fb-root" />
-      <Script
-        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"
-        strategy="lazyOnload"
-        onLoad={handleScriptLoad}
-        onError={handleScriptError}
-      />
-
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-b from-slate-light/50 to-transparent">
         <div className="container-custom">
@@ -117,7 +194,7 @@ export default function ShopPage() {
       </section>
 
       {/* Facebook Group Feed */}
-      <section className="section-padding">
+      <section className="section-padding" ref={containerRef}>
         <div className="container-custom">
           <div className="text-center mb-8">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-black mb-4">
@@ -128,16 +205,29 @@ export default function ShopPage() {
             </p>
           </div>
 
+          {/* Facebook SDK - Only load when visible */}
+          {isVisible && (
+            <>
+              <div id="fb-root" />
+              <Script
+                src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"
+                strategy="lazyOnload"
+                onLoad={handleScriptLoad}
+                onError={handleScriptError}
+              />
+            </>
+          )}
+
           {/* Loading State */}
-          {!isFBLoaded && !hasError && (
+          {(!isLoaded || !isVisible) && !hasError && (
             <div className="flex justify-center">
               <div className="w-full max-w-[500px]">
                 <div className="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-mauve animate-pulse">
-                  <div className="bg-gray-200 h-[800px]" />
+                  <div className="bg-gray-200 h-[700px]" />
                 </div>
                 <div className="flex justify-center mt-4">
                   <div className="text-black text-sm">
-                    Loading Facebook Marketplace feed...
+                    {isVisible ? 'Loading Facebook feed...' : 'Scroll down to load Facebook feed...'}
                   </div>
                 </div>
               </div>
@@ -163,25 +253,25 @@ export default function ShopPage() {
                     />
                   </svg>
                   <h4 className="font-display text-xl font-bold text-black mb-2 text-center">
-                    Unable to Load Facebook Group Feed
+                    Unable to Load Facebook Feed
                   </h4>
                   <p className="text-black text-sm mb-6 text-center">
-                    Visit our Facebook Marketplace Group directly to see all available items.
+                    Visit our Facebook page directly or try reloading the feed.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                    <Button
+                      variant="secondary"
+                      size="md"
+                      onClick={handleRetry}
+                    >
+                      Retry Loading
+                    </Button>
                     <Button
                       variant="primary"
                       size="md"
                       onClick={handleVisitGroupClick}
                     >
                       Visit Facebook Group
-                    </Button>
-                    <Button
-                      variant="secondary"
-                      size="md"
-                      onClick={handleVisitStoreClick}
-                    >
-                      Visit Us In-Store
                     </Button>
                   </div>
                 </div>
@@ -190,7 +280,7 @@ export default function ShopPage() {
           )}
 
           {/* Facebook Group Plugin */}
-          <div className={`flex justify-center ${!isFBLoaded || hasError ? 'hidden' : ''}`}>
+          <div className={`flex justify-center ${!isLoaded || hasError ? 'hidden' : ''}`}>
             <div className="w-full max-w-[500px]">
               <div className="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-mauve">
                 <div
@@ -268,117 +358,6 @@ export default function ShopPage() {
               </div>
             </Card>
           </div>
-        </div>
-      </section>
-
-      {/* Why Shop With Us */}
-      <section className="section-padding">
-        <div className="container-custom">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-black mb-4">
-                Why Shop MAM Marketplace?
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card hover className="!border-2 !border-mauve">
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0">
-                    <svg className="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-display text-lg font-bold text-black mb-2">
-                      Curated by Experts
-                    </h3>
-                    <p className="text-black text-sm">
-                      Our vendors are experienced collectors and dealers who know quality when they see it
-                    </p>
-                  </div>
-                </div>
-              </Card>
-
-              <Card hover className="!border-2 !border-mauve">
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0">
-                    <svg className="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-display text-lg font-bold text-black mb-2">
-                      Constantly Refreshed
-                    </h3>
-                    <p className="text-black text-sm">
-                      New items added every single day - there's always something new to discover
-                    </p>
-                  </div>
-                </div>
-              </Card>
-
-              <Card hover className="!border-2 !border-mauve">
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0">
-                    <svg className="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-display text-lg font-bold text-black mb-2">
-                      Trusted Community
-                    </h3>
-                    <p className="text-black text-sm">
-                      Connect directly with sellers, ask questions, and build relationships with our vendor community
-                    </p>
-                  </div>
-                </div>
-              </Card>
-
-              <Card hover className="!border-2 !border-mauve">
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0">
-                    <svg className="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="font-display text-lg font-bold text-black mb-2">
-                      Local Convenience
-                    </h3>
-                    <p className="text-black text-sm">
-                      Browse online, pick up in-store - no shipping fees, see items in person before you buy
-                    </p>
-                  </div>
-                </div>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="section-padding bg-gradient-to-b from-transparent to-slate-light/50">
-        <div className="container-custom">
-          <Card className="!border-2 !border-mauve max-w-3xl mx-auto text-center">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-black mb-4">
-              Ready to Find Your Next Treasure?
-            </h2>
-            <p className="text-lg text-black mb-8">
-              Join our Facebook Marketplace Group and start browsing hundreds of unique items today
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                variant="primary"
-                size="lg"
-                onClick={handleVisitGroupClick}
-                className="w-full sm:w-auto min-w-[280px]"
-              >
-                Join Marketplace Group
-              </Button>
-            </div>
-          </Card>
         </div>
       </section>
     </main>
