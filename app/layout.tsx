@@ -45,11 +45,11 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://www.mariettaantiquemall.com'),
+  metadataBase: new URL('https://www.mariettaantiques.com'),
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://www.mariettaantiquemall.com',
+    url: 'https://www.mariettaantiques.com',
     siteName: BUSINESS_NAME,
     title: `${BUSINESS_NAME} | 30,000 sq ft of Antiques & Vintage Treasures`,
     description:
@@ -142,9 +142,9 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'AntiqueStore',
               name: BUSINESS_NAME,
-              image: 'https://www.mariettaantiquemall.com/og-image.png',
-              '@id': 'https://www.mariettaantiquemall.com',
-              url: 'https://www.mariettaantiquemall.com',
+              image: 'https://www.mariettaantiques.com/og-image.png',
+              '@id': 'https://www.mariettaantiques.com',
+              url: 'https://www.mariettaantiques.com',
               telephone: '(770) 973-5600',
               priceRange: '$$',
               address: {
@@ -197,12 +197,12 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'WebSite',
-              '@id': 'https://www.mariettaantiquemall.com/#website',
-              url: 'https://www.mariettaantiquemall.com',
+              '@id': 'https://www.mariettaantiques.com/#website',
+              url: 'https://www.mariettaantiques.com',
               name: BUSINESS_NAME,
               description: 'Discover unique antiques, vintage items, and collectibles from 100+ vendors in Marietta, GA',
               publisher: {
-                '@id': 'https://www.mariettaantiquemall.com/#organization',
+                '@id': 'https://www.mariettaantiques.com/#organization',
               },
               creator: {
                 '@type': 'Organization',
@@ -258,14 +258,14 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'WebPage',
-              '@id': 'https://www.mariettaantiquemall.com/#webpage',
-              url: 'https://www.mariettaantiquemall.com',
+              '@id': 'https://www.mariettaantiques.com/#webpage',
+              url: 'https://www.mariettaantiques.com',
               name: `${BUSINESS_NAME} | 30,000 sq ft of Antiques & Vintage Treasures`,
               isPartOf: {
-                '@id': 'https://www.mariettaantiquemall.com/#website',
+                '@id': 'https://www.mariettaantiques.com/#website',
               },
               about: {
-                '@id': 'https://www.mariettaantiquemall.com/#organization',
+                '@id': 'https://www.mariettaantiques.com/#organization',
               },
               provider: {
                 '@type': 'Organization',
@@ -306,7 +306,7 @@ export default function RootLayout({
               },
               serviceOutput: {
                 '@type': 'WebSite',
-                url: 'https://www.mariettaantiquemall.com',
+                url: 'https://www.mariettaantiques.com',
                 name: BUSINESS_NAME,
               },
               areaServed: {

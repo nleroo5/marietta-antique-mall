@@ -1002,7 +1002,7 @@ export default function VendorsPage() {
                   Call {CONTACT_INFO.phone}
                 </Button>
               </a>
-              <a href="mailto:contactus@mariettaantiquemall.com">
+              <a href="mailto:contactus@mariettaantiques.com">
                 <Button variant="accent" size="lg" className="!border-2 !border-green-700">
                   Email Us
                 </Button>
