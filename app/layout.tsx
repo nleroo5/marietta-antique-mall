@@ -57,7 +57,7 @@ export const metadata: Metadata = {
       'Discover unique antiques, vintage items, and collectibles from 100+ vendors in Marietta, GA.',
     images: [
       {
-        url: '/og-image.png',
+        url: 'https://www.mariettaantiques.com/og-image.png',
         width: 1200,
         height: 630,
         alt: `${BUSINESS_NAME} - Antiques & Vintage`,
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: `${BUSINESS_NAME} | 30,000 sq ft of Antiques & Vintage Treasures`,
     description: 'Discover unique antiques from 100+ vendors in Marietta, GA.',
-    images: ['/og-image.png'],
+    images: ['https://www.mariettaantiques.com/og-image.png'],
   },
   icons: {
     icon: [
