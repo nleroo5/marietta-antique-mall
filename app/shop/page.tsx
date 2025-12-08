@@ -20,11 +20,37 @@ export default function ShopPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-light/20 to-white">
+      <style jsx global>{`
+        @keyframes shimmer {
+          0% {
+            background-position: -200% center;
+          }
+          100% {
+            background-position: 200% center;
+          }
+        }
+        .shimmer-text {
+          background: linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 1) 40%,
+            rgba(239, 195, 147, 1) 50%,
+            rgba(0, 0, 0, 1) 60%,
+            rgba(0, 0, 0, 1) 100%
+          );
+          background-size: 200% auto;
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: shimmer 4s linear infinite;
+        }
+      `}</style>
+
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-b from-slate-light/50 to-transparent">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6">
+            <h1 className="shimmer-text font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Shop Our Facebook Marketplace
             </h1>
             <p className="text-xl text-black leading-relaxed">
@@ -94,34 +120,34 @@ export default function ShopPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <Card hover className="!border-2 !border-mauve text-center">
+            <Card hover className="!border-2 !border-mauve text-center !p-8">
               <div className="flex flex-col items-center">
                 <h3 className="font-display text-xl font-bold text-black mb-3">
                   Join the Group
                 </h3>
-                <p className="text-black">
+                <p className="text-black leading-relaxed">
                   Click the button above to join our MAM Marketplace Facebook Group - it's free and takes just a moment
                 </p>
               </div>
             </Card>
 
-            <Card hover className="!border-2 !border-mauve text-center">
+            <Card hover className="!border-2 !border-mauve text-center !p-8">
               <div className="flex flex-col items-center">
                 <h3 className="font-display text-xl font-bold text-black mb-3">
                   Browse & Message
                 </h3>
-                <p className="text-black">
+                <p className="text-black leading-relaxed">
                   See all available items with photos, descriptions, and prices. Message vendors directly with questions
                 </p>
               </div>
             </Card>
 
-            <Card hover className="!border-2 !border-mauve text-center">
+            <Card hover className="!border-2 !border-mauve text-center !p-8">
               <div className="flex flex-col items-center">
                 <h3 className="font-display text-xl font-bold text-black mb-3">
                   Pick Up In-Store
                 </h3>
-                <p className="text-black">
+                <p className="text-black leading-relaxed">
                   Visit us at {LOCATION.address} to pick up your treasure or browse even more items in person
                 </p>
               </div>
