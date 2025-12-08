@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Crete_Round, Inter, Montserrat } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
@@ -120,6 +121,10 @@ export default function RootLayout({
         © Drive Lead Media - All Rights Reserved
       */}
       <head>
+        {/* Google Analytics 4 */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
         {/* Resource Hints for External Domains */}
         <link rel="preconnect" href="https://connect.facebook.net" />
         <link rel="dns-prefetch" href="https://connect.facebook.net" />
@@ -348,6 +353,20 @@ export default function RootLayout({
         />
       </head>
       <body className={`${creteRound.variable} ${inter.variable} ${montserrat.variable} antialiased`}>
+        {/* Google Analytics 4 - gtag.js */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-8LTQL1YW44"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-8LTQL1YW44');
+          `}
+        </Script>
+
         <Header />
         <main id="main-content">{children}</main>
         <Footer />
