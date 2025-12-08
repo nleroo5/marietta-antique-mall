@@ -58,14 +58,14 @@ export const metadata: Metadata = {
     images: [
       {
         url: '/og-image.png',
-        width: 500,
-        height: 500,
+        width: 1200,
+        height: 630,
         alt: `${BUSINESS_NAME} - Antiques & Vintage`,
       },
     ],
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: `${BUSINESS_NAME} | 30,000 sq ft of Antiques & Vintage Treasures`,
     description: 'Discover unique antiques from 100+ vendors in Marietta, GA.',
     images: ['/og-image.png'],
