@@ -1,138 +1,10 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
-import Script from 'next/script'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import { LOCATION } from '@/lib/constants'
 
 export default function ShopPage() {
-  const [isLoaded, setIsLoaded] = useState(false)
-  const [hasError, setHasError] = useState(false)
-  const [isWidgetRendered, setIsWidgetRendered] = useState(false)
-  const [isVisible, setIsVisible] = useState(false)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const parseAttemptRef = useRef(0)
-  const mountTimeRef = useRef(Date.now())
-
-  // Intersection Observer for lazy loading
-  useEffect(() => {
-    if (!containerRef.current) return
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true)
-          }
-        })
-      },
-      { rootMargin: '50px' }
-    )
-
-    observer.observe(containerRef.current)
-
-    return () => {
-      if (containerRef.current) {
-        observer.unobserve(containerRef.current)
-      }
-    }
-  }, [])
-
-  // Reset state when component mounts (important for navigation)
-  useEffect(() => {
-    // Update mount time on each mount
-    mountTimeRef.current = Date.now()
-
-    // Reset states for fresh render on each mount
-    setIsLoaded(false)
-    setHasError(false)
-    setIsWidgetRendered(false)
-    parseAttemptRef.current = 0
-
-    // Check if FB SDK is already loaded from previous page visit
-    if (window.FB && isVisible) {
-      setIsLoaded(true)
-      // Force immediate parse since SDK is already available
-      setTimeout(() => {
-        if (window.FB && containerRef.current) {
-          try {
-            window.FB.XFBML.parse(containerRef.current)
-            setIsWidgetRendered(true)
-          } catch (error) {
-            console.error('Error parsing Facebook widget on remount:', error)
-          }
-        }
-      }, 100)
-    }
-
-    // Cleanup function when component unmounts
-    return () => {
-      // Clear any pending timers
-      setIsLoaded(false)
-      setHasError(false)
-      setIsWidgetRendered(false)
-    }
-  }, [isVisible]) // Re-run when visibility changes
-
-  useEffect(() => {
-    // Set a timeout to show error state if Facebook SDK doesn't load
-    const timer = setTimeout(() => {
-      if (!isLoaded) {
-        setHasError(true)
-      }
-    }, 15000)
-
-    return () => clearTimeout(timer)
-  }, [isLoaded])
-
-  useEffect(() => {
-    // Parse Facebook widgets when SDK loads
-    if (isLoaded && window.FB && !hasError && !isWidgetRendered && containerRef.current) {
-      parseAttemptRef.current++
-
-      // Wait for DOM to be ready
-      const timeoutId = setTimeout(() => {
-        try {
-          if (window.FB && containerRef.current) {
-            // Parse only this container, not entire page
-            window.FB.XFBML.parse(containerRef.current)
-            setIsWidgetRendered(true)
-          }
-        } catch (error) {
-          console.error('Error parsing Facebook widgets:', error)
-
-          // Retry once more if first attempt fails
-          if (parseAttemptRef.current === 1) {
-            setTimeout(() => {
-              try {
-                if (window.FB && containerRef.current) {
-                  window.FB.XFBML.parse(containerRef.current)
-                  setIsWidgetRendered(true)
-                }
-              } catch (retryError) {
-                console.error('Retry parse failed:', retryError)
-                setHasError(true)
-              }
-            }, 2000)
-          }
-        }
-      }, 500)
-
-      return () => clearTimeout(timeoutId)
-    }
-  }, [isLoaded, hasError, isWidgetRendered])
-
-  const handleScriptLoad = () => {
-    setIsLoaded(true)
-    setHasError(false)
-  }
-
-  const handleScriptError = () => {
-    setHasError(true)
-    setIsLoaded(false)
-  }
-
   const handleVisitGroupClick = () => {
     // Track the click event
     if (typeof window !== 'undefined' && (window as any).gtag) {
@@ -144,15 +16,6 @@ export default function ShopPage() {
     }
 
     window.open('https://www.facebook.com/groups/MAM.Marketplace/', '_blank')
-  }
-
-  const handleRetry = () => {
-    setHasError(false)
-    setIsLoaded(false)
-    setIsWidgetRendered(false)
-
-    // Reload the page to reset Facebook SDK
-    window.location.reload()
   }
 
   return (
@@ -193,115 +56,52 @@ export default function ShopPage() {
         </div>
       </section>
 
-      {/* Facebook Group Feed */}
-      <section className="section-padding" ref={containerRef}>
+      {/* Visit Facebook Group CTA */}
+      <section className="section-padding">
         <div className="container-custom">
-          <div className="text-center mb-8">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-black mb-4">
-              Browse Available Items
-            </h2>
-            <p className="text-lg text-black max-w-2xl mx-auto">
-              See what's currently available from our vendors in our Facebook Marketplace Group
-            </p>
-          </div>
-
-          {/* Facebook SDK - Only load when visible */}
-          {isVisible && (
-            <>
-              <div id="fb-root" />
-              <Script
-                src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"
-                strategy="lazyOnload"
-                onLoad={handleScriptLoad}
-                onError={handleScriptError}
-              />
-            </>
-          )}
-
-          {/* Loading State */}
-          {(!isLoaded || !isVisible) && !hasError && (
-            <div className="flex justify-center">
-              <div className="w-full max-w-[500px]">
-                <div className="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-mauve animate-pulse">
-                  <div className="bg-gray-200 h-[700px]" />
-                </div>
-                <div className="flex justify-center mt-4">
-                  <div className="text-black text-sm">
-                    {isVisible ? 'Loading Facebook feed...' : 'Scroll down to load Facebook feed...'}
-                  </div>
-                </div>
+          <div className="max-w-3xl mx-auto">
+            <Card className="!border-2 !border-mauve text-center">
+              <div className="mb-8">
+                <svg
+                  className="w-20 h-20 mx-auto mb-6 text-[#1877F2]"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+                <h2 className="font-display text-3xl md:text-4xl font-bold text-black mb-4">
+                  Browse Available Items
+                </h2>
+                <p className="text-lg text-black mb-2">
+                  Join our <strong>MAM Marketplace</strong> Facebook Group to see all items currently for sale
+                </p>
+                <p className="text-base text-black/80">
+                  Hundreds of antiques, vintage items, and collectibles with photos, descriptions, and prices
+                </p>
               </div>
-            </div>
-          )}
 
-          {/* Error State */}
-          {hasError && (
-            <div className="flex justify-center">
-              <div className="w-full max-w-[500px]">
-                <div className="bg-white rounded-xl shadow-lg p-8 border-2 border-mauve">
-                  <svg
-                    className="w-12 h-12 text-black mx-auto mb-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                  <h4 className="font-display text-xl font-bold text-black mb-2 text-center">
-                    Unable to Load Facebook Feed
-                  </h4>
-                  <p className="text-black text-sm mb-6 text-center">
-                    Visit our Facebook page directly or try reloading the feed.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                    <Button
-                      variant="secondary"
-                      size="md"
-                      onClick={handleRetry}
-                    >
-                      Retry Loading
-                    </Button>
-                    <Button
-                      variant="primary"
-                      size="md"
-                      onClick={handleVisitGroupClick}
-                    >
-                      Visit Facebook Group
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Facebook Group Plugin */}
-          <div className={`flex justify-center ${!isLoaded || hasError ? 'hidden' : ''}`}>
-            <div className="w-full max-w-[500px]">
-              <div className="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-mauve">
-                <div
-                  className="fb-group"
-                  data-href="https://www.facebook.com/groups/MAM.Marketplace/"
-                  data-width="500"
-                  data-show-metadata="true"
-                  data-show-social-context="true"
-                />
-              </div>
-              <div className="flex justify-center mt-6">
+              <div className="space-y-4">
                 <Button
                   variant="primary"
                   size="lg"
                   onClick={handleVisitGroupClick}
-                  className="min-w-[280px]"
+                  className="w-full sm:w-auto min-w-[320px] !bg-[#1877F2] hover:!bg-[#1664D8] !border-[#1877F2]"
                 >
-                  Join Our Marketplace Group
+                  <svg
+                    className="w-6 h-6 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                  </svg>
+                  Visit MAM Marketplace Group
                 </Button>
+
+                <p className="text-sm text-black/60">
+                  Free to join • Browse & message vendors directly
+                </p>
               </div>
-            </div>
+            </Card>
           </div>
         </div>
       </section>
@@ -322,10 +122,10 @@ export default function ShopPage() {
                   <span className="text-3xl font-bold text-accent">1</span>
                 </div>
                 <h3 className="font-display text-xl font-bold text-black mb-3">
-                  Browse Online
+                  Join the Group
                 </h3>
                 <p className="text-black">
-                  Join our Facebook Marketplace Group to see all available items with photos, descriptions, and prices
+                  Click the button above to join our MAM Marketplace Facebook Group - it's free and takes just a moment
                 </p>
               </div>
             </Card>
@@ -336,10 +136,10 @@ export default function ShopPage() {
                   <span className="text-3xl font-bold text-accent">2</span>
                 </div>
                 <h3 className="font-display text-xl font-bold text-black mb-3">
-                  Contact Seller
+                  Browse & Message
                 </h3>
                 <p className="text-black">
-                  Message the vendor directly through Facebook to ask questions or arrange purchase
+                  See all available items with photos, descriptions, and prices. Message vendors directly with questions
                 </p>
               </div>
             </Card>
@@ -360,17 +160,116 @@ export default function ShopPage() {
           </div>
         </div>
       </section>
+
+      {/* Why Shop Section */}
+      <section className="section-padding">
+        <div className="container-custom">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-black mb-4">
+                Why Shop Our Marketplace?
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <Card hover className="!border-2 !border-mauve">
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0">
+                    <svg className="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-display text-lg font-bold text-black mb-2">
+                      Fresh Inventory Daily
+                    </h3>
+                    <p className="text-black text-sm">
+                      New items posted every day - from furniture and jewelry to vintage signs and rare collectibles
+                    </p>
+                  </div>
+                </div>
+              </Card>
+
+              <Card hover className="!border-2 !border-mauve">
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0">
+                    <svg className="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
+                      <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-display text-lg font-bold text-black mb-2">
+                      Direct Vendor Contact
+                    </h3>
+                    <p className="text-black text-sm">
+                      Message sellers directly through Facebook - ask questions, negotiate, and arrange pickup
+                    </p>
+                  </div>
+                </div>
+              </Card>
+
+              <Card hover className="!border-2 !border-mauve">
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0">
+                    <svg className="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-display text-lg font-bold text-black mb-2">
+                      See Before You Buy
+                    </h3>
+                    <p className="text-black text-sm">
+                      Local pickup means you can inspect items in person before purchasing - no shipping surprises
+                    </p>
+                  </div>
+                </div>
+              </Card>
+
+              <Card hover className="!border-2 !border-mauve">
+                <div className="flex gap-4">
+                  <div className="flex-shrink-0">
+                    <svg className="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-display text-lg font-bold text-black mb-2">
+                      Trusted Sellers
+                    </h3>
+                    <p className="text-black text-sm">
+                      All vendors are vetted antique dealers with years of experience and expertise in their specialties
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="section-padding bg-gradient-to-b from-transparent to-slate-light/50">
+        <div className="container-custom">
+          <Card className="!border-2 !border-mauve max-w-3xl mx-auto text-center">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-black mb-4">
+              Ready to Start Shopping?
+            </h2>
+            <p className="text-lg text-black mb-8">
+              Join thousands of treasure hunters in our Facebook Marketplace Group
+            </p>
+            <Button
+              variant="primary"
+              size="lg"
+              onClick={handleVisitGroupClick}
+              className="min-w-[280px] !bg-[#1877F2] hover:!bg-[#1664D8] !border-[#1877F2]"
+            >
+              Join MAM Marketplace Group
+            </Button>
+          </Card>
+        </div>
+      </section>
     </main>
   )
-}
-
-// Type declaration for Facebook SDK
-declare global {
-  interface Window {
-    FB?: {
-      XFBML: {
-        parse: (element?: HTMLElement) => void
-      }
-    }
-  }
 }
