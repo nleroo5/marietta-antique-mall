@@ -64,8 +64,8 @@ export default function ShopPage() {
       <section className="section-padding">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto">
-            <Card hover className="!border-2 !border-mauve text-center">
-              <div className="mb-8">
+            <Card hover className="!border-2 !border-mauve text-center !p-12">
+              <div className="mb-10">
                 <svg
                   className="w-20 h-20 mx-auto mb-6 text-[#1877F2] drop-shadow-[0_0_15px_rgba(24,119,242,0.5)]"
                   fill="currentColor"
@@ -76,10 +76,10 @@ export default function ShopPage() {
                 <h2 className="font-display text-3xl md:text-4xl font-bold text-black mb-4">
                   Browse Available Items
                 </h2>
-                <p className="text-lg text-black mb-2">
+                <p className="text-lg text-black mb-3 leading-relaxed">
                   Join our <strong>MAM Marketplace</strong> Facebook Group to see all items currently for sale
                 </p>
-                <p className="text-base text-black/80">
+                <p className="text-base text-black/80 leading-relaxed">
                   Hundreds of antiques, vintage items, and collectibles with photos, descriptions, and prices
                 </p>
               </div>
@@ -89,7 +89,7 @@ export default function ShopPage() {
                   variant="primary"
                   size="lg"
                   onClick={handleVisitGroupClick}
-                  className="w-full sm:w-auto min-w-[320px] !bg-[#1877F2] hover:!bg-[#1664D8] !border-[#1877F2]"
+                  className="w-full sm:w-auto min-w-[320px] !bg-[#1877F2] hover:!bg-[#1664D8] !border-[#1877F2] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(24,119,242,0.4)]"
                 >
                   <svg
                     className="w-6 h-6 mr-2"
