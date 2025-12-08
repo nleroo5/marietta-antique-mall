@@ -19,7 +19,7 @@ export default function ShopPage() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-light/20 to-white">
+    <main className="min-h-screen bg-white">
       <style jsx global>{`
         @keyframes shimmer {
           0% {
@@ -47,7 +47,7 @@ export default function ShopPage() {
       `}</style>
 
       {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-b from-slate-light/50 to-transparent">
+      <section className="section-padding">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="shimmer-text font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
@@ -111,7 +111,7 @@ export default function ShopPage() {
       </section>
 
       {/* How It Works */}
-      <section className="section-padding bg-bg-primary">
+      <section className="section-padding">
         <div className="container-custom">
           <div className="text-center mb-12">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-black mb-4">
