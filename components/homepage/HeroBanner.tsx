@@ -27,13 +27,6 @@ export default function HeroBanner() {
     }
   }
 
-  const handleScrollToVisit = () => {
-    const element = document.querySelector('#visit-us')
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
-
   const handleShopNowClick = () => {
     // Track the click event
     if (typeof window !== 'undefined' && (window as any).gtag) {
@@ -140,14 +133,6 @@ export default function HeroBanner() {
                 />
               </svg>
               Call Us Now
-            </Button>
-            <Button
-              size="lg"
-              variant="accent"
-              onClick={handleScrollToVisit}
-              className="w-full sm:w-auto sm:min-w-[200px] backdrop-blur-sm transition-all hover:scale-105 !text-white hover:!text-black"
-            >
-              Plan Your Visit
             </Button>
           </div>
         </div>

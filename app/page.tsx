@@ -2,6 +2,7 @@ import HeroBanner from '@/components/homepage/HeroBanner'
 import FacebookMarketplace from '@/components/homepage/FacebookMarketplace'
 import AboutSection from '@/components/homepage/AboutSection'
 import NewsletterSignup from '@/components/homepage/NewsletterSignup'
+import BestOfCobbVoting from '@/components/homepage/BestOfCobbVoting'
 import VisitUsSection from '@/components/homepage/VisitUsSection'
 
 export default function HomePage() {
@@ -17,6 +18,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <BestOfCobbVoting />
       <VisitUsSection />
     </div>
   )
