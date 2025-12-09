@@ -89,7 +89,7 @@ export default function ShopPage() {
                   variant="primary"
                   size="lg"
                   onClick={handleVisitGroupClick}
-                  className="w-full sm:w-auto sm:min-w-[300px] !bg-transparent !text-[#1877F2] !border-2 !border-[#1877F2] shadow-[0_0_15px_rgba(24,119,242,0.3)] hover:!bg-[#1877F2] hover:!text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(24,119,242,0.5)]"
+                  className="w-full sm:w-auto sm:min-w-[300px] !bg-transparent !text-[#1877F2] !border-0 shadow-[0_0_15px_rgba(24,119,242,0.3)] hover:!bg-[#1877F2] hover:!text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(24,119,242,0.5)]"
                 >
                   <svg
                     className="w-6 h-6 mr-2"
