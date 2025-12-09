@@ -273,7 +273,16 @@ export default function VisitUsSection() {
                 variant="primary"
                 size="lg"
                 className="flex-1 transition-all hover:scale-105"
-                onClick={() => window.open(directionsUrl, '_blank')}
+                onClick={() => {
+                  // Track Meta Pixel event
+                  if (typeof window !== 'undefined' && (window as any).fbq) {
+                    (window as any).fbq('track', 'FindLocation', {
+                      content_name: 'Get Directions Button',
+                      content_category: 'Visit Section'
+                    })
+                  }
+                  window.open(directionsUrl, '_blank')
+                }}
               >
                 Get Directions
               </Button>
@@ -281,7 +290,16 @@ export default function VisitUsSection() {
                 variant="outline"
                 size="lg"
                 className="flex-1 transition-all hover:scale-105 !border-2 !border-mint !text-black hover:!bg-mint hover:!text-black"
-                onClick={() => window.location.href = `tel:${formatPhoneLink(CONTACT_INFO.phone)}`}
+                onClick={() => {
+                  // Track Meta Pixel contact event
+                  if (typeof window !== 'undefined' && (window as any).fbq) {
+                    (window as any).fbq('track', 'Contact', {
+                      content_name: 'Call Us Button',
+                      content_category: 'Phone Call'
+                    })
+                  }
+                  window.location.href = `tel:${formatPhoneLink(CONTACT_INFO.phone)}`
+                }}
               >
                 Call Us
               </Button>

@@ -69,12 +69,22 @@ export default function GalleryPage() {
   }
 
   const handleShopNowClick = () => {
-    // Track the click event
+    // Track Google Analytics event
     if (typeof window !== 'undefined' && (window as any).gtag) {
       (window as any).gtag('event', 'click', {
         event_category: 'Facebook Marketplace',
         event_label: 'Gallery Page CTA',
         value: 1,
+      })
+    }
+
+    // Track Meta Pixel conversion event
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'InitiateCheckout', {
+        content_name: 'Shop Facebook Marketplace CTA',
+        content_category: 'Gallery Page',
+        value: 0,
+        currency: 'USD'
       })
     }
 

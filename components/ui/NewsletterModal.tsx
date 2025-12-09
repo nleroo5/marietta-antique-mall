@@ -66,6 +66,16 @@ export default function NewsletterModal({
     // Simulate API call - Replace with actual newsletter signup logic
     await new Promise((resolve) => setTimeout(resolve, 1000))
 
+    // Track Meta Pixel Lead conversion
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'Lead', {
+        content_name: 'Newsletter Signup',
+        content_category: 'Modal',
+        value: 1.00,
+        currency: 'USD'
+      })
+    }
+
     setIsSuccess(true)
     setEmail('')
     setIsSubmitting(false)

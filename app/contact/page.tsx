@@ -88,7 +88,16 @@ export default function ContactPage() {
                   variant="primary"
                   size="lg"
                   className="!border-2 !border-mint !text-black hover:!bg-mint hover:!text-black"
-                  onClick={() => window.location.href = `tel:${CONTACT_INFO.phone.replace(/[^\d]/g, '')}`}
+                  onClick={() => {
+                    // Track Meta Pixel contact event
+                    if (typeof window !== 'undefined' && (window as any).fbq) {
+                      (window as any).fbq('track', 'Contact', {
+                        content_name: 'Phone Call',
+                        content_category: 'Contact Page'
+                      })
+                    }
+                    window.location.href = `tel:${CONTACT_INFO.phone.replace(/[^\d]/g, '')}`
+                  }}
                 >
                   <svg
                     className="w-5 h-5 mr-2"
@@ -142,7 +151,16 @@ export default function ContactPage() {
                   variant="accent"
                   size="lg"
                   className="!border-2 !border-mauve"
-                  onClick={() => window.location.href = `mailto:${CONTACT_INFO.email}`}
+                  onClick={() => {
+                    // Track Meta Pixel contact event
+                    if (typeof window !== 'undefined' && (window as any).fbq) {
+                      (window as any).fbq('track', 'Contact', {
+                        content_name: 'Email',
+                        content_category: 'Contact Page'
+                      })
+                    }
+                    window.location.href = `mailto:${CONTACT_INFO.email}`
+                  }}
                 >
                   <svg
                     className="w-5 h-5 mr-2"

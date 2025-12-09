@@ -7,12 +7,22 @@ import { LOCATION } from '@/lib/constants'
 
 export default function ShopPage() {
   const handleVisitGroupClick = () => {
-    // Track the click event
+    // Track Google Analytics event
     if (typeof window !== 'undefined' && (window as any).gtag) {
       (window as any).gtag('event', 'click', {
         event_category: 'Facebook Marketplace',
         event_label: 'Visit Group Button',
         value: 1,
+      })
+    }
+
+    // Track Meta Pixel conversion event
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'InitiateCheckout', {
+        content_name: 'MAM Marketplace Group',
+        content_category: 'Facebook Group',
+        value: 0,
+        currency: 'USD'
       })
     }
 
