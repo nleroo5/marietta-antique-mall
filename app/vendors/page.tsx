@@ -989,7 +989,7 @@ export default function VendorsPage() {
           </motion.div>
 
           {/* Contact CTA */}
-          <div className="mt-12 text-center p-8 bg-gradient-to-r from-slate-light/20 to-mauve-light/20 rounded-lg border-2 border-green-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer">
+          <div className="mt-12 text-center p-8 bg-gradient-to-r from-slate-light/20 to-mauve-light/20 rounded-lg border-2 border-slate-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer">
             <h3 className="font-display text-2xl font-bold text-black mb-3">
               Questions About Becoming a Vendor?
             </h3>
@@ -998,12 +998,12 @@ export default function VendorsPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href={`tel:${CONTACT_INFO.phone.replace(/[^\d]/g, '')}`}>
-                <Button variant="primary" size="lg" className="!border-2 !border-green-700">
+                <Button variant="primary" size="lg" className="!border-2 !border-slate-500">
                   Call {CONTACT_INFO.phone}
                 </Button>
               </a>
               <a href="mailto:contactus@mariettaantiques.com">
-                <Button variant="accent" size="lg" className="!border-2 !border-green-700">
+                <Button variant="accent" size="lg" className="!border-2 !border-slate-500">
                   Email Us
                 </Button>
               </a>
