@@ -195,32 +195,8 @@ export default function VisitPage() {
             </p>
           </div>
 
-          {/* Two-column layout: Video + Amenities Cards */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-            {/* LEFT: Video Frame */}
-            <div className="flex justify-center lg:justify-start">
-              <div className="relative w-full max-w-[281px] mx-auto lg:mx-0">
-                <div
-                  className="relative w-full rounded-lg overflow-hidden shadow-lg border-2 border-mauve"
-                  style={{ aspectRatio: '9/16' }}
-                >
-                  <video
-                    className="w-full h-full object-cover"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                  >
-                    <source src="/videos/drone-visit.webm" type="video/webm" />
-                    <source src="/videos/drone-visit.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-              </div>
-            </div>
-
-            {/* RIGHT: Amenities Cards (2x2 grid) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {/* Amenities Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {/* Free Parking */}
               <Card hover className="!border-2 !border-mauve">
                 <CardBody className="text-center">
@@ -288,7 +264,6 @@ export default function VisitPage() {
                   </p>
                 </CardBody>
               </Card>
-            </div>
           </div>
         </div>
       </section>
