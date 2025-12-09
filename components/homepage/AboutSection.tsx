@@ -77,7 +77,7 @@ export default function AboutSection() {
       `}</style>
       <div className="container-custom">
         {/* Main About Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
           {/* Image Gallery */}
           <div className="relative">
             {/* Mobile: Single Hero Image */}

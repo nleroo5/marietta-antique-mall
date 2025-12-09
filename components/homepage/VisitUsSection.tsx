@@ -24,9 +24,9 @@ export default function VisitUsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Map */}
-          <div className="order-2 lg:order-1">
+          <div className="order-2 md:order-1">
             <div className="relative h-[350px] md:h-[400px] lg:h-[500px] rounded-lg overflow-hidden shadow-xl hover-lift border-4 border-mint">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.8348659862267!2d-84.46395!3d33.989295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f50e7f8c8c8c8d%3A0x8e8e8e8e8e8e8e8e!2s1477%20Roswell%20Rd%2C%20Marietta%2C%20GA%2030062!5e0!3m2!1sen!2sus!4v1234567890!5m2!1sen!2sus"

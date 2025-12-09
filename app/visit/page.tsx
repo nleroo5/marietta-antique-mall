@@ -61,7 +61,7 @@ export default function VisitPage() {
       {/* Location & Hours - 50/50 Split */}
       <section className="section-padding bg-white">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* LEFT: Map */}
             <div className="h-[300px] md:h-[400px] lg:h-[500px] rounded-lg overflow-hidden shadow-lg border-2 border-mauve">
               <iframe
@@ -305,7 +305,7 @@ export default function VisitPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {/* Big Chicken */}
             <Card hover className="!border-2 !border-mauve">
               <CardBody>

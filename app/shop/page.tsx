@@ -89,7 +89,7 @@ export default function ShopPage() {
                   variant="primary"
                   size="lg"
                   onClick={handleVisitGroupClick}
-                  className="w-full sm:w-auto min-w-[320px] !bg-transparent !text-[#1877F2] !border-2 !border-[#1877F2] shadow-[0_0_15px_rgba(24,119,242,0.3)] hover:!bg-[#1877F2] hover:!text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(24,119,242,0.5)]"
+                  className="w-full sm:w-auto sm:min-w-[300px] !bg-transparent !text-[#1877F2] !border-2 !border-[#1877F2] shadow-[0_0_15px_rgba(24,119,242,0.3)] hover:!bg-[#1877F2] hover:!text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(24,119,242,0.5)]"
                 >
                   <svg
                     className="w-6 h-6 mr-2"
@@ -119,7 +119,7 @@ export default function ShopPage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <Card hover className="!border-[3px] !border-mauve text-center !p-8">
               <div className="flex flex-col items-center">
                 <h3 className="font-display text-xl font-bold text-black mb-3">

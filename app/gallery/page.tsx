@@ -172,7 +172,7 @@ export default function GalleryPage() {
                 variant="primary"
                 size="lg"
                 onClick={handleShopNowClick}
-                className="w-full sm:w-auto min-w-[280px]"
+                className="w-full sm:w-auto sm:min-w-[300px]"
               >
                 Shop Our Facebook Marketplace
               </Button>

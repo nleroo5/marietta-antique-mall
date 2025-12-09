@@ -11,7 +11,7 @@ export default function HomePage() {
       <AboutSection />
       <section className="section-padding">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
             <FacebookMarketplace />
             <NewsletterSignup />
           </div>

@@ -109,7 +109,7 @@ export default function HeroBanner() {
               size="lg"
               variant="primary"
               onClick={handleShopNowClick}
-              className="backdrop-blur-sm transition-all hover:scale-105 !border-2 !border-mint !text-white hover:!bg-mint hover:!text-black"
+              className="w-full sm:w-auto sm:min-w-[200px] backdrop-blur-sm transition-all hover:scale-105 !border-2 !border-mint !text-white hover:!bg-mint hover:!text-black"
             >
               <svg
                 className="w-5 h-5 mr-2"
@@ -124,7 +124,7 @@ export default function HeroBanner() {
               size="lg"
               variant="secondary"
               onClick={() => window.location.href = `tel:${CONTACT_INFO.phone}`}
-              className="backdrop-blur-sm transition-all hover:scale-105 !text-white hover:!text-black"
+              className="w-full sm:w-auto sm:min-w-[200px] backdrop-blur-sm transition-all hover:scale-105 !text-white hover:!text-black"
             >
               <svg
                 className="w-5 h-5 mr-2"
@@ -145,7 +145,7 @@ export default function HeroBanner() {
               size="lg"
               variant="accent"
               onClick={handleScrollToVisit}
-              className="backdrop-blur-sm transition-all hover:scale-105 !text-white hover:!text-black"
+              className="w-full sm:w-auto sm:min-w-[200px] backdrop-blur-sm transition-all hover:scale-105 !text-white hover:!text-black"
             >
               Plan Your Visit
             </Button>
