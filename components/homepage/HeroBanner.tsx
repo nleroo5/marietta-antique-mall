@@ -87,7 +87,7 @@ export default function HeroBanner() {
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-white px-4 pt-40 md:pt-48 lg:pt-56">
         <div className="text-center max-w-4xl mx-auto animate-fade-in">
-          <h1 className="text-white font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 drop-shadow-2xl">
+          <h1 className="shimmer-text font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 drop-shadow-2xl">
             Your Next Find Awaits
           </h1>
 
