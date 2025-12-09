@@ -66,27 +66,27 @@ export default function ShopPage() {
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
             {/* Left: MAM Marketplace Card */}
-            <Card hover className="!border-[3px] !border-mauve text-center !p-8 md:!p-10 flex flex-col justify-center">
-              <div className="mb-8">
+            <Card hover className="!border-[3px] !border-mauve text-center !p-6 md:!p-8 flex flex-col justify-center">
+              <div className="mb-6">
                 <svg
-                  className="w-16 h-16 md:w-20 md:h-20 mx-auto mb-6 text-[#1877F2] drop-shadow-[0_0_15px_rgba(24,119,242,0.5)]"
+                  className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-4 text-[#1877F2] drop-shadow-[0_0_15px_rgba(24,119,242,0.5)]"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
                   <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                 </svg>
-                <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-black mb-4">
+                <h2 className="font-display text-xl md:text-2xl lg:text-3xl font-bold text-black mb-3">
                   Browse Available Items
                 </h2>
-                <p className="text-base md:text-lg text-black mb-3 leading-relaxed">
+                <p className="text-sm md:text-base text-black mb-2 leading-relaxed">
                   Join our <strong>MAM Marketplace</strong> Facebook Group to see all items currently for sale
                 </p>
-                <p className="text-sm md:text-base text-black/80 leading-relaxed">
+                <p className="text-xs md:text-sm text-black/80 leading-relaxed">
                   Hundreds of antiques, vintage items, and collectibles with photos, descriptions, and prices
                 </p>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <Button
                   variant="primary"
                   size="lg"
@@ -110,7 +110,7 @@ export default function ShopPage() {
             </Card>
 
             {/* Right: Vendor Photos Carousel */}
-            <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px]">
+            <div className="relative w-full h-[350px] md:h-[400px] lg:h-[450px] p-4 bg-white rounded-lg shadow-md">
               <VendorCarousel />
             </div>
           </div>
