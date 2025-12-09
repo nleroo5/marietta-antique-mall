@@ -43,37 +43,33 @@ export default function HeroBanner() {
   return (
     <section className="relative min-h-screen w-full overflow-hidden">
       <style jsx global>{`
-        @keyframes shimmer {
+        @keyframes shimmer-sweep {
           0% {
-            background-position: -200% center;
+            left: -100%;
           }
           100% {
-            background-position: 200% center;
+            left: 100%;
           }
         }
-        .shimmer-text {
+        .hero-shimmer {
           position: relative;
-          color: white;
+          display: inline-block;
         }
-        .shimmer-text::before {
-          content: attr(data-text);
+        .hero-shimmer::after {
+          content: '';
           position: absolute;
           top: 0;
-          left: 0;
+          left: -100%;
           width: 100%;
+          height: 100%;
           background: linear-gradient(
             90deg,
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 0) 40%,
-            rgba(239, 195, 147, 1) 50%,
-            rgba(255, 255, 255, 0) 60%,
-            rgba(255, 255, 255, 0) 100%
+            rgba(239, 195, 147, 0) 0%,
+            rgba(239, 195, 147, 0.6) 50%,
+            rgba(239, 195, 147, 0) 100%
           );
-          background-size: 200% auto;
-          background-clip: text;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          animation: shimmer 4s linear infinite;
+          animation: shimmer-sweep 3s ease-in-out infinite;
+          pointer-events: none;
         }
       `}</style>
       {/* Video Background - Works on all devices */}
@@ -96,10 +92,7 @@ export default function HeroBanner() {
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-white px-4 pt-40 md:pt-48 lg:pt-56">
         <div className="text-center max-w-4xl mx-auto animate-fade-in">
-          <h1
-            className="shimmer-text font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 drop-shadow-2xl"
-            data-text="Your Next Find Awaits"
-          >
+          <h1 className="hero-shimmer text-white font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 drop-shadow-2xl">
             Your Next Find Awaits
           </h1>
 
