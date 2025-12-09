@@ -5,7 +5,6 @@ import {
   CONTACT_INFO,
   BUSINESS_HOURS,
   GOOGLE_MAPS_URL,
-  GOOGLE_PLACE_ID,
   GOOGLE_REVIEWS_URL,
 } from '@/lib/constants'
 import Button from '@/components/ui/Button'
@@ -64,7 +63,7 @@ export default function VisitPage() {
             {/* LEFT: Map */}
             <div className="h-[300px] md:h-[400px] lg:h-[500px] rounded-lg overflow-hidden shadow-lg border-2 border-mauve bg-slate-light/20">
               <iframe
-                src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.7924825831195!2d-84.52074!3d33.93866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f50f3d3d3d3d3d%3A0x${GOOGLE_PLACE_ID}!2sMarietta%20Antique%20Mall!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus`}
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.4883193824697!2d-84.5132398!3d33.9518798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f513e56c72b8e3%3A0xdc254e9a961f132e!2sMarietta%20Antique%20Mall!5e0!3m2!1sen!2sus!4v1733676800000!5m2!1sen!2sus"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
