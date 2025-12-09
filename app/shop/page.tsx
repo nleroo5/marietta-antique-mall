@@ -110,7 +110,7 @@ export default function ShopPage() {
             </Card>
 
             {/* Right: Vendor Photos Carousel */}
-            <div className="relative w-full h-[350px] md:h-[400px] lg:h-[450px] p-4 bg-white rounded-lg shadow-md">
+            <div className="relative w-full h-[350px] md:h-[400px] lg:h-[450px] p-4 bg-white rounded-lg shadow-md border-2 border-slate">
               <VendorCarousel />
             </div>
           </div>

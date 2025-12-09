@@ -128,10 +128,6 @@ export default function VendorCarousel() {
         </svg>
       </button>
 
-      {/* Image Counter */}
-      <div className="absolute bottom-2 md:bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white text-xs md:text-sm px-3 py-1 rounded-full">
-        {currentIndex + 1} / {vendorImages.length}
-      </div>
     </div>
   )
 }
