@@ -13,7 +13,6 @@ import Card, { CardBody } from '@/components/ui/Card'
 
 export default function VisitPage() {
   const mapUrl = GOOGLE_MAPS_URL
-  const embedUrl = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=place_id:${GOOGLE_PLACE_ID}`
 
   // Get current day and time to show if open/closed
   const now = new Date()
@@ -63,9 +62,9 @@ export default function VisitPage() {
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* LEFT: Map */}
-            <div className="h-[300px] md:h-[400px] lg:h-[500px] rounded-lg overflow-hidden shadow-lg border-2 border-mauve">
+            <div className="h-[300px] md:h-[400px] lg:h-[500px] rounded-lg overflow-hidden shadow-lg border-2 border-mauve bg-slate-light/20">
               <iframe
-                src={embedUrl}
+                src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.7924825831195!2d-84.52074!3d33.93866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f50f3d3d3d3d3d%3A0x${GOOGLE_PLACE_ID}!2sMarietta%20Antique%20Mall!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus`}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -201,14 +200,16 @@ export default function VisitPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
             {/* LEFT: Video Frame */}
             <div className="flex justify-center lg:justify-start">
-              <div className="relative w-full max-w-[375px] mx-auto lg:mx-0">
+              <div className="relative w-full max-w-[281px] mx-auto lg:mx-0">
                 <div
                   className="relative w-full rounded-lg overflow-hidden shadow-lg border-2 border-mauve"
                   style={{ aspectRatio: '9/16' }}
                 >
                   <video
                     className="w-full h-full object-cover"
-                    controls
+                    autoPlay
+                    loop
+                    muted
                     playsInline
                   >
                     <source src="/videos/drone-visit.webm" type="video/webm" />

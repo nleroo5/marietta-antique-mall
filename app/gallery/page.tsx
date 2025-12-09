@@ -160,11 +160,11 @@ export default function GalleryPage() {
       {/* Shop Online CTA */}
       <section className="section-padding bg-gradient-to-b from-white to-slate-light/50">
         <div className="container-custom">
-          <Card className="!border-2 !border-mauve max-w-3xl mx-auto text-center">
+          <Card className="!border-2 !border-mauve max-w-3xl mx-auto text-center !p-8 md:!p-10">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-black mb-4">
               Want to Buy Something You See?
             </h2>
-            <p className="text-lg text-black mb-8">
+            <p className="text-lg text-black mb-8 max-w-2xl mx-auto">
               Many of our vendors sell items online through our Facebook Marketplace Group. Browse hundreds of available items with photos, prices, and descriptions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
