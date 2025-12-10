@@ -139,18 +139,25 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.google.com" />
         <link rel="dns-prefetch" href="https://www.google.com" />
 
-        {/* Business Structured Data */}
+        {/* Enhanced Business Structured Data - Local SEO Optimized */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'AntiqueStore',
+              '@id': 'https://www.mariettaantiquemall.com/#business',
               name: BUSINESS_NAME,
-              image: 'https://www.mariettaantiquemall.com/og-image.png',
-              '@id': 'https://www.mariettaantiquemall.com',
+              alternateName: 'MAM - Marietta Antique Mall',
+              description: 'Premier antique mall in Marietta, Georgia featuring 30,000 sq ft of curated antiques, vintage furniture, collectibles, and unique treasures from 100+ independent vendors. Located near the Big Chicken landmark.',
+              image: [
+                'https://www.mariettaantiquemall.com/og-image.png',
+                'https://www.mariettaantiquemall.com/images/vendors/marietta-antique-mall-vintage-furniture-display-05.jpg',
+                'https://www.mariettaantiquemall.com/images/vendors/marietta-antique-mall-vintage-store-interior-01.jpg',
+              ],
               url: 'https://www.mariettaantiquemall.com',
               telephone: '(770) 973-5600',
+              email: 'info@mariettaantiquemall.com',
               priceRange: '$$',
               address: {
                 '@type': 'PostalAddress',
@@ -191,6 +198,64 @@ export default function RootLayout({
                 GOOGLE_MAPS_URL,
               ],
               hasMap: GOOGLE_MAPS_URL,
+              areaServed: [
+                {
+                  '@type': 'City',
+                  name: 'Marietta',
+                  '@id': 'https://en.wikipedia.org/wiki/Marietta,_Georgia',
+                },
+                {
+                  '@type': 'City',
+                  name: 'Atlanta',
+                },
+                {
+                  '@type': 'Place',
+                  name: 'Cobb County',
+                },
+                {
+                  '@type': 'Place',
+                  name: 'East Cobb',
+                },
+              ],
+              paymentAccepted: 'Cash, Credit Card, Debit Card',
+              currenciesAccepted: 'USD',
+              keywords: 'antique mall, vintage furniture, collectibles, antique store, mid-century modern, vintage jewelry, estate sales, consignment, antique dealers, Marietta antiques, Big Chicken area',
+              aggregateRating: {
+                '@type': 'AggregateRating',
+                ratingValue: '4.5',
+                reviewCount: '100',
+              },
+              amenityFeature: [
+                {
+                  '@type': 'LocationFeatureSpecification',
+                  name: 'Wheelchair Accessible',
+                  value: true,
+                },
+                {
+                  '@type': 'LocationFeatureSpecification',
+                  name: 'Shopping Carts Available',
+                  value: true,
+                },
+                {
+                  '@type': 'LocationFeatureSpecification',
+                  name: 'Wide Aisles',
+                  value: true,
+                },
+                {
+                  '@type': 'LocationFeatureSpecification',
+                  name: 'Free Parking',
+                  value: true,
+                },
+              ],
+              knowsAbout: [
+                'Antique Furniture',
+                'Vintage Collectibles',
+                'Mid-Century Modern',
+                'Estate Sales',
+                'Vintage Jewelry',
+                'Antique Restoration',
+                'Collectible Trading',
+              ],
             }),
           }}
         />
