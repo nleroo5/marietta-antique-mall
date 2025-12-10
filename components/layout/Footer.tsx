@@ -197,11 +197,6 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/gallery" className="hover:text-[#cd7f32] transition-colors">
-                    Gallery
-                  </Link>
-                </li>
-                <li>
                   <Link href="/visit" className="hover:text-[#cd7f32] transition-colors">
                     Plan Your Visit
                   </Link>
