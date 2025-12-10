@@ -345,7 +345,7 @@ export async function POST(request: NextRequest) {
     }
 
     const { data, error } = await resendClient.emails.send({
-      from: 'onboarding@resend.dev',
+      from: 'Marietta Antique Mall <applications@mariettaantiquemall.com>',
       to: 'contactus@mariettaantiquemall.com',
       replyTo: email,
       subject: `Dealer Application - ${dealerName}`,
