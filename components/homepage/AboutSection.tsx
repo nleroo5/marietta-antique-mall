@@ -83,8 +83,8 @@ export default function AboutSection() {
             {/* Mobile: Single Hero Image */}
             <div className="md:hidden relative h-64 rounded-lg overflow-hidden shadow-lg">
               <Image
-                src="/images/vendors/marietta-vintage-finds-antique-store-interior-35.jpg"
-                alt="Marietta vintage finds antique store interior display"
+                src="/images/vendors/vintage-finds-antique-store-marietta-atlanta-24.jpg"
+                alt="Vintage finds antique store Marietta Atlanta display"
                 fill
                 className="object-cover"
                 priority
