@@ -16,6 +16,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     // Main navigation pages - High priority
     {
+      url: `${baseUrl}/shop`,
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/vendors`,
       lastModified,
       changeFrequency: 'weekly',
