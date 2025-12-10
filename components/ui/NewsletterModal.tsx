@@ -63,32 +63,68 @@ export default function NewsletterModal({
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate API call - Replace with actual newsletter signup logic
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-
-    // Track Meta Pixel Lead conversion
-    if (typeof window !== 'undefined' && (window as any).fbq) {
-      (window as any).fbq('track', 'Lead', {
-        content_name: 'Newsletter Signup',
-        content_category: 'Modal',
-        value: 1.00,
-        currency: 'USD'
+    try {
+      // Call Mailchimp API to subscribe user
+      const response = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
       })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        // Handle specific error cases
+        if (data.code === 'ALREADY_SUBSCRIBED') {
+          alert('You are already subscribed to our newsletter!')
+        } else if (data.code === 'INVALID_EMAIL') {
+          alert('Please enter a valid email address.')
+        } else {
+          alert('Failed to subscribe. Please try again later.')
+        }
+        setIsSubmitting(false)
+        return
+      }
+
+      // Track Meta Pixel Lead conversion on successful subscription
+      if (typeof window !== 'undefined' && (window as any).fbq) {
+        (window as any).fbq('track', 'Lead', {
+          content_name: 'Newsletter Signup',
+          content_category: 'Modal',
+          value: 1.00,
+          currency: 'USD'
+        })
+      }
+
+      // Track GA4 conversion
+      if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('event', 'generate_lead', {
+          event_category: 'Newsletter',
+          event_label: 'Signup Modal',
+          value: 1
+        })
+      }
+
+      setIsSuccess(true)
+      setEmail('')
+      setIsSubmitting(false)
+
+      // Set dismissed permanently after successful signup
+      const dismissUntil = new Date()
+      dismissUntil.setFullYear(dismissUntil.getFullYear() + 1)
+      localStorage.setItem('newsletter-modal-dismissed', dismissUntil.toISOString())
+
+      // Close modal after 2 seconds
+      setTimeout(() => {
+        handleClose()
+      }, 2000)
+    } catch (error) {
+      console.error('Newsletter subscription error:', error)
+      alert('Failed to subscribe. Please try again later.')
+      setIsSubmitting(false)
     }
-
-    setIsSuccess(true)
-    setEmail('')
-    setIsSubmitting(false)
-
-    // Set dismissed permanently after successful signup
-    const dismissUntil = new Date()
-    dismissUntil.setFullYear(dismissUntil.getFullYear() + 1)
-    localStorage.setItem('newsletter-modal-dismissed', dismissUntil.toISOString())
-
-    // Close modal after 2 seconds
-    setTimeout(() => {
-      handleClose()
-    }, 2000)
   }
 
   if (!mounted || !isOpen) return null
