@@ -345,8 +345,8 @@ export async function POST(request: NextRequest) {
     }
 
     const { data, error } = await resendClient.emails.send({
-      from: 'onboarding@resend.dev',
-      to: 'nicolas@driveleadmedia.com', // TEMPORARY: Resend testing mode restriction
+      from: 'Marietta Antique Mall <applications@mariettaantiquemall.com>',
+      to: 'contactus@mariettaantiquemall.com',
       replyTo: email,
       subject: `Dealer Application - ${dealerName}`,
       html: emailHtml,
