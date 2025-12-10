@@ -14,7 +14,7 @@ export const LOCATION: Location = {
 
 export const CONTACT_INFO: ContactInfo = {
   phone: '(770) 973-5600',
-  email: 'info@mariettaantiques.com',
+  email: 'info@mariettaantiquemall.com',
   facebook: 'https://www.facebook.com/Mariettaantiquemall/',
   instagram: 'https://www.instagram.com/mariettaantiquemall/',
 }

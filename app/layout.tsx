@@ -46,18 +46,18 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://www.mariettaantiques.com'),
+  metadataBase: new URL('https://www.mariettaantiquemall.com'),
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://www.mariettaantiques.com',
+    url: 'https://www.mariettaantiquemall.com',
     siteName: BUSINESS_NAME,
     title: `${BUSINESS_NAME} | 30,000 sq ft of Antiques & Vintage Treasures`,
     description:
       'Discover unique antiques, vintage items, and collectibles from 100+ vendors in Marietta, GA.',
     images: [
       {
-        url: 'https://www.mariettaantiques.com/og-image.png',
+        url: 'https://www.mariettaantiquemall.com/og-image.png',
         width: 1200,
         height: 630,
         alt: `${BUSINESS_NAME} - Antiques & Vintage`,
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: `${BUSINESS_NAME} | 30,000 sq ft of Antiques & Vintage Treasures`,
     description: 'Discover unique antiques from 100+ vendors in Marietta, GA.',
-    images: ['https://www.mariettaantiques.com/og-image.png'],
+    images: ['https://www.mariettaantiquemall.com/og-image.png'],
   },
   icons: {
     icon: [
@@ -147,9 +147,9 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'AntiqueStore',
               name: BUSINESS_NAME,
-              image: 'https://www.mariettaantiques.com/og-image.png',
-              '@id': 'https://www.mariettaantiques.com',
-              url: 'https://www.mariettaantiques.com',
+              image: 'https://www.mariettaantiquemall.com/og-image.png',
+              '@id': 'https://www.mariettaantiquemall.com',
+              url: 'https://www.mariettaantiquemall.com',
               telephone: '(770) 973-5600',
               priceRange: '$$',
               address: {
@@ -202,12 +202,12 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'WebSite',
-              '@id': 'https://www.mariettaantiques.com/#website',
-              url: 'https://www.mariettaantiques.com',
+              '@id': 'https://www.mariettaantiquemall.com/#website',
+              url: 'https://www.mariettaantiquemall.com',
               name: BUSINESS_NAME,
               description: 'Discover unique antiques, vintage items, and collectibles from 100+ vendors in Marietta, GA',
               publisher: {
-                '@id': 'https://www.mariettaantiques.com/#organization',
+                '@id': 'https://www.mariettaantiquemall.com/#organization',
               },
               creator: {
                 '@type': 'Organization',
@@ -263,14 +263,14 @@ export default function RootLayout({
             __html: JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'WebPage',
-              '@id': 'https://www.mariettaantiques.com/#webpage',
-              url: 'https://www.mariettaantiques.com',
+              '@id': 'https://www.mariettaantiquemall.com/#webpage',
+              url: 'https://www.mariettaantiquemall.com',
               name: `${BUSINESS_NAME} | 30,000 sq ft of Antiques & Vintage Treasures`,
               isPartOf: {
-                '@id': 'https://www.mariettaantiques.com/#website',
+                '@id': 'https://www.mariettaantiquemall.com/#website',
               },
               about: {
-                '@id': 'https://www.mariettaantiques.com/#organization',
+                '@id': 'https://www.mariettaantiquemall.com/#organization',
               },
               provider: {
                 '@type': 'Organization',
@@ -311,7 +311,7 @@ export default function RootLayout({
               },
               serviceOutput: {
                 '@type': 'WebSite',
-                url: 'https://www.mariettaantiques.com',
+                url: 'https://www.mariettaantiquemall.com',
                 name: BUSINESS_NAME,
               },
               areaServed: {

@@ -121,7 +121,7 @@ export default function Error({
                 Call: (770) 973-5600
               </a>
               <a
-                href="mailto:info@mariettaantiques.com"
+                href="mailto:info@mariettaantiquemall.com"
                 className="text-mauve-dark hover:text-mauve underline transition-colors"
               >
                 Email Us

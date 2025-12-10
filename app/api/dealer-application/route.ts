@@ -329,7 +329,7 @@ export async function POST(request: NextRequest) {
                   })} EST</span>
                 </p>
                 <p class="footer-text">
-                  Via <a href="https://www.mariettaantiques.com/vendors">www.mariettaantiques.com/vendors</a>
+                  Via <a href="https://www.mariettaantiquemall.com/vendors">www.mariettaantiquemall.com/vendors</a>
                 </p>
               </div>
             </div>
@@ -346,7 +346,7 @@ export async function POST(request: NextRequest) {
 
     const { data, error } = await resendClient.emails.send({
       from: 'Marietta Antique Mall <applications@resend.dev>', // Will use onboarding@resend.dev until domain verified
-      to: 'contactus@mariettaantiques.com',
+      to: 'contactus@mariettaantiquemall.com',
       replyTo: email,
       subject: `Dealer Application - ${dealerName}`,
       html: emailHtml,
