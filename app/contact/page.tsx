@@ -89,6 +89,15 @@ export default function ContactPage() {
                   size="lg"
                   className="!border-2 !border-mint !text-black hover:!bg-mint hover:!text-black"
                   onClick={() => {
+                    // Track GA4 contact event
+                    if (typeof window !== 'undefined' && (window as any).gtag) {
+                      (window as any).gtag('event', 'contact', {
+                        method: 'phone',
+                        page: 'contact',
+                        value: 1
+                      })
+                    }
+
                     // Track Meta Pixel contact event
                     if (typeof window !== 'undefined' && (window as any).fbq) {
                       (window as any).fbq('track', 'Contact', {
@@ -152,6 +161,15 @@ export default function ContactPage() {
                   size="lg"
                   className="!border-2 !border-mauve"
                   onClick={() => {
+                    // Track GA4 contact event
+                    if (typeof window !== 'undefined' && (window as any).gtag) {
+                      (window as any).gtag('event', 'contact', {
+                        method: 'email',
+                        page: 'contact',
+                        value: 1
+                      })
+                    }
+
                     // Track Meta Pixel contact event
                     if (typeof window !== 'undefined' && (window as any).fbq) {
                       (window as any).fbq('track', 'Contact', {
@@ -227,7 +245,16 @@ export default function ContactPage() {
                   size="sm"
                   fullWidth
                   className="!border !border-slate"
-                  onClick={() => window.open(mapUrl, '_blank')}
+                  onClick={() => {
+                    // Track GA4 get directions event
+                    if (typeof window !== 'undefined' && (window as any).gtag) {
+                      (window as any).gtag('event', 'get_directions', {
+                        page: 'contact',
+                        destination: 'Marietta Antique Mall'
+                      })
+                    }
+                    window.open(mapUrl, '_blank')
+                  }}
                 >
                   Get Directions
                 </Button>

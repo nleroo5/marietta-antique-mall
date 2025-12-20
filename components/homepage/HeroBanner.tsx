@@ -117,6 +117,15 @@ export default function HeroBanner() {
               size="lg"
               variant="secondary"
               onClick={() => {
+                // Track GA4 navigation event
+                if (typeof window !== 'undefined' && (window as any).gtag) {
+                  (window as any).gtag('event', 'scroll_to_section', {
+                    section: 'visit_us',
+                    button_location: 'hero',
+                    value: 1
+                  })
+                }
+
                 const element = document.querySelector('#visit-us')
                 if (element) {
                   element.scrollIntoView({ behavior: 'smooth' })

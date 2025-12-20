@@ -31,6 +31,15 @@ export default function NewsletterSignup() {
     // Simulate API call - Replace with actual newsletter signup logic
     await new Promise((resolve) => setTimeout(resolve, 1000))
 
+    // Track GA4 lead conversion
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'generate_lead', {
+        lead_type: 'newsletter',
+        source: 'homepage_form',
+        value: 1
+      })
+    }
+
     setIsSuccess(true)
     setEmail('')
     setIsSubmitting(false)

@@ -31,6 +31,17 @@ export default function VendorsPage() {
       const data = await response.json()
 
       if (response.ok && data.success) {
+        // Track GA4 lead conversion - CRITICAL BUSINESS EVENT
+        if (typeof window !== 'undefined' && (window as any).gtag) {
+          (window as any).gtag('event', 'generate_lead', {
+            lead_type: 'vendor_application',
+            space_type: formData.get('spaceNeeded'),
+            move_in_month: formData.get('moveInMonth'),
+            value: 200,
+            currency: 'USD'
+          })
+        }
+
         setSubmitStatus('success')
         formRef.current?.reset()
         setShowExperience(false)
