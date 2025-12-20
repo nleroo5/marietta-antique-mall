@@ -186,10 +186,10 @@ export default function ShopPage() {
               </p>
             </div>
 
-            {/* Professional Video Frame - Smaller */}
-            <div className="relative max-w-xl mx-auto">
+            {/* Professional Video Frame - 4:5 Aspect Ratio */}
+            <div className="relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-[360px] lg:max-w-[400px] mx-auto">
               <div className="bg-white p-3 md:p-4 rounded-xl shadow-xl border-4 border-mauve">
-                <div className="relative w-full" style={{ paddingBottom: '177.78%' }}>
+                <div className="relative w-full" style={{ paddingBottom: '125%' }}>
                   <iframe
                     className="absolute top-0 left-0 w-full h-full rounded-lg"
                     src="https://www.youtube.com/embed/CMZSwMrvRII?rel=0&modestbranding=1"
