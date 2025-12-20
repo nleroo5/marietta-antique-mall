@@ -192,7 +192,7 @@ export default function ShopPage() {
                 <div className="relative w-full" style={{ paddingBottom: '125%' }}>
                   <iframe
                     className="absolute top-0 left-0 w-full h-full rounded-lg"
-                    src="https://www.youtube.com/embed/CMZSwMrvRII?rel=0&modestbranding=1"
+                    src="https://www.youtube.com/embed/CMZSwMrvRII?rel=0&modestbranding=1&iv_load_policy=3"
                     title="Marietta Antique Mall Vendor Showcase"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
