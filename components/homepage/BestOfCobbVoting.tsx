@@ -7,8 +7,11 @@ import Card from '@/components/ui/Card'
 
 export default function BestOfCobbVoting() {
   const [isVotingPeriod, setIsVotingPeriod] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
+
     // Check if current date is within voting period
     const now = new Date()
     const votingStart = new Date('2024-12-01') // Contest is active now
@@ -28,6 +31,11 @@ export default function BestOfCobbVoting() {
     }
 
     window.open('https://www.mdjonline.com/cobblife/bestof/#//', '_blank')
+  }
+
+  // Prevent hydration mismatch by not rendering until client-side
+  if (!mounted) {
+    return null
   }
 
   // Only render during voting period
