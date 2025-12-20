@@ -71,61 +71,48 @@ export default function ShopPage() {
         </div>
       </section>
 
-      {/* Vendor Showcase Video */}
-      <section className="section-padding bg-gradient-to-b from-white to-slate-50">
+      {/* How It Works */}
+      <section className="section-padding">
         <div className="container-custom">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-8">
-              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4">
-                Discover Our Vendors
-              </h2>
-              <p className="text-base md:text-lg text-black/80 leading-relaxed max-w-2xl mx-auto">
-                Take a tour through our 30,000 sq ft showroom featuring treasures from 100+ unique vendors
-              </p>
-            </div>
+          <div className="text-center mb-12">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-black mb-4">
+              How It Works
+            </h2>
+          </div>
 
-            {/* Professional Video Frame */}
-            <div className="relative max-w-3xl mx-auto">
-              <div className="bg-white p-4 md:p-6 rounded-2xl shadow-2xl border-4 border-mauve">
-                <div className="relative w-full" style={{ paddingBottom: '177.78%' }}>
-                  <iframe
-                    className="absolute top-0 left-0 w-full h-full rounded-lg"
-                    src="https://www.youtube.com/embed/CMZSwMrvRII?rel=0&modestbranding=1"
-                    title="Marietta Antique Mall Vendor Showcase"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <Card hover className="!border-[3px] !border-mauve text-center !p-8">
+              <div className="flex flex-col items-center">
+                <h3 className="font-display text-xl font-bold text-black mb-3">
+                  Join the Group
+                </h3>
+                <p className="text-black leading-relaxed">
+                  Click the button below to join our MAM Marketplace Facebook Group - it's free and takes just a moment
+                </p>
               </div>
+            </Card>
 
-              {/* Decorative corner accents */}
-              <div className="absolute -top-3 -left-3 w-8 h-8 border-t-4 border-l-4 border-bronze rounded-tl-lg"></div>
-              <div className="absolute -top-3 -right-3 w-8 h-8 border-t-4 border-r-4 border-bronze rounded-tr-lg"></div>
-              <div className="absolute -bottom-3 -left-3 w-8 h-8 border-b-4 border-l-4 border-bronze rounded-bl-lg"></div>
-              <div className="absolute -bottom-3 -right-3 w-8 h-8 border-b-4 border-r-4 border-bronze rounded-br-lg"></div>
-            </div>
+            <Card hover className="!border-[3px] !border-mauve text-center !p-8">
+              <div className="flex flex-col items-center">
+                <h3 className="font-display text-xl font-bold text-black mb-3">
+                  Browse & Message
+                </h3>
+                <p className="text-black leading-relaxed">
+                  See all available items with photos, descriptions, and prices. Message vendors directly with questions
+                </p>
+              </div>
+            </Card>
 
-            {/* Optional CTA below video */}
-            <div className="text-center mt-8">
-              <p className="text-lg text-black/80 mb-4">
-                Ready to start shopping?
-              </p>
-              <Button
-                variant="primary"
-                size="lg"
-                onClick={handleVisitGroupClick}
-                className="!bg-transparent !text-[#1877F2] !border-2 !border-[#1877F2] shadow-[0_0_15px_rgba(24,119,242,0.3)] hover:!bg-[#1877F2] hover:!text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(24,119,242,0.5)]"
-              >
-                <svg
-                  className="w-6 h-6 mr-2"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                </svg>
-                Browse Available Items Now
-              </Button>
-            </div>
+            <Card hover className="!border-[3px] !border-mauve text-center !p-8">
+              <div className="flex flex-col items-center">
+                <h3 className="font-display text-xl font-bold text-black mb-3">
+                  Pick Up In-Store
+                </h3>
+                <p className="text-black leading-relaxed">
+                  Visit us at {LOCATION.address} to pick up your treasure or browse even more items in person
+                </p>
+              </div>
+            </Card>
           </div>
         </div>
       </section>
@@ -186,48 +173,39 @@ export default function ShopPage() {
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="section-padding">
+      {/* Vendor Showcase Video */}
+      <section className="section-padding bg-gradient-to-b from-white to-slate-50">
         <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-black mb-4">
-              How It Works
-            </h2>
-          </div>
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-8">
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-4">
+                Discover Our Vendors
+              </h2>
+              <p className="text-base md:text-lg text-black/80 leading-relaxed max-w-2xl mx-auto">
+                Take a tour through our 30,000 sq ft showroom featuring treasures from 100+ unique vendors
+              </p>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <Card hover className="!border-[3px] !border-mauve text-center !p-8">
-              <div className="flex flex-col items-center">
-                <h3 className="font-display text-xl font-bold text-black mb-3">
-                  Join the Group
-                </h3>
-                <p className="text-black leading-relaxed">
-                  Click the button above to join our MAM Marketplace Facebook Group - it's free and takes just a moment
-                </p>
+            {/* Professional Video Frame - Smaller */}
+            <div className="relative max-w-xl mx-auto">
+              <div className="bg-white p-3 md:p-4 rounded-xl shadow-xl border-4 border-mauve">
+                <div className="relative w-full" style={{ paddingBottom: '177.78%' }}>
+                  <iframe
+                    className="absolute top-0 left-0 w-full h-full rounded-lg"
+                    src="https://www.youtube.com/embed/CMZSwMrvRII?rel=0&modestbranding=1"
+                    title="Marietta Antique Mall Vendor Showcase"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
               </div>
-            </Card>
 
-            <Card hover className="!border-[3px] !border-mauve text-center !p-8">
-              <div className="flex flex-col items-center">
-                <h3 className="font-display text-xl font-bold text-black mb-3">
-                  Browse & Message
-                </h3>
-                <p className="text-black leading-relaxed">
-                  See all available items with photos, descriptions, and prices. Message vendors directly with questions
-                </p>
-              </div>
-            </Card>
-
-            <Card hover className="!border-[3px] !border-mauve text-center !p-8">
-              <div className="flex flex-col items-center">
-                <h3 className="font-display text-xl font-bold text-black mb-3">
-                  Pick Up In-Store
-                </h3>
-                <p className="text-black leading-relaxed">
-                  Visit us at {LOCATION.address} to pick up your treasure or browse even more items in person
-                </p>
-              </div>
-            </Card>
+              {/* Decorative corner accents */}
+              <div className="absolute -top-2 -left-2 w-6 h-6 border-t-4 border-l-4 border-bronze rounded-tl-lg"></div>
+              <div className="absolute -top-2 -right-2 w-6 h-6 border-t-4 border-r-4 border-bronze rounded-tr-lg"></div>
+              <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-4 border-l-4 border-bronze rounded-bl-lg"></div>
+              <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-4 border-r-4 border-bronze rounded-br-lg"></div>
+            </div>
           </div>
         </div>
       </section>
