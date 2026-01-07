@@ -40,7 +40,7 @@ export default function PrivacyPage() {
               Privacy Policy
             </h1>
             <p className="text-lg text-black/70">
-              Last updated: November 2025
+              Last updated: January 2026
             </p>
           </div>
         </div>
@@ -135,6 +135,139 @@ export default function PrivacyPage() {
                 experience, analyze website traffic, and understand visitor behavior. You can
                 control cookies through your browser settings, but disabling cookies may limit some
                 website functionality.
+              </p>
+
+              <h2 className="font-display text-2xl font-bold text-black mb-4 mt-8">
+                Analytics and User Behavior Tools
+              </h2>
+              <p className="text-black mb-4">
+                We use the following third-party analytics services to improve our website and user experience:
+              </p>
+
+              <h3 className="font-display text-xl font-semibold text-black mb-3 mt-6">
+                Google Analytics 4
+              </h3>
+              <p className="text-black mb-4">
+                We use Google Analytics to understand how visitors interact with our website. Google Analytics collects information such as:
+              </p>
+              <ul className="list-disc pl-6 text-black mb-6 space-y-2">
+                <li>Pages visited and time spent on each page</li>
+                <li>How you arrived at our website (referral source)</li>
+                <li>Device type, browser, and operating system information</li>
+                <li>Approximate geographic location (city/region level)</li>
+              </ul>
+              <p className="text-black mb-6">
+                This data is used to analyze traffic patterns, improve website content, and optimize user experience.
+                Google Analytics data is aggregated and anonymized. You can opt-out of Google Analytics by installing the{' '}
+                <a
+                  href="https://tools.google.com/dlpage/gaoptout"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-mauve-dark hover:text-mauve underline transition-colors"
+                >
+                  Google Analytics Opt-out Browser Add-on
+                </a>.
+              </p>
+
+              <h3 className="font-display text-xl font-semibold text-black mb-3 mt-6">
+                Microsoft Clarity
+              </h3>
+              <p className="text-black mb-4">
+                We use Microsoft Clarity to better understand how users interact with our website through heatmaps and session recordings.
+                Microsoft Clarity may collect:
+              </p>
+              <ul className="list-disc pl-6 text-black mb-4 space-y-2">
+                <li>Mouse movements, clicks, and scrolling behavior</li>
+                <li>Pages visited and navigation patterns</li>
+                <li>Device and browser information</li>
+                <li>IP address (anonymized - last octet masked)</li>
+              </ul>
+
+              <div className="bg-mint-light/30 p-5 rounded-lg border-2 border-mint mb-6">
+                <p className="text-black mb-2">
+                  <strong>Privacy Protections:</strong>
+                </p>
+                <ul className="list-disc pl-6 text-black space-y-2">
+                  <li>
+                    <strong>Automatic Data Masking:</strong> Microsoft Clarity automatically masks sensitive information including
+                    passwords, credit card numbers, social security numbers, and other personally identifiable information (PII)
+                  </li>
+                  <li>
+                    <strong>IP Anonymization:</strong> Your IP address is anonymized by masking the last octet before storage
+                  </li>
+                  <li>
+                    <strong>Secure Data Transfer:</strong> All data is transmitted over encrypted HTTPS connections
+                  </li>
+                  <li>
+                    <strong>Data Retention:</strong> Session recordings and heatmap data are retained for 90 days by default
+                  </li>
+                </ul>
+              </div>
+
+              <p className="text-black mb-4">
+                <strong>How We Use Clarity Data:</strong>
+              </p>
+              <ul className="list-disc pl-6 text-black mb-4 space-y-2">
+                <li>Identify and fix broken links or non-functional elements</li>
+                <li>Improve website navigation and user experience</li>
+                <li>Optimize form completion rates (vendor applications, contact forms)</li>
+                <li>Understand mobile vs. desktop user behavior</li>
+                <li>Debug technical issues by reviewing user sessions</li>
+              </ul>
+
+              <p className="text-black mb-4">
+                <strong>Data Processing:</strong> Microsoft acts as a data processor for Clarity data.
+                Microsoft complies with the EU-US Data Privacy Framework (approved by the European Commission in July 2023),
+                which allows the transfer of data to Microsoft's U.S.-based servers under Article 45 of the GDPR.
+              </p>
+
+              <p className="text-black mb-6">
+                For more information about Microsoft Clarity's privacy practices, please visit:{' '}
+                <a
+                  href="https://clarity.microsoft.com/privacy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-mauve-dark hover:text-mauve underline transition-colors"
+                >
+                  Microsoft Clarity Privacy Policy
+                </a>
+              </p>
+
+              <h3 className="font-display text-xl font-semibold text-black mb-3 mt-6">
+                Meta Pixel (Facebook Pixel)
+              </h3>
+              <p className="text-black mb-4">
+                We use Meta Pixel to measure the effectiveness of our advertising and understand user actions on our website.
+                This helps us show relevant ads to users who have visited our site and track conversions from our social media campaigns.
+              </p>
+              <p className="text-black mb-6">
+                The Meta Pixel collects browser and device information, pages visited, and actions taken on our website.
+                You can opt-out of interest-based advertising from Facebook by visiting your{' '}
+                <a
+                  href="https://www.facebook.com/settings?tab=ads"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-mauve-dark hover:text-mauve underline transition-colors"
+                >
+                  Facebook Ad Settings
+                </a>.
+              </p>
+
+              <h3 className="font-display text-xl font-semibold text-black mb-3 mt-6">
+                Opting Out of Analytics
+              </h3>
+              <p className="text-black mb-6">
+                You can disable analytics tracking by:
+              </p>
+              <ul className="list-disc pl-6 text-black mb-6 space-y-2">
+                <li>Adjusting your browser's privacy settings to block third-party cookies</li>
+                <li>Using browser extensions that block analytics scripts</li>
+                <li>Installing the Google Analytics Opt-out Browser Add-on (for Google Analytics only)</li>
+                <li>Enabling "Do Not Track" in your browser settings (support varies by service)</li>
+              </ul>
+              <p className="text-black mb-6">
+                Please note that disabling these services may limit some website functionality and prevent us from
+                improving your user experience based on aggregated behavior patterns.
               </p>
 
               <h2 className="font-display text-2xl font-bold text-black mb-4 mt-8">
