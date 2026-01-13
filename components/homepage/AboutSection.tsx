@@ -207,7 +207,7 @@ export default function AboutSection() {
                 className="wood-card-wrapper"
               >
                 <div
-                  className="wood-card relative px-6 py-3 cursor-pointer"
+                  className="wood-card relative px-6 py-3 cursor-default"
                   style={{
                     backgroundColor: '#FAF8F5',
                     backgroundImage: `

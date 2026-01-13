@@ -500,7 +500,7 @@ export default function VendorsPage() {
           </div>
 
           <div className="mt-12 text-center max-w-3xl mx-auto">
-            <Card className="!border-2 !border-mauve transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer">
+            <Card className="!border-2 !border-mauve transition-all duration-300 hover:shadow-xl hover:-translate-y-2 !cursor-default">
               <CardBody>
                 <h3 className="font-display text-xl font-bold text-black mb-3">Additional Options Available</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
@@ -532,7 +532,7 @@ export default function VendorsPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card className="!border !border-green-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer">
+            <Card className="!border !border-green-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 !cursor-default">
               <CardBody>
                 <h3 className="font-display text-xl font-bold text-black mb-4 flex items-center gap-2">
                   <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -569,7 +569,7 @@ export default function VendorsPage() {
               </CardBody>
             </Card>
 
-            <Card className="!border !border-green-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer">
+            <Card className="!border !border-green-700 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 !cursor-default">
               <CardBody>
                 <h3 className="font-display text-xl font-bold text-black mb-4 flex items-center gap-2">
                   <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">

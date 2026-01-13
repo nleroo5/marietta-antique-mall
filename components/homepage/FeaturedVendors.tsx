@@ -155,7 +155,7 @@ export default function FeaturedVendors() {
         {/* Vendor Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {FEATURED_VENDORS.map((vendor) => (
-            <Card key={vendor.id} hover className="cursor-pointer">
+            <Card key={vendor.id} hover className="!cursor-default">
               <div className="relative h-48">
                 {vendor.featuredImage ? (
                   <Image
