@@ -8,6 +8,7 @@ const navItems = [
   { label: 'Home', href: '/' },
   { label: 'Shop Online', href: '/shop' },
   { label: 'Vendors', href: '/vendors' },
+  { label: 'Sell or Donate', href: '/sell' },
   { label: 'Visit', href: '/visit' },
   { label: 'Contact', href: '/contact' },
 ]

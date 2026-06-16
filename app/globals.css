@@ -92,6 +92,15 @@
     @apply bg-gradient-to-r from-primary via-accent to-primary-dark bg-clip-text text-transparent;
   }
 
+  /* Hide scrollbars (used by the Sell/Donate review photo strip) */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
   /* Glass morphism effect */
   .glass {
     @apply bg-white/80 backdrop-blur-md;
