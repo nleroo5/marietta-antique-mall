@@ -157,6 +157,11 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/sell" className="hover:text-[#cd7f32] hover:underline transition-colors">
+                    Sell or Donate
+                  </Link>
+                </li>
+                <li>
                   <Link href="/visit" className="hover:text-[#cd7f32] hover:underline transition-colors">
                     Visit
                   </Link>
@@ -194,6 +199,11 @@ export default function Footer() {
                 <li>
                   <Link href="/vendors" className="hover:text-[#cd7f32] transition-colors">
                     Our Vendors
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/sell" className="hover:text-[#cd7f32] transition-colors">
+                    Sell or Donate
                   </Link>
                 </li>
                 <li>
